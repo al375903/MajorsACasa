@@ -1,4 +1,4 @@
-package es.uji.ei1027.clubesportiu;
+package es.uji.ei1027.majorsACasa;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ClubesportiuApplicationTests {
+public class MajorsACasaApplicationTests {
 
 	@Test
 	public void contextLoads() {
