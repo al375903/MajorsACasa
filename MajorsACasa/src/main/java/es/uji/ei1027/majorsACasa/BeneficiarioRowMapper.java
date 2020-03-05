@@ -5,4 +5,5 @@ public class BeneficiarioRowMapper {
 	//prueba para lucas
 	// prueba lucas push amegos
 	// prueba conjunta 2qi2rrrrq
+	//prueba conjunta GG
 }
