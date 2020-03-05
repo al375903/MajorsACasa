@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class ClubesportiuApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(ClubesportiuApplication.class, args);
 	}
 	//asdasfdasfasdf
 	//Esto pinta bien
+	//ez
 }
