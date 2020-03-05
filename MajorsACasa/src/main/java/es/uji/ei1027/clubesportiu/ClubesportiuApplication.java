@@ -12,4 +12,5 @@ public class ClubesportiuApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClubesportiuApplication.class, args);
 	}
+	//asdasfdasfasdf
 }
