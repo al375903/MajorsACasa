@@ -13,4 +13,5 @@ public class ClubesportiuApplication {
 		SpringApplication.run(ClubesportiuApplication.class, args);
 	}
 	//asdasfdasfasdf
+	//Esto pinta bien
 }
