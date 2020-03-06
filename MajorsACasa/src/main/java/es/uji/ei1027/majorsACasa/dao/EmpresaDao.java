@@ -50,7 +50,7 @@ public class EmpresaDao {
 	   }
 
 	   /* Obté totes les empreses. Torna una llista buida si no n'hi ha cap. */
-	   public List<Empresa> getClassificacions() {
+	   public List<Empresa> getEmpresas() {
 	       try {
 	           return jdbcTemplate.query("SELECT * from Empresa",
 	                   new EmpresaRowMapper());

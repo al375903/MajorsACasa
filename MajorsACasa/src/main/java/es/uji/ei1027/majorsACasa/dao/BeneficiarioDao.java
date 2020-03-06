@@ -51,7 +51,7 @@ public class BeneficiarioDao {
 	   }
 
 	   /* Obté tots els beneficiaris. Torna una llista buida si no n'hi ha cap. */
-	   public List<Beneficiario> getClassificacions() {
+	   public List<Beneficiario> getBeneficiarios() {
 	       try {
 	           return jdbcTemplate.query("SELECT * from Classificacio",
 	                   new BeneficiarioRowMapper());
