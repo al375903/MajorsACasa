@@ -1,4 +1,4 @@
-package es.uji.ei1027.majorsACasa;
+package es.uji.ei1027.majorsACasa.model;
 
 public class Beneficiario {
    private String idBeneficiario;

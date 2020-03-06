@@ -1,4 +1,4 @@
-package es.uji.ei1027.majorsACasa;
+package es.uji.ei1027.majorsACasa.dao;
 
 public class BeneficiarioRowMapper {
 	//te sale ahora?
