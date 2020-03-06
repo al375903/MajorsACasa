@@ -7,7 +7,7 @@ public class Factura {
 	//private Date fechaInicio;
 	//private Date fechaFin;
 	private float cantidad;
-	private float concepto;
+	private String concepto;
 	
 	public Factura(){
 	}
@@ -36,11 +36,11 @@ public class Factura {
 		this.cantidad = cantidad;
 	}
 	
-	public float getConcepto() {
+	public String getConcepto() {
 		return concepto;
 	}
 	
-	public void setConcepto(float concepto) {
+	public void setConcepto(String concepto) {
 		this.concepto = concepto;
 	}
 

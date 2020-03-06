@@ -29,7 +29,7 @@ public class VoluntarioDao {
 	}
 	
 	void deleteVoluntario(Voluntario voluntario) {
-		jdbcTemplate.batchUpdate("DELETE FROM Voluntario WHERE idVoluntario=?", voluntario.getIdVoluntario());
+		jdbcTemplate.update("DELETE FROM Voluntario WHERE idVoluntario=?", voluntario.getIdVoluntario());
 	}
 	
 	void updateVoluntario(Voluntario voluntario) {
