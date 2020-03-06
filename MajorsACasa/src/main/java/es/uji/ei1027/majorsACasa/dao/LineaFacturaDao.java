@@ -53,7 +53,7 @@ public class LineaFacturaDao {
 	   /* Obté tots els beneficiaris. Torna una llista buida si no n'hi ha cap. */
 	   public List<LineaFactura> getLineasFacturas() {
 	       try {
-	           return jdbcTemplate.query("SELECT * from Classificacio",
+	           return jdbcTemplate.query("SELECT * from LineaFactura",
 	                   new LineaFacturaRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<LineaFactura>();
