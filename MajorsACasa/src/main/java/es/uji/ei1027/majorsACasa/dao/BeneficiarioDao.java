@@ -22,9 +22,9 @@ public class BeneficiarioDao {
 	   }
 
 	   /* Afegeix la beneficiari a la base de dades */
-	   public void addBeneficiario(Beneficiario b) {
+	   public void addBeneficiario(Beneficiario beneficiario) {
 	       jdbcTemplate.update("INSERT INTO Beneficiario VALUES(?, ?, ?, ?, ?, ?, ?)",
-	              b.getIdBeneficiario(), b.getNombre(), b.getEmail(), b.getDireccion(), b.getGenero(), b.getEdad(), b.getContrasenya());
+	              beneficiario.getIdBeneficiario(), beneficiario.getNombre(), beneficiario.getEmail(), beneficiario.getDireccion(), beneficiario.getGenero(), beneficiario.getEdad(), beneficiario.getContrasenya());
 	   }
 
 	   /* Esborra la beneficiari de la base de dades */
@@ -34,9 +34,9 @@ public class BeneficiarioDao {
 	   }
 
 	   /* Actualitza els atributs del beneficiari */
-	   public void updateBeneficiario(Beneficiario b) {
+	   public void updateBeneficiario(Beneficiario beneficiario) {
 	       jdbcTemplate.update("UPDATE Beneficiario SET nombre=?, email=?, direccion=?, genero=?, edad=?, contrasenya=? where idBeneficiario=?",
-	    		   b.getNombre(), b.getEmail(), b.getDireccion(), b.getGenero(), b.getEdad(), b.getContrasenya(), b.getIdBeneficiario());
+	    		   beneficiario.getNombre(), beneficiario.getEmail(), beneficiario.getDireccion(), beneficiario.getGenero(), beneficiario.getEdad(), beneficiario.getContrasenya(), beneficiario.getIdBeneficiario());
 	   }
 
 	   /* Obté beneficiari amb el id donat. Torna null si no existeix. */
