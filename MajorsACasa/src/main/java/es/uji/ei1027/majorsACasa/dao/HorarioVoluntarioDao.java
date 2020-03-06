@@ -17,7 +17,7 @@ public class HorarioVoluntarioDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	public void setDatSource(DataSource dataSource) {
+	public void setDataSource(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
@@ -29,7 +29,7 @@ public class HorarioVoluntarioDao {
 	}
 	
 	void deleteHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
-		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idVoluntario=?", horarioVoluntario.getIdHorario());
+		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idHorario=?", horarioVoluntario.getIdHorario());
 	}
 	
 	void updateHorarioVoluntario(HorarioVoluntario horarioVoluntario) {

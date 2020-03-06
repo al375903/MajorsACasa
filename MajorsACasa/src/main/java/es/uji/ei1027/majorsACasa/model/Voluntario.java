@@ -6,12 +6,12 @@ public class Voluntario {
 	private String email;
 	private String direccion;
 	private String hobby;
-	//private Date fechaPeticionVoluntario;
+	//private Date fechaPeticionVoluntariado;
 	//private Date fechaAceptacionVoluntariado; 
 	//private Date fechaFin; 
 	private boolean aceptado;
 	private String genero;
-	private String edad;
+	private int edad;
 	private String contrasenya;
 	
 	public Voluntario() {
@@ -57,7 +57,7 @@ public class Voluntario {
 		this.hobby = hobby;
 	}
 	
-	public Boolean getAceptado() {
+	public Boolean isAceptado() {
 		return aceptado;
 	}
 	
@@ -73,11 +73,11 @@ public class Voluntario {
 		this.genero = genero;
 	}
 	
-	public String getEdad() {
+	public int getEdad() {
 		return edad;
 	}
 	
-	public void setEdad(String edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 	
