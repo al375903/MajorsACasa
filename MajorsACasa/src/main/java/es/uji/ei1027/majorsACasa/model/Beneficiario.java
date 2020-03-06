@@ -68,18 +68,10 @@ public class Beneficiario {
        this.contrasenya = contrasenya;
    }
 
-
-   @Override
-   public String toString() {
-       return "Beneficiario{" +
-    		   "idBeneficiario='" + idBeneficiario + "\'" +
-               ",nombre='" + nombre + "\'" +
-               ", email='" + email + "\'" +
-               ", direccion='" + direccion + "\'" +
-               ", genero='" + genero + "\'" +
-               ", edad=" + edad + "\'" +
-               ", contrasenya=" + contrasenya + 
-               "}";
-   }
+	@Override
+	public String toString() {
+		return "Beneficiario [idBeneficiario=" + idBeneficiario + ", nombre=" + nombre + ", email=" + email + ", direccion="
+				+ direccion + ", genero=" + genero + ", edad=" + edad + ", contrasenya=" + contrasenya + "]";
+	}
 
 }
