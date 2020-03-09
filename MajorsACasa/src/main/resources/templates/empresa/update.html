@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Editar una empresa</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Editar empresa</h2>
+    <form action="#" th:action="@{/empresa/update}"
+                     th:object="${empresa}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Empresa</label></td>
+            <td><input type="text" th:field="*{idEmpresa}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nombre Empresa</label></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nombre Manager</label></td>
+            <td><input type="text" th:field="*{nombreManager}" /></td>
+        </tr>
+        <tr>
+            <td><label>Direccion</label></td>
+            <td><input type="text" th:field="*{direccion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Telefono</label></td>
+            <td><input type="text" th:field="*{telefono}" /></td>
+        </tr>
+        <tr>
+            <td><label>Horario Atencion al Cliente</label></td>
+            <td><input type="text" th:field="*{horarioatencionCliente}" /></td>
+        </tr>
+        <tr>
+            <td><label>E-mail Manager</label></td>
+            <td><input type="text" th:field="*{emailManager}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Editar Empresa" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

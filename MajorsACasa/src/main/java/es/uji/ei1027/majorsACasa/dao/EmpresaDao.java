@@ -39,7 +39,7 @@ public class EmpresaDao {
 	   }
 
 	   /* Obté empresa amb el id donat. Torna null si no existeix. */
-	   public Empresa getBeneficiario(String idEmpresa) {
+	   public Empresa getEmpresa(String idEmpresa) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * from Empresa WHERE idEmpresa=?",
 	                   new EmpresaRowMapper(), idEmpresa);
