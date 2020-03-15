@@ -64,5 +64,7 @@ public class EmpresaController {
          empresaDao.deleteEmpresa(id);
          return "redirect:../list"; 
 	}
+  
+  // Esto es una prueba
 
 }
