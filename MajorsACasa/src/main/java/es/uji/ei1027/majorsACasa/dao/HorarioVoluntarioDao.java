@@ -21,7 +21,7 @@ public class HorarioVoluntarioDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	void addHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
+	public void addHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
 		jdbcTemplate.update("INSERT INTO HorarioVoluntario VALUES(?,?,?,?,?,?,?)",
 			horarioVoluntario.getIdHorario(), horarioVoluntario.getIdVoluntario(),
 			horarioVoluntario.getIdBeneficiario(), horarioVoluntario.getFecha(), 
@@ -29,11 +29,11 @@ public class HorarioVoluntarioDao {
 			horarioVoluntario.isLibre());
 	}
 	
-	void deleteHorarioVoluntario(String idHorario) {
+	public void deleteHorarioVoluntario(String idHorario) {
 		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idHorario=?", idHorario);
 	}
 	
-	void updateHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
+	public void updateHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
 		jdbcTemplate.update("UPDATE HorarioVoluntario SET fecha=?, horaInicio=?, "
 				+ "horaFin=?, libre=? WHERE idHorario=?",
 				horarioVoluntario.getFecha(), horarioVoluntario.getHoraInicio(), 
@@ -41,7 +41,7 @@ public class HorarioVoluntarioDao {
 				horarioVoluntario.getIdHorario());
 	}
 	
-	HorarioVoluntario getHorarioVoluntario(String idHorario) {
+	public HorarioVoluntario getHorarioVoluntario(String idHorario) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM HorarioVoluntario WHERE idHorario=?",
 					new HorarioVoluntarioRowMapper(), idHorario);
@@ -50,7 +50,7 @@ public class HorarioVoluntarioDao {
 		}
 	}
 	
-	List<HorarioVoluntario> getHorariosVoluntarios(){
+	public List<HorarioVoluntario> getHorariosVoluntarios(){
 		try {
 			return jdbcTemplate.query("SELECT * FROM HorarioVoluntario", new HorarioVoluntarioRowMapper());
 		} catch(EmptyResultDataAccessException e) {

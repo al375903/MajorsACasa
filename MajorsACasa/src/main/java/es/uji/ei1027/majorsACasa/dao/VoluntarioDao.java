@@ -20,7 +20,7 @@ public class VoluntarioDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	void addVoluntario(Voluntario voluntario) {
+	public void addVoluntario(Voluntario voluntario) {
 		jdbcTemplate.update("INSERT INTO Voluntario VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
 				voluntario.getIdVoluntario(), voluntario.getNombre(), voluntario.getEmail(),
 				voluntario.getHobbies(), voluntario.getDireccion(), voluntario.getHobbies(), 
@@ -29,11 +29,11 @@ public class VoluntarioDao {
 				voluntario.getGenero(), voluntario.getEdad(), voluntario.getContrasenya());
 	}
 	
-	void deleteVoluntario(Voluntario voluntario) {
-		jdbcTemplate.update("DELETE FROM Voluntario WHERE idVoluntario=?", voluntario.getIdVoluntario());
+	public void deleteVoluntario(String idVoluntario) {
+		jdbcTemplate.update("DELETE FROM Voluntario WHERE idVoluntario=?", idVoluntario);
 	}
 	
-	void updateVoluntario(Voluntario voluntario) {
+	public void updateVoluntario(Voluntario voluntario) {
 		jdbcTemplate.update("UPDATE Voluntario SET nombre=?, email=?, direccion=?,"
 				+ "hobbies=?, fechaPeticionVoluntariado=?, fechaAceptacionVoluntariado=?,"
 				+ "fechaFin=?, aceptado=?, genero=?, edad=?, contrasenya=?",
@@ -44,7 +44,7 @@ public class VoluntarioDao {
 				voluntario.getContrasenya());
 	}
 	
-	Voluntario getVoluntario(String idVoluntario) {
+	public Voluntario getVoluntario(String idVoluntario) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM Voluntario WHERE idVoluntario=?",
 					new VoluntarioRowMapper(), idVoluntario);
@@ -53,7 +53,7 @@ public class VoluntarioDao {
 		}
 	}
 	
-	List<Voluntario> getVoluntarios(){
+	public List<Voluntario> getVoluntarios(){
 		try{
 			return jdbcTemplate.query("SELECT * FROM Voluntario", new VoluntarioRowMapper());
 		} catch(EmptyResultDataAccessException e) {

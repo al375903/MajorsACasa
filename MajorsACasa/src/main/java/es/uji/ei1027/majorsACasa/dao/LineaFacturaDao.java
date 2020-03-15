@@ -52,7 +52,7 @@ public class LineaFacturaDao {
 	   }
 
 	   /* Obté totes les línies de factura. Torna una llista buida si no n'hi ha cap. */
-	   public List<LineaFactura> getLineasFacturas() {
+	   public List<LineaFactura> getLineasFactura() {
 	       try {
 	           return jdbcTemplate.query("SELECT * from LineaFactura",
 	                   new LineaFacturaRowMapper());

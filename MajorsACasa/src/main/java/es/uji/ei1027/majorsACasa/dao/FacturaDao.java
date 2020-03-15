@@ -21,18 +21,18 @@ public class FacturaDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	void addFactura(Factura factura) {
+	public void addFactura(Factura factura) {
 		jdbcTemplate.update("INSERT INTO Factura VALUES(?,?,?,?,?,?,?)",
 				factura.getIdFactura(), factura.getIdBeneficiario(), 
 				factura.getFechaCreacion(), factura.getFechaInicio(), 
 				factura.getFechaFin(), factura.getCantidad(), factura.getConcepto());
 	}
 	
-	void deleteFactura(String idFactura) {
+	public void deleteFactura(String idFactura) {
 		jdbcTemplate.update("DELETE FROM Factura WHERE idFactura=?", idFactura);
 	}
 	
-	void updateFactura(Factura factura) {
+	public void updateFactura(Factura factura) {
 		jdbcTemplate.update("UPDATE Factura SET fechaCreacion=?, fechaInicio=?, "
 				+ "fechaFin=?, cantidad=?, concepto=? WHERE idFactura=?",
 				factura.getFechaCreacion(), factura.getFechaInicio(), factura.getFechaFin(), 
@@ -48,7 +48,7 @@ public class FacturaDao {
 		}
 	}
 	
-	List<Factura> getFacturas(){
+	public List<Factura> getFacturas(){
 		try {
 			return jdbcTemplate.query("SELECT * FROM Factura", new FacturaRowMapper());
 		} catch(EmptyResultDataAccessException e) {

@@ -21,18 +21,18 @@ public class ContratoDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	void addContrato(Contrato contrato) {
+	public void addContrato(Contrato contrato) {
 		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?,?)",
 				contrato.getIdContrato(), contrato.getIdEmpresa(), 
 				contrato.getPrecio(), contrato.getTipoServicio(), 
 				contrato.getFechaInicio(), contrato.getFechaFin());
 	}
 	
-	void deleteContrato(String idContrato) {
+	public void deleteContrato(String idContrato) {
 		jdbcTemplate.update("DELETE FROM Contrato WHERE idContrato=?", idContrato);
 	}
 	
-	void updateContrato(Contrato contrato) {
+	public void updateContrato(Contrato contrato) {
 		jdbcTemplate.update("UPDATE Contrato SET precio=?, tipoServicio=?, fechaInicio=?, "
 				+ "fechaFin=? WHERE idContrato=?",
 				contrato.getPrecio(), contrato.getTipoServicio(), contrato.getFechaInicio(), 
@@ -56,8 +56,6 @@ public class ContratoDao {
 		}
 	}
 }
-
-
 
 
 

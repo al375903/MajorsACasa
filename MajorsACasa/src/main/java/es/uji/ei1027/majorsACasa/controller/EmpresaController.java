@@ -24,7 +24,7 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping("/list")
-	public String listEmpresa(Model model) {
+	public String listEmpresas(Model model) {
 		model.addAttribute("empresas", empresaDao.getEmpresas());
 		return "empresa/list";
 	}
@@ -35,11 +35,11 @@ public class EmpresaController {
 		return "empresa/add";
 	}
    
-   @RequestMapping(value="/add", method=RequestMethod.POST) 
+   @RequestMapping(value="/add", method = RequestMethod.POST) 
    public String processAddSubmit(@ModelAttribute("empresa") Empresa empresa,
                                    BindingResult bindingResult) {  
    	 if (bindingResult.hasErrors()) 
-   			return "empresa/add";
+   		return "empresa/add";
    	 empresaDao.addEmpresa(empresa);
    	 return "redirect:list"; 
     }
@@ -65,7 +65,4 @@ public class EmpresaController {
          empresaDao.deleteEmpresa(id);
          return "redirect:../list"; 
 	}
-  
-  // Esto es una prueba
-
 }
