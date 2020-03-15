@@ -17,6 +17,9 @@ public final class BeneficiarioRowMapper implements RowMapper<Beneficiario>{
 	       beneficiario.setGenero(rs.getString("genero"));
 	       beneficiario.setEdad(rs.getInt("edad"));
 	       beneficiario.setContrasenya(rs.getString("contrasenya"));
+	       beneficiario.setHobbies(rs.getString("hobbies"));
+	       beneficiario.setAlergias(rs.getString("alergias"));
+	       beneficiario.setEnfermedades(rs.getString("enfermedades"));
 	       return beneficiario;
 	   }
 }

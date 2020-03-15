@@ -15,10 +15,11 @@ import es.uji.ei1027.majorsACasa.model.Empresa;
 @Controller
 @RequestMapping("/empresa")
 public class EmpresaController {
+	
 	private EmpresaDao empresaDao;
 	
 	@Autowired
-	public void setEmpresasDao(EmpresaDao empresaDao) {
+	public void setEmpresaDao(EmpresaDao empresaDao) {
 		this.empresaDao = empresaDao;
 	}
 	

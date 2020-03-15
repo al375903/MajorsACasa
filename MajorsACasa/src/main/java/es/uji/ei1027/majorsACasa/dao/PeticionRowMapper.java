@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.dao;
 
+import java.time.LocalDate;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +16,10 @@ public final class PeticionRowMapper implements RowMapper<Peticion>{
 			peticion.setComentarios(rs.getString("comentarios"));
 			peticion.setTipoServicio(rs.getString("tipoServicio"));
 			peticion.setEstado(rs.getString("estado"));
-			//Aqui falta 4 sentencias para los DATE
+			peticion.setFechaAprobacion(rs.getObject("fechaAprobacion", LocalDate.class));
+			peticion.setFechaDenegacion(rs.getObject("fechaDenegacion", LocalDate.class));
+			peticion.setFechaCreacion(rs.getObject("fechaCreacion", LocalDate.class));
+			peticion.setFechaCancelacion(rs.getObject("fechaCancelacion", LocalDate.class));
 			return peticion;
 	}
 }

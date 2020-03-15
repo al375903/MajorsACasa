@@ -1,5 +1,9 @@
 package es.uji.ei1027.majorsACasa.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Peticion {
 	private String idPeticion;
 	private String idBeneficiario;
@@ -7,10 +11,14 @@ public class Peticion {
 	private String comentarios;
 	private String tipoServicio;
 	private String estado;
-	//private Date fechaAprobacion;
-	//private Date fechaDenegacion;
-	//private Date fechaCreacion;
-	//private Date fechaCancelacion;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaAprobacion;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaDenegacion;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaCreacion;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaCancelacion;
 	
 	public Peticion() {
 	}
@@ -63,11 +71,45 @@ public class Peticion {
 		this.estado = estado;
 	}
 
+	public LocalDate getFechaAprobacion() {
+		return fechaAprobacion;
+	}
+
+	public void setFechaAprobacion(LocalDate fechaAprobacion) {
+		this.fechaAprobacion = fechaAprobacion;
+	}
+
+	public LocalDate getFechaDenegacion() {
+		return fechaDenegacion;
+	}
+
+	public void setFechaDenegacion(LocalDate fechaDenegacion) {
+		this.fechaDenegacion = fechaDenegacion;
+	}
+
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public LocalDate getFechaCancelacion() {
+		return fechaCancelacion;
+	}
+
+	public void setFechaCancelacion(LocalDate fechaCancelacion) {
+		this.fechaCancelacion = fechaCancelacion;
+	}
+
 	@Override
 	public String toString() {
-		return "Peticion [idPeticion=" + idPeticion + ", idBeneficiario=" + idBeneficiario + ", idContrato="
-				+ idContrato + ", comentarios=" + comentarios + ", tipoServicio=" + tipoServicio + ", estado=" + estado
-				+ "]";
+		return "Peticion [idPeticion=" + idPeticion + ", idBeneficiario=" + idBeneficiario 
+				+ ", idContrato=" + idContrato + ", comentarios=" + comentarios 
+				+ ", tipoServicio=" + tipoServicio + ", estado=" + estado
+				+ ", fechaAprobacion=" + fechaAprobacion + ", fechaDenegacion=" + fechaDenegacion 
+				+ ", fechaCreacion=" + fechaCreacion + ", fechaCancelacion=" + fechaCancelacion + "]";
 	}
 	
 }

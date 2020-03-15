@@ -6,6 +6,8 @@ import es.uji.ei1027.majorsACasa.model.HorarioVoluntario;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public final class HorarioVoluntarioRowMapper implements RowMapper<HorarioVoluntario>{
 	public HorarioVoluntario mapRow(ResultSet rs, int rowNum) throws SQLException{
@@ -13,7 +15,9 @@ public final class HorarioVoluntarioRowMapper implements RowMapper<HorarioVolunt
 		horarioVoluntario.setIdHorario(rs.getString("idHorario"));
 		horarioVoluntario.setIdVoluntario(rs.getString("idVoluntario"));
 		horarioVoluntario.setIdBeneficiario(rs.getString("idBeneficiario"));
-		// Aquí debería haber 3 sentencias para los atributos de tipo Date y Time
+	    horarioVoluntario.setFecha(rs.getObject("fecha", LocalDate.class));
+	    horarioVoluntario.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
+	    horarioVoluntario.setHoraFin(rs.getObject("horaFin", LocalTime.class));
 		horarioVoluntario.setLibre(rs.getBoolean("libre"));
 		return horarioVoluntario;
 	}

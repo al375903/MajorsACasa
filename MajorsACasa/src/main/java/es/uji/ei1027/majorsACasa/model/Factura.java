@@ -1,11 +1,18 @@
 package es.uji.ei1027.majorsACasa.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Factura {
 	private String idFactura;
 	private String idBeneficiario;
-	//private Date fechaCreacion;
-	//private Date fechaInicio;
-	//private Date fechaFin;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaCreacion;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaInicio;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaFin;
 	private float cantidad;
 	private String concepto;
 	
@@ -28,6 +35,30 @@ public class Factura {
 		this.idBeneficiario = idBeneficiario;
 	}
 	
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public LocalDate getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(LocalDate fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
 	public float getCantidad() {
 		return cantidad;
 	}
@@ -46,8 +77,9 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [idFactura=" + idFactura + ", idBeneficiario=" + idBeneficiario + ", cantidad=" + cantidad
-				+ ", concepto=" + concepto + "]";
+		return "Factura [idFactura=" + idFactura + ", idBeneficiario=" + idBeneficiario + ", fechaCreacion="
+				+ fechaCreacion + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin 
+				+ ", cantidad=" + cantidad + ", concepto=" + concepto + "]";
 	}
 	
 }

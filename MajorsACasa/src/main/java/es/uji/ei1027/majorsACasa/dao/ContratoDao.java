@@ -23,21 +23,23 @@ public class ContratoDao {
 	
 	void addContrato(Contrato contrato) {
 		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?,?)",
-				contrato.getIdContrato(), contrato.getIdEmpresa(), contrato.getPrecio(),
-				contrato.getTipoServicio(), null, null);
+				contrato.getIdContrato(), contrato.getIdEmpresa(), 
+				contrato.getPrecio(), contrato.getTipoServicio(), 
+				contrato.getFechaInicio(), contrato.getFechaFin());
 	}
 	
-	void deleteContrato(Contrato contrato) {
-		jdbcTemplate.update("DELETE FROM Contrato WHERE idContrato=?", contrato.getIdContrato());
+	void deleteContrato(String idContrato) {
+		jdbcTemplate.update("DELETE FROM Contrato WHERE idContrato=?", idContrato);
 	}
 	
 	void updateContrato(Contrato contrato) {
 		jdbcTemplate.update("UPDATE Contrato SET precio=?, tipoServicio=?, fechaInicio=?, "
 				+ "fechaFin=? WHERE idContrato=?",
-				contrato.getPrecio(), contrato.getTipoServicio(), null, null, contrato.getIdContrato());
+				contrato.getPrecio(), contrato.getTipoServicio(), contrato.getFechaInicio(), 
+				contrato.getFechaFin(), contrato.getIdContrato());
 	}
 	
-	Contrato getContrato(String idContrato) {
+	public Contrato getContrato(String idContrato) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM Contrato WHERE idContrato=?",
 					new ContratoRowMapper(), idContrato);
@@ -46,7 +48,7 @@ public class ContratoDao {
 		}
 	}
 	
-	List<Contrato> getContratos(){
+	public List<Contrato> getContratos(){
 		try {
 			return jdbcTemplate.query("SELECT * FROM Contrato", new ContratoRowMapper());
 		} catch(EmptyResultDataAccessException e) {

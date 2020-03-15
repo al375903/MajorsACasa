@@ -16,7 +16,7 @@ public final class EmpresaRowMapper implements RowMapper<Empresa>{
 	       empresa.setNombreManager(rs.getString("nombreManager"));
 	       empresa.setDireccion(rs.getString("direccion"));
 	       empresa.setTelefono(rs.getString("telefono"));
-	       empresa.setHorarioatencionCliente(rs.getString("horarioatencionCliente"));
+	       empresa.setHorarioAtencionCliente(rs.getString("horarioAtencionCliente"));
 	       empresa.setEmailManager(rs.getString("emailManager"));
 	       return empresa;
 	   }

@@ -34,9 +34,9 @@ public class LineaFactura {
 
 	@Override
 	public String toString() {
-		return "LineaFactura [idFactura=" + idFactura + ", idPeticion=" + idPeticion + ", codigoLinea=" + codigoLinea
-				+ "]";
+		return "LineaFactura [idFactura=" + idFactura 
+				+ ", idPeticion=" + idPeticion 
+				+ ", codigoLinea=" + codigoLinea + "]";
 	}
-	
 	
 }

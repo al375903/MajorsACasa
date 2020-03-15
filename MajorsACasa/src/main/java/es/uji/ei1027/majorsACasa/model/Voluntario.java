@@ -1,14 +1,21 @@
 package es.uji.ei1027.majorsACasa.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Voluntario {
 	private String idVoluntario;
 	private String nombre;
 	private String email;
 	private String direccion;
-	private String hobby;
-	//private Date fechaPeticionVoluntariado;
-	//private Date fechaAceptacionVoluntariado; 
-	//private Date fechaFin; 
+	private String hobbies;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaPeticionVoluntariado;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaAceptacionVoluntariado;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate fechaFin; 
 	private boolean aceptado;
 	private String genero;
 	private int edad;
@@ -49,14 +56,38 @@ public class Voluntario {
 		this.direccion = direccion;
 	}
 	
-	public String getHobby() {
-		return hobby;
+	public String getHobbies() {
+		return hobbies;
 	}
 	
-	public void setHobby(String hobby) {
-		this.hobby = hobby;
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
 	}
 	
+	public LocalDate getFechaPeticionVoluntariado() {
+		return fechaPeticionVoluntariado;
+	}
+
+	public void setFechaPeticionVoluntariado(LocalDate fechaPeticionVoluntariado) {
+		this.fechaPeticionVoluntariado = fechaPeticionVoluntariado;
+	}
+
+	public LocalDate getFechaAceptacionVoluntariado() {
+		return fechaAceptacionVoluntariado;
+	}
+
+	public void setFechaAceptacionVoluntariado(LocalDate fechaAceptacionVoluntariado) {
+		this.fechaAceptacionVoluntariado = fechaAceptacionVoluntariado;
+	}
+
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
 	public Boolean isAceptado() {
 		return aceptado;
 	}
@@ -92,7 +123,7 @@ public class Voluntario {
 	@Override
 	public String toString() {
 		return "Voluntario [idVoluntario=" + idVoluntario + ", nombre=" + nombre + ", email=" + email + ", direccion="
-				+ direccion + ", hobby=" + hobby + ", aceptado=" + aceptado + ", genero=" + genero + ", edad=" + edad
+				+ direccion + ", hobby=" + hobbies + ", aceptado=" + aceptado + ", genero=" + genero + ", edad=" + edad
 				+ ", contrasenya=" + contrasenya + "]";
 	}
 	

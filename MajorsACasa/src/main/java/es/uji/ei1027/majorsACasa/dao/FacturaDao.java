@@ -23,18 +23,20 @@ public class FacturaDao {
 
 	void addFactura(Factura factura) {
 		jdbcTemplate.update("INSERT INTO Factura VALUES(?,?,?,?,?,?,?)",
-				factura.getIdFactura(), factura.getIdBeneficiario(), null, null, null,
-				factura.getCantidad(), factura.getConcepto());
+				factura.getIdFactura(), factura.getIdBeneficiario(), 
+				factura.getFechaCreacion(), factura.getFechaInicio(), 
+				factura.getFechaFin(), factura.getCantidad(), factura.getConcepto());
 	}
 	
-	void deleteFactura(Factura factura) {
-		jdbcTemplate.update("DELETE FROM Factura WHERE idFactura=?", factura.getIdFactura());
+	void deleteFactura(String idFactura) {
+		jdbcTemplate.update("DELETE FROM Factura WHERE idFactura=?", idFactura);
 	}
 	
 	void updateFactura(Factura factura) {
 		jdbcTemplate.update("UPDATE Factura SET fechaCreacion=?, fechaInicio=?, "
 				+ "fechaFin=?, cantidad=?, concepto=? WHERE idFactura=?",
-				null, null, null, factura.getCantidad(), factura.getConcepto(), factura.getIdFactura());
+				factura.getFechaCreacion(), factura.getFechaInicio(), factura.getFechaFin(), 
+				factura.getCantidad(), factura.getConcepto(), factura.getIdFactura());
 	}
 	
 	Factura getFactura(String idFactura) {

@@ -6,7 +6,7 @@ public class Empresa {
 	private String nombreManager;
 	private String direccion;
 	private String telefono;
-	private String horarioatencionCliente;
+	private String horarioAtencionCliente;
 	private String emailManager;
 	
 	public Empresa() {
@@ -52,12 +52,12 @@ public class Empresa {
 		this.telefono = telefono;
 	}
 	
-	public String getHorarioatencionCliente() {
-		return horarioatencionCliente;
+	public String getHorarioAtencionCliente() {
+		return horarioAtencionCliente;
 	}
 	
-	public void setHorarioatencionCliente(String horarioatencionCliente) {
-		this.horarioatencionCliente = horarioatencionCliente;
+	public void setHorarioAtencionCliente(String horarioatencionCliente) {
+		this.horarioAtencionCliente = horarioatencionCliente;
 	}
 	
 	public String getEmailManager() {
@@ -72,7 +72,7 @@ public class Empresa {
 	public String toString() {
 		return "Empresa [idEmpresa=" + idEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", nombreManager="
 				+ nombreManager + ", direccion=" + direccion + ", telefono=" + telefono + ", horarioatencionCliente="
-				+ horarioatencionCliente + ", emailManager=" + emailManager + "]";
+				+ horarioAtencionCliente + ", emailManager=" + emailManager + "]";
 	}
 	
 }

@@ -24,17 +24,21 @@ public class HorarioVoluntarioDao {
 	void addHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
 		jdbcTemplate.update("INSERT INTO HorarioVoluntario VALUES(?,?,?,?,?,?,?)",
 			horarioVoluntario.getIdHorario(), horarioVoluntario.getIdVoluntario(),
-			horarioVoluntario.getIdBeneficiario(), null, null,
-			null, horarioVoluntario.isLibre());
+			horarioVoluntario.getIdBeneficiario(), horarioVoluntario.getFecha(), 
+			horarioVoluntario.getHoraInicio(), horarioVoluntario.getHoraFin(), 
+			horarioVoluntario.isLibre());
 	}
 	
-	void deleteHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
-		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idHorario=?", horarioVoluntario.getIdHorario());
+	void deleteHorarioVoluntario(String idHorario) {
+		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idHorario=?", idHorario);
 	}
 	
 	void updateHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
-		jdbcTemplate.update("UPDATE HorarioVoluntario SET fecha=?, horaInicio=?, horaFin=?, libre=? WHERE idHorario=?",
-				null, null, null, horarioVoluntario.isLibre());
+		jdbcTemplate.update("UPDATE HorarioVoluntario SET fecha=?, horaInicio=?, "
+				+ "horaFin=?, libre=? WHERE idHorario=?",
+				horarioVoluntario.getFecha(), horarioVoluntario.getHoraInicio(), 
+				horarioVoluntario.getHoraFin(), horarioVoluntario.isLibre(), 
+				horarioVoluntario.getIdHorario());
 	}
 	
 	HorarioVoluntario getHorarioVoluntario(String idHorario) {

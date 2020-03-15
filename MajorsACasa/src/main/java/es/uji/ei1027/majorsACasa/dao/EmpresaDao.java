@@ -1,4 +1,5 @@
 package es.uji.ei1027.majorsACasa.dao;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,25 +24,32 @@ public class EmpresaDao {
 	   /* Afegeix la empresa a la base de dades */
 	   public void addEmpresa(Empresa empresa) {
 	       jdbcTemplate.update("INSERT INTO Empresa VALUES(?, ?, ?, ?, ?, ?, ?)",
-	              empresa.getIdEmpresa(), empresa.getNombreEmpresa(), empresa.getNombreManager(), empresa.getDireccion(), empresa.getTelefono(), empresa.getHorarioatencionCliente(), empresa.getEmailManager());
+	              empresa.getIdEmpresa(), empresa.getNombreEmpresa(), 
+	              empresa.getNombreManager(), empresa.getDireccion(), 
+	              empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
+	              empresa.getEmailManager());
 	   }
 
 	   /* Esborra la empresa de la base de dades */
 	   public void deleteEmpresa(String idEmpresa) {
-	       jdbcTemplate.update("DELETE from Empresa where idEmpresa=?",
+	       jdbcTemplate.update("DELETE FROM Empresa WHERE idEmpresa=?",
 	                           idEmpresa);
 	   }
 
 	   /* Actualitza els atributs de la empresa */
 	   public void updateEmpresa(Empresa empresa) {
-	       jdbcTemplate.update("UPDATE Empresa SET nombreEmpresa=?, nombreManager=?, direccion=?, telefono=?, horarioAtencionCliente=?, emailManager=? where idEmpresa=?",
-	    		   empresa.getNombreEmpresa(), empresa.getNombreManager(), empresa.getDireccion(), empresa.getTelefono(), empresa.getHorarioatencionCliente(), empresa.getEmailManager(), empresa.getIdEmpresa());
+	       jdbcTemplate.update("UPDATE Empresa SET nombreEmpresa=?, nombreManager=?, "
+	       		+ "direccion=?, telefono=?, horarioAtencionCliente=?, "
+	       		+ "emailManager=? WHERE idEmpresa=?",
+	    		   empresa.getNombreEmpresa(), empresa.getNombreManager(), empresa.getDireccion(),
+	    		   empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
+	    		   empresa.getEmailManager(), empresa.getIdEmpresa());
 	   }
 
 	   /* Obté empresa amb el id donat. Torna null si no existeix. */
 	   public Empresa getEmpresa(String idEmpresa) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * from Empresa WHERE idEmpresa=?",
+	           return jdbcTemplate.queryForObject("SELECT * FROM Empresa WHERE idEmpresa=?",
 	                   new EmpresaRowMapper(), idEmpresa);
 	       }
 	       catch(EmptyResultDataAccessException e) {
@@ -52,7 +60,7 @@ public class EmpresaDao {
 	   /* Obté totes les empreses. Torna una llista buida si no n'hi ha cap. */
 	   public List<Empresa> getEmpresas() {
 	       try {
-	           return jdbcTemplate.query("SELECT * from Empresa",
+	           return jdbcTemplate.query("SELECT * FROM Empresa",
 	                   new EmpresaRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Empresa>();

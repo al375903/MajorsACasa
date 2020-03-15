@@ -21,24 +21,30 @@ public class PeticionDao {
 	       jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public void addPeticion(Peticion p) {
+	public void addPeticion(Peticion peticion) {
 		jdbcTemplate.update("INSERT INTO Peticion VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				p.getIdPeticion(), p.getIdBeneficiario(), p.getIdContrato(), p.getComentarios(), p.getTipoServicio(), p.getEstado(), null, null, null, null);
+				peticion.getIdPeticion(), peticion.getIdBeneficiario(), peticion.getIdContrato(), 
+				peticion.getComentarios(), peticion.getTipoServicio(), peticion.getEstado(), 
+				peticion.getFechaAprobacion(), peticion.getFechaDenegacion(), 
+				peticion.getFechaCreacion(), peticion.getFechaCancelacion());
 	}
 	
 	public void deletePeticion(String idPeticion) {
-		jdbcTemplate.update("DELETE from Peticion where idPeticion=?",
-				idPeticion);
+		jdbcTemplate.update("DELETE FROM Peticion WHERE idPeticion=?", idPeticion);
 	}
 	
-	public void updatePeticion(Peticion p) {
-		jdbcTemplate.update("UPDATE Peticion SET comnetarios=?, tipoServicio=?, estado=?, fechaAprobacion=?, fechaDenegacion=?, fechaCreacion=?, fechaCancelacion=? where idPeticion=?",
-				p.getComentarios(), p.getTipoServicio(), p.getEstado(), null, null, null, null);
+	public void updatePeticion(Peticion peticion) {
+		jdbcTemplate.update("UPDATE Peticion SET comnetarios=?, tipoServicio=?, estado=?, "
+				+ "fechaAprobacion=?, fechaDenegacion=?, fechaCreacion=?, fechaCancelacion=? "
+				+ "WHERE idPeticion=?",
+				peticion.getComentarios(), peticion.getTipoServicio(), peticion.getEstado(), 
+				peticion.getFechaAprobacion(), peticion.getFechaDenegacion(),
+				peticion.getFechaCreacion(), peticion.getFechaCancelacion());
 	}
 	
 	public Peticion getPeticion(String idPeticion) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * from Peticion WHERE idPeticion=?",
+	           return jdbcTemplate.queryForObject("SELECT * FROM Peticion WHERE idPeticion=?",
 	                   new PeticionRowMapper(), idPeticion);
 	       }
 	       catch(EmptyResultDataAccessException e) {
@@ -48,7 +54,7 @@ public class PeticionDao {
 	
 	public List<Peticion> getPeticiones() {
 	       try {
-	           return jdbcTemplate.query("SELECT * from CPeticion",
+	           return jdbcTemplate.query("SELECT * FROM Peticion",
 	                   new PeticionRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Peticion>();

@@ -8,6 +8,9 @@ public class Beneficiario {
    private String genero;
    private int edad;
    private String contrasenya;
+   private String hobbies;
+   private String alergias;
+   private String enfermedades;
 
    public Beneficiario() {
    }
@@ -68,10 +71,36 @@ public class Beneficiario {
        this.contrasenya = contrasenya;
    }
 
+	public String getHobbies() {
+		return hobbies;
+	}
+
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
+	}
+
+	public String getAlergias() {
+		return alergias;
+	}
+
+	public void setAlergias(String alergias) {
+		this.alergias = alergias;
+	}
+
+	public String getEnfermedades() {
+		return enfermedades;
+	}
+
+	public void setEnfermedades(String enfermedades) {
+		this.enfermedades = enfermedades;
+	}
+
 	@Override
 	public String toString() {
-		return "Beneficiario [idBeneficiario=" + idBeneficiario + ", nombre=" + nombre + ", email=" + email + ", direccion="
-				+ direccion + ", genero=" + genero + ", edad=" + edad + ", contrasenya=" + contrasenya + "]";
+		return "Beneficiario [idBeneficiario=" + idBeneficiario + ", nombre=" + nombre 
+				+ ", email=" + email + ", direccion=" + direccion + ", genero=" + genero 
+				+ ", edad=" + edad + ", contrasenya=" + contrasenya + ", hobbies=" + hobbies 
+				+ ", alergias=" + alergias + ", enfermedades=" + enfermedades + "]";
 	}
 
 }

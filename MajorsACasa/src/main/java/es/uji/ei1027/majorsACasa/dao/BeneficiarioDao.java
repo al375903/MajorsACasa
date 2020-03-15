@@ -23,26 +23,34 @@ public class BeneficiarioDao {
 
 	   /* Afegeix la beneficiari a la base de dades */
 	   public void addBeneficiario(Beneficiario beneficiario) {
-	       jdbcTemplate.update("INSERT INTO Beneficiario VALUES(?, ?, ?, ?, ?, ?, ?)",
-	              beneficiario.getIdBeneficiario(), beneficiario.getNombre(), beneficiario.getEmail(), beneficiario.getDireccion(), beneficiario.getGenero(), beneficiario.getEdad(), beneficiario.getContrasenya());
+	       jdbcTemplate.update("INSERT INTO Beneficiario VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+	              beneficiario.getIdBeneficiario(), beneficiario.getNombre(), 
+	              beneficiario.getEmail(), beneficiario.getDireccion(), beneficiario.getGenero(), 
+	              beneficiario.getEdad(), beneficiario.getContrasenya(), beneficiario.getHobbies(),
+	              beneficiario.getAlergias(), beneficiario.getEnfermedades());
 	   }
 
 	   /* Esborra la beneficiari de la base de dades */
 	   public void deleteBeneficiario(String idBeneficiario) {
-	       jdbcTemplate.update("DELETE from Beneficiario where idBeneficiario=?",
+	       jdbcTemplate.update("DELETE FROM Beneficiario WHERE idBeneficiario=?",
 	                           idBeneficiario);
 	   }
 
 	   /* Actualitza els atributs del beneficiari */
 	   public void updateBeneficiario(Beneficiario beneficiario) {
-	       jdbcTemplate.update("UPDATE Beneficiario SET nombre=?, email=?, direccion=?, genero=?, edad=?, contrasenya=? where idBeneficiario=?",
-	    		   beneficiario.getNombre(), beneficiario.getEmail(), beneficiario.getDireccion(), beneficiario.getGenero(), beneficiario.getEdad(), beneficiario.getContrasenya(), beneficiario.getIdBeneficiario());
+	       jdbcTemplate.update("UPDATE Beneficiario SET nombre=?, email=?, direccion=?, "
+	       		+ "genero=?, edad=?, contrasenya=?, hobbies=?, alergias=?, enfermedades=?"
+	       		+ " WHERE idBeneficiario=?",
+	    		   beneficiario.getNombre(), beneficiario.getEmail(), beneficiario.getDireccion(), 
+	    		   beneficiario.getGenero(), beneficiario.getEdad(), beneficiario.getContrasenya(),
+	    		   beneficiario.getHobbies(), beneficiario.getAlergias(), beneficiario.getEnfermedades(),
+	    		   beneficiario.getIdBeneficiario());
 	   }
 
 	   /* Obté beneficiari amb el id donat. Torna null si no existeix. */
 	   public Beneficiario getBeneficiario(String idBeneficiario) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * from Beneficiario WHERE idBeneficiario=?",
+	           return jdbcTemplate.queryForObject("SELECT * FROM Beneficiario WHERE idBeneficiario=?",
 	                   new BeneficiarioRowMapper(), idBeneficiario);
 	       }
 	       catch(EmptyResultDataAccessException e) {
@@ -53,7 +61,7 @@ public class BeneficiarioDao {
 	   /* Obté tots els beneficiaris. Torna una llista buida si no n'hi ha cap. */
 	   public List<Beneficiario> getBeneficiarios() {
 	       try {
-	           return jdbcTemplate.query("SELECT * from Beneficiario",
+	           return jdbcTemplate.query("SELECT * FROM Beneficiario",
 	                   new BeneficiarioRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Beneficiario>();

@@ -29,7 +29,7 @@ public class LineaFacturaDao {
 
 	   /* Esborra la linea factura de la base de dades */
 	   public void deleteLineaFactura(String idFactura, String idPeticion, String codigoLinea) {
-	       jdbcTemplate.update("DELETE from LineaFactura where idFactura=?, idPeticion=? and codigoLinea=?",
+	       jdbcTemplate.update("DELETE from LineaFactura WHERE idFactura=? AND idPeticion=? AND codigoLinea=?",
 	                           idFactura, idPeticion, codigoLinea);
 	   }
 
@@ -42,7 +42,8 @@ public class LineaFacturaDao {
 	   /* Obté linea factura amb el id donat. Torna null si no existeix. */
 	   public LineaFactura getLineaFactura(String idFactura, String idPeticion, String codigoLinea) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * from LineaFactura WHERE idFactura=?, idPeticion=? and codigoLinea=?",
+	           return jdbcTemplate.queryForObject("SELECT * from LineaFactura WHERE idFactura=? "
+	           		+ "AND idPeticion=? AND codigoLinea=?",
 	                   new LineaFacturaRowMapper(), idFactura, idPeticion, codigoLinea);
 	       }
 	       catch(EmptyResultDataAccessException e) {
@@ -50,7 +51,7 @@ public class LineaFacturaDao {
 	       }
 	   }
 
-	   /* Obté tots els beneficiaris. Torna una llista buida si no n'hi ha cap. */
+	   /* Obté totes les línies de factura. Torna una llista buida si no n'hi ha cap. */
 	   public List<LineaFactura> getLineasFacturas() {
 	       try {
 	           return jdbcTemplate.query("SELECT * from LineaFactura",
