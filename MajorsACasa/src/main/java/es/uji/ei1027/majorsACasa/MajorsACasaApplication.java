@@ -22,7 +22,7 @@ public class MajorsACasaApplication {
 
 	public static void main(String[] args) {
 		// Auto-configura l'aplicació
-		new SpringApplicationBuilder(MajorsACasaApplication .class).run(args);
+		new SpringApplicationBuilder(MajorsACasaApplication.class).run(args);
 	}
 
 	// Funció principal
