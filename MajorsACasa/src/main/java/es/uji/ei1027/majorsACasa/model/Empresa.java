@@ -3,12 +3,12 @@ package es.uji.ei1027.majorsACasa.model;
 public class Empresa {
 	private String idEmpresa;
 	private String nombreEmpresa;
+	private String tipoServicio;
 	private String nombreManager;
 	private String direccion;
 	private String telefono;
 	private String horarioAtencionCliente;
 	private String emailManager;
-	private String tipoServicio;
 	
 	public Empresa() {
 	}
@@ -27,6 +27,14 @@ public class Empresa {
 	
 	public void setNombreEmpresa(String nombreEmpresa) {
 		this.nombreEmpresa = nombreEmpresa;
+	}
+	
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+	
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
 	}
 	
 	public String getNombreManager() {
@@ -68,20 +76,12 @@ public class Empresa {
 	public void setEmailManager(String emailManager) {
 		this.emailManager = emailManager;
 	}
-	
-	public String getTipoServicio() {
-		return tipoServicio;
-	}
-	
-	public void setTipoServicio(String tipoServicio) {
-		this.tipoServicio = tipoServicio;
-	}
 
 	@Override
 	public String toString() {
-		return "Empresa [idEmpresa=" + idEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", nombreManager="
-				+ nombreManager + ", direccion=" + direccion + ", telefono=" + telefono + ", horarioatencionCliente="
-				+ horarioAtencionCliente + ", emailManager=" + emailManager + ", tipoServicio=" + tipoServicio + "]";
+		return "Empresa [idEmpresa=" + idEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", tipoServicio=" + tipoServicio +
+				", nombreManager=" + nombreManager + ", direccion=" + direccion + ", telefono=" + telefono +
+				", horarioatencionCliente=" + horarioAtencionCliente + ", emailManager=" + emailManager + "]";
 	}
 	
 }

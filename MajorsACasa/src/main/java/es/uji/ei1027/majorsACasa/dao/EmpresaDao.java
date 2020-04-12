@@ -25,9 +25,9 @@ public class EmpresaDao {
 	   public void addEmpresa(Empresa empresa) {
 	       jdbcTemplate.update("INSERT INTO Empresa VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
 	              empresa.getIdEmpresa(), empresa.getNombreEmpresa(), 
-	              empresa.getNombreManager(), empresa.getDireccion(), 
-	              empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
-	              empresa.getEmailManager(), empresa.getTipoServicio());
+	              empresa.getTipoServicio(), empresa.getNombreManager(), 
+	              empresa.getDireccion(), empresa.getTelefono(), 
+	              empresa.getHorarioAtencionCliente(), empresa.getEmailManager());
 	   }
 
 	   /* Esborra la empresa de la base de dades */
@@ -38,12 +38,12 @@ public class EmpresaDao {
 
 	   /* Actualitza els atributs de la empresa */
 	   public void updateEmpresa(Empresa empresa) {
-	       jdbcTemplate.update("UPDATE Empresa SET nombreEmpresa=?, nombreManager=?, "
-	       		+ "direccion=?, telefono=?, horarioAtencionCliente=?, "
+	       jdbcTemplate.update("UPDATE Empresa SET nombreEmpresa=?, tipoServicio=?, "
+	       		+ "nombreManager=?, " + "direccion=?, telefono=?, horarioAtencionCliente=?, "
 	       		+ "emailManager=?, tipoServicio=? WHERE idEmpresa=?",
-	    		   empresa.getNombreEmpresa(), empresa.getNombreManager(), empresa.getDireccion(),
-	    		   empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
-	    		   empresa.getEmailManager(), empresa.getIdEmpresa(), empresa.getTipoServicio());
+	    		   empresa.getNombreEmpresa(), empresa.getTipoServicio(), empresa.getNombreManager(), 
+	    		   empresa.getDireccion(), empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
+	    		   empresa.getEmailManager(), empresa.getIdEmpresa());
 	   }
 
 	   /* Obté empresa amb el id donat. Torna null si no existeix. */

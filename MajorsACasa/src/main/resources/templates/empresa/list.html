@@ -13,12 +13,12 @@
        <tr>
          <th>Id Empresa</th>
          <th>Nombre Empresa</th>
+         <th>Tipo Servicio</th>
          <th>Nombre Manager</th>
          <th>Direccion</th>
          <th>Telefono</th>
          <th>Horario Atencion al Cliente</th>
          <th>E-mail Manager</th>
-         <th>Tipo Servicio</th>
          <th></th>
          <th></th>
        </tr>
@@ -27,12 +27,12 @@
        <tr th:each="empresa: ${empresas}">
          <td th:text="${empresa.idEmpresa}"></td>
          <td th:text="${empresa.nombreEmpresa}"></td>
+         <td th:text="${empresa.tipoServicio}"></td>
          <td th:text="${empresa.nombreManager}"></td>
          <td th:text="${empresa.direccion}"></td>
          <td th:text="${empresa.telefono}"></td>
          <td th:text="${empresa.horarioatencionCliente}"></td>
          <td th:text="${empresa.emailManager}"></td>
-         <td th:text="${empresa.tipoServicio}"></td>
          <td><a th:href="@{/empresa/update/{id}(id=${empresa.idEmpresa})}" class="btn btn-warning" role="button">Editar</a>
          </td>
          <td><a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" role="button">Eliminar</a>
