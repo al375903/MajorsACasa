@@ -10,7 +10,7 @@ import es.uji.ei1027.majorsACasa.model.Voluntario;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class VoluntarioDao {
 	
 	private JdbcTemplate jdbcTemplate;

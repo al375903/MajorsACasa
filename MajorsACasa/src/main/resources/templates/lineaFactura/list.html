@@ -12,7 +12,7 @@
      <thead>
        <tr>
          <th>Id Factura</th>
-         <th>Id Beneficiario</th>
+         <th>Id Petición</th>
          <th>Codigo Linea</th>
          <th></th>
        </tr>
@@ -21,13 +21,13 @@
        <tr th:each="lineaFactura: ${lineasFactura}">
          <td th:text="${lineaFactura.idFactura}"></td>
          <td th:text="${lineaFactura.idPeticion}"></td>
-         <td th:text="${lineaFactura.codigoLinea}">
-         <td><a th:href="@{/lineaFactura/delete/{idF,idB,c}(idF=${lineaFactura.idFactura},idB=${lineaFactura.idBeneficiario},c=${lineaFactura.codigoLinea})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td th:text="${lineaFactura.codigoLinea}"></td>
+         <td><a th:href="@{/lineaFactura/delete/{idF,idB,c}(idF=${lineaFactura.idFactura},idB=${lineaFactura.idPeticion},c=${lineaFactura.codigoLinea})}" class="btn btn-danger" role="button">Eliminar</a>
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Anyadir Empresa</a>
+   <a href="add" class="btn btn-success" role="button">Anyadir linea factura</a>
 </div>
 </body>
 </html>

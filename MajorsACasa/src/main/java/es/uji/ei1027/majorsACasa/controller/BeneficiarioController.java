@@ -44,6 +44,12 @@ public class BeneficiarioController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
+	public String editBeneficiario(Model model, @PathVariable String id) { 
+		model.addAttribute("beneficiario", beneficiarioDao.getBeneficiario(id));
+		return "beneficiario/update"; 
+	}
+	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("beneficiario") Beneficiario beneficiario,
 										BindingResult bindingResult) {
