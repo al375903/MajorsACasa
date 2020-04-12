@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear nueva Linea Factura</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Nueva Linea Factura</h2>
+    <form action="#" th:action="@{/lineaFactura/add}"
+                     th:object="${lineaFactura}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Factura</label></td>
+            <td><input type="text" th:field="*{idFactura}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nombre Peticion</label></td>
+            <td><input type="text" th:field="*{idPeticion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Codigo Linea</label></td>
+            <td><input type="text" th:field="*{codigoLinea}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Anyadir Linea Factura" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>
+   

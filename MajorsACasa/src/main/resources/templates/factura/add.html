@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear nueva factura</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Nueva factura</h2>
+    <form action="#" th:action="@{/factura/add}"
+                     th:object="${factura}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Factura</label></td>
+            <td><input type="text" th:field="*{idFactura}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Feha Creacion</label></td>
+            <td><input type="text" th:field="*{fechaCreacion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha Inicio</label></td>
+            <td><input type="text" th:field="*{fechaInicio}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha Fin</label></td>
+            <td><input type="text" th:field="*{fechaFin}" /></td>
+        </tr>
+        <tr>
+            <td><label>Cantidad</label></td>
+            <td><input type="text" th:field="*{cantidad}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Anyadir Factura" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

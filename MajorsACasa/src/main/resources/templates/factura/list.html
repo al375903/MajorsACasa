@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Facturas</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+   <h1>Lista de Facturas</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Id Factura</th>
+         <th>Id Beneficiario</th>
+         <th>Fecha Creacion</th>
+         <th>Fecha Inicio</th>
+         <th>Fecha Fin</th>
+         <th>Cantidad</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="factura: ${facturas}">
+       <td th:text="${factura.idFactura}"></td>
+         <td th:text="${factura.idBenefiario}"></td>
+         <td th:text="${factura.fechaCreacion}"></td>
+         <td th:text="${factura.fechaInicio}"></td>
+         <td th:text="${factura.fechaFin}"></td>
+         <td th:text="${factura.cantidad}"></td>
+         <td><a th:href="@{/factura/update/{id}(id=${factura.idFactura})}" class="btn btn-warning" role="button">Editar</a>
+         </td>
+         <td><a th:href="@{/factura/delete/{id}(id=${factura.idFactura})}" class="btn btn-danger" role="button">Eliminar</a>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <a href="add" class="btn btn-success" role="button">Anyadir Factura</a>
+</div>
+</body>
+</html>

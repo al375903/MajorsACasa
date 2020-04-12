@@ -49,9 +49,9 @@ public class LineaFacturaController {
 	
 	
 	// NOTA: REVISAR ESTE MÉTODO
-	@RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
-		//lineaFacturaDao.deleteLineaFactura(id);
+	@RequestMapping(value="/delete/{idF,idB,c}")
+	public String processDelete(@PathVariable String idF, @PathVariable String idB, @PathVariable String c) {
+		lineaFacturaDao.deleteLineaFactura(idF, idB, c);
 		return "redirect:../list";
 	}
 	
