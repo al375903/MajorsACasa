@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Editar una petición</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Editar petición</h2>
+    <form action="#" th:action="@{/peticion/update}"
+                     th:object="${peticion}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Petición</label></td>
+            <td><input type="text" th:field="*{idPeticion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Contrato</label></td>
+            <td><input type="text" th:field="*{idContrato}" /></td>
+        </tr>
+        <tr>
+            <td><label>Comentarios</label></td>
+            <td><input type="text" th:field="*{comentarios}" /></td>
+        </tr>
+        <tr>
+            <td><label>Tipo servicio</label></td>
+            <td><input type="text" th:field="*{tipoServicio}" /></td>
+        </tr>
+        <tr>
+            <td><label>Estado</label></td>
+            <td><input type="text" th:field="*{estado}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha aprobación</label></td>
+            <td><input type="text" th:field="*{fechaAprobacion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha denegación</label></td>
+            <td><input type="text" th:field="*{fechaDenegacion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha creación</label></td>
+            <td><input type="text" th:field="*{fechaCreacion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha cancelación</label></td>
+            <td><input type="text" th:field="*{fechaCancelacion}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Editar Peticion" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

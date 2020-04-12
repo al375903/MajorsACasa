@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Empresas</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+   <h1>Lista de Peticiones</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Id Petición</th>
+         <th>Id Beneficiario</th>
+         <th>Id Contrato</th>
+         <th>Comentarios</th>
+         <th>Tipo servicio</th>
+         <th>Estado</th>
+         <th>Fecha aprobación</th>
+         <th>Fecha denegación</th>
+         <th>Fecha creación</th>
+         <th>Fecha cancelación</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="peticion: ${peticiones}">
+         <td th:text="${peticion.idPeticion}"></td>
+         <td th:text="${peticion.idBeneficiario}"></td>
+         <td th:text="${peticion.idContrato}"></td>
+         <td th:text="${peticion.comentarios}"></td>
+         <td th:text="${peticion.tipoServicio}"></td>
+         <td th:text="${peticion.estado}"></td>
+         <td th:text="${peticion.fechaAprobacion}"></td>
+         <td th:text="${peticion.fechaDenegacion}"></td>
+         <td th:text="${peticion.fechaCreacion}"></td>
+         <td th:text="${peticion.fechaCancelacion}"></td>
+         <td><a th:href="@{/peticion/update/{id}(id=${peticion.idPeticion})}" class="btn btn-warning" role="button">Editar</a>
+         </td>
+         <td><a th:href="@{/peticion/delete/{id}(id=${peticion.idPeticion})}" class="btn btn-danger" role="button">Eliminar</a>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <a href="add" class="btn btn-success" role="button">Anyadir Petición</a>
+</div>
+</body>
+</html>

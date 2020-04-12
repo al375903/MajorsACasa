@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear nuevo beneficiario</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Nuevo beneficiario</h2>
+    <form action="#" th:action="@{/beneficiario/add}"
+                     th:object="beneficiario" method="post">
+      <table>
+        <tr>
+            <td><label>Id Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nombre</label></td>
+            <td><input type="text" th:field="*{nombre}" /></td>
+        </tr>
+        <tr>
+            <td><label>Email</label></td>
+            <td><input type="text" th:field="*{email}" /></td>
+        </tr>
+        <tr>
+            <td><label>Dirección</label></td>
+            <td><input type="text" th:field="*{direccion}" /></td>
+        </tr>
+        <tr>
+            <td><label>Género</label></td>
+            <td><input type="text" th:field="*{genero}" /></td>
+        </tr>
+        <tr>
+            <td><label>Edad</label></td>
+            <td><input type="text" th:field="*{edad}" /></td>
+        </tr>
+        <tr>
+            <td><label>Contraseña</label></td>
+            <td><input type="text" th:field="*{contrasenya}" /></td>
+        </tr>
+        <tr>
+            <td><label>Hobbies</label></td>
+            <td><input type="text" th:field="*{hobbies}" /></td>
+        </tr>
+        <tr>
+            <td><label>Alergias</label></td>
+            <td><input type="text" th:field="*{alergias}" /></td>
+        </tr>
+        <tr>
+            <td><label>Enfermedades</label></td>
+            <td><input type="text" th:field="*{enfermedades}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Anyadir Beneficiario" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>
+   

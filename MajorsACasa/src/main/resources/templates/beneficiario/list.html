@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Beneficiarios</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+   <h1>Lista de Beneficiarios</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Id Beneficiario</th>
+         <th>Nombre</th>
+         <th>Dirección</th>
+         <th>Género</th>
+         <th>Edad</th>
+         <th>Contraseña</th>
+         <th>Hobbies</th>
+         <th>Alergias</th>
+		 <th>Enfermedades</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="beneficiario: ${beneficiarios}">
+         <td th:text="${beneficiario.idBeneficiario}"></td>
+         <td th:text="${beneficiario.nombre}"></td>
+         <td th:text="${beneficiario.email}"></td>
+         <td th:text="${beneficiario.direccion}"></td>
+         <td th:text="${beneficiario.genero}"></td>
+         <td th:text="${beneficiario.edad}"></td>
+         <td th:text="${beneficiario.contrasenya}"></td>
+         <td th:text="${beneficiario.hobbies}"></td>
+         <td th:text="${beneficiario.alergias}"></td>
+         <td th:text="${beneficiario.enfermedades}"></td>
+         <td><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button">Editar</a>
+         </td>
+         <td><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button">Eliminar</a>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <a href="add" class="btn btn-success" role="button">Anyadir Beneficiario</a>
+</div>
+</body>
+</html>
