@@ -8,6 +8,7 @@ public class Empresa {
 	private String telefono;
 	private String horarioAtencionCliente;
 	private String emailManager;
+	private String tipoServicio;
 	
 	public Empresa() {
 	}
@@ -67,12 +68,20 @@ public class Empresa {
 	public void setEmailManager(String emailManager) {
 		this.emailManager = emailManager;
 	}
+	
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+	
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
 
 	@Override
 	public String toString() {
 		return "Empresa [idEmpresa=" + idEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", nombreManager="
 				+ nombreManager + ", direccion=" + direccion + ", telefono=" + telefono + ", horarioatencionCliente="
-				+ horarioAtencionCliente + ", emailManager=" + emailManager + "]";
+				+ horarioAtencionCliente + ", emailManager=" + emailManager + ", tipoServicio=" + tipoServicio + "]";
 	}
 	
 }
