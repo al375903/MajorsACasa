@@ -15,17 +15,23 @@ public class FakeUserProvider implements UserDao {
   public FakeUserProvider() {
 	    BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
 	    
-	    UserDetails userAlice = new UserDetails(); 
-	    userAlice.setUsername("alice"); 
-	    userAlice.setPassword(passwordEncryptor.encryptPassword("alice")); 
-	    userAlice.setTipo("voluntario");
-	    knownUsers.put("alice", userAlice);
+	    UserDetails responsableContratacion = new UserDetails(); 
+	    responsableContratacion.setUsername("casManager"); 
+	    responsableContratacion.setPassword(passwordEncryptor.encryptPassword("casManager")); 
+	    responsableContratacion.setTipo("Responsable Contratación");
+	    knownUsers.put("casManager", responsableContratacion);
 	      
-	   UserDetails userBob = new UserDetails(); 
-	   userBob.setUsername("bob"); 
-	   userBob.setPassword(passwordEncryptor.encryptPassword("bob")); 
-	   userBob.setTipo("voluntario");
-	   knownUsers.put("bob", userBob);
+	   UserDetails comite = new UserDetails(); 
+	   comite.setUsername("casCommitee"); 
+	   comite.setPassword(passwordEncryptor.encryptPassword("casCommitee")); 
+	   comite.setTipo("Comité");
+	   knownUsers.put("casCommitee", comite);
+	   
+	   UserDetails supervisorVoluntarios = new UserDetails(); 
+	   supervisorVoluntarios.setUsername("casVolunteer"); 
+	   supervisorVoluntarios.setPassword(passwordEncryptor.encryptPassword("casVolunteer")); 
+	   supervisorVoluntarios.setTipo("Supervisor Voluntarios");
+	   knownUsers.put("casVolunteer", supervisorVoluntarios);
   }
 
   @Override

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Editar horario voluntario</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Editar Horario</h2>
+    <form action="#" th:action="@{/horarioVoluntario/update}"
+                     th:object="${horarioVoluntario}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Voluntario</label></td>
+            <td><input type="text" th:field="*{idVoluntario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Horario</label></td>
+            <td><input type="text" th:field="*{idHorario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Hora Inicio</label></td>
+            <td><input type="text" th:field="*{horaInicio}" /></td>
+        </tr>
+        <tr>
+            <td><label>Hora Fin</label></td>
+            <td><input type="text" th:field="*{horaFin}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Editar Horario" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>
+   

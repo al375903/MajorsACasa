@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear nuevo contrato</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Nuevo Contrato</h2>
+    <form action="#" th:action="@{/contrato/add}"
+                     th:object="${contrato}" method="post">
+      <table>
+        <tr>
+            <td><label>Id Contrato</label></td>
+            <td><input type="text" th:field="*{idContrato}" /></td>
+        </tr>
+        <tr>
+            <td><label>Id Empresa</label></td>
+            <td><input type="text" th:field="*{idEmpresa}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha Inicio</label></td>
+            <td><input type="text" th:field="*{fechaInicio}" /></td>
+        </tr>
+        <tr>
+            <td><label>Fecha fin</label></td>
+            <td><input type="text" th:field="*{fechaFin}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Anyadir Contrato" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>
+   

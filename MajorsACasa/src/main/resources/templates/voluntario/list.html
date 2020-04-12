@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Voluntarios</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+   <h1>Lista de Voluntarios</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Id Voluntario</th>
+         <th>Nombre</th>
+         <th>E-mail</th>
+         <th>Hobbies</th>
+         <th>Fecha Peticion Voluntariado</th>
+         <th>Fecha Aceptación Voluntariado</th>
+         <th>Fecha Fin</th>
+         <th>Aceptado</th>
+         <th>Género</th>
+         <th>Edad</th>
+         <th>Contrasenya</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="voluntario: ${voluntarios}">
+         <td th:text="${voluntario.idVoluntario}"></td>
+         <td th:text="${voluntario.nombre}"></td>
+         <td th:text="${voluntario.email}"></td>
+         <td th:text="${voluntario.hobbies}"></td>
+         <td th:text="${voluntario.fechaPeticionVoluntariado}"></td>
+         <td th:text="${voluntario.fechaAceptacionVoluntariado}"></td>
+         <td th:text="${voluntario.fechaFin}"></td>
+         <td th:text="${voluntario.aceptado}"></td>
+         <td th:text="${voluntario.genero}"></td>
+         <td th:text="${voluntario.edad}"></td>
+         <td th:text="${voluntario.contrasenya}"></td>
+         <td><a th:href="@{/voluntario/update/{id}(id=${voluntario.idVoluntario})}" class="btn btn-warning" role="button">Editar</a>
+         </td>
+         <td><a th:href="@{/voluntario/delete/{id}(id=${empresa.idVoluntario})}" class="btn btn-danger" role="button">Eliminar</a>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <a href="add" class="btn btn-success" role="button">Anyadir Voluntario</a>
+</div>
+</body>
+</html>
