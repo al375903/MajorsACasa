@@ -25,7 +25,7 @@ public class VoluntarioController {
 	
 	@RequestMapping("/list")
 	public String listVoluntarios(Model model) {
-		model.addAttribute("voluntario", voluntarioDao.getVoluntarios());
+		model.addAttribute("voluntarios", voluntarioDao.getVoluntarios());
 		return "voluntario/list";
 	}
 	

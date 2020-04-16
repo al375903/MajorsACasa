@@ -41,7 +41,7 @@
          <td th:text="${voluntario.contrasenya}"></td>
          <td><a th:href="@{/voluntario/update/{id}(id=${voluntario.idVoluntario})}" class="btn btn-warning" role="button">Editar</a>
          </td>
-         <td><a th:href="@{/voluntario/delete/{id}(id=${empresa.idVoluntario})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><a th:href="@{/voluntario/delete/{id}(id=${voluntario.idVoluntario})}" class="btn btn-danger" role="button">Eliminar</a>
          </td>
        </tr>
      </tbody>

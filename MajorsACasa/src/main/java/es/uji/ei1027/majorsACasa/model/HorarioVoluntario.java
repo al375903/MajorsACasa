@@ -11,9 +11,9 @@ public class HorarioVoluntario {
 	private String idBeneficiario;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate fecha;
-	@DateTimeFormat(pattern = "HH:mm:ss.SSS")
+	@DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
 	private LocalTime horaInicio;
-	@DateTimeFormat(pattern = "HH:mm:ss.SSS")
+	@DateTimeFormat(iso=DateTimeFormat.ISO.TIME)
 	private LocalTime horaFin;
 	private boolean libre;
 	
