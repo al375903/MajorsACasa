@@ -34,12 +34,13 @@ public class PeticionDao {
 	}
 	
 	public void updatePeticion(Peticion peticion) {
-		jdbcTemplate.update("UPDATE Peticion SET comnetarios=?, tipoServicio=?, estado=?, "
+		jdbcTemplate.update("UPDATE Peticion SET comentarios=?, tipoServicio=?, estado=?, "
 				+ "fechaAprobacion=?, fechaDenegacion=?, fechaCreacion=?, fechaCancelacion=? "
 				+ "WHERE idPeticion=?",
 				peticion.getComentarios(), peticion.getTipoServicio(), peticion.getEstado(), 
 				peticion.getFechaAprobacion(), peticion.getFechaDenegacion(),
-				peticion.getFechaCreacion(), peticion.getFechaCancelacion());
+				peticion.getFechaCreacion(), peticion.getFechaCancelacion(), 
+				peticion.getIdPeticion());
 	}
 	
 	public Peticion getPeticion(String idPeticion) {

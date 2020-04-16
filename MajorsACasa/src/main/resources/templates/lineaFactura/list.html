@@ -22,7 +22,7 @@
          <td th:text="${lineaFactura.idFactura}"></td>
          <td th:text="${lineaFactura.idPeticion}"></td>
          <td th:text="${lineaFactura.codigoLinea}"></td>
-         <td><a th:href="@{/lineaFactura/delete/{idF,idB,c}(idF=${lineaFactura.idFactura},idB=${lineaFactura.idPeticion},c=${lineaFactura.codigoLinea})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><a th:href="@{/lineaFactura/delete/{idF},{idP},{c}(idF=${lineaFactura.idFactura},idP=${lineaFactura.idPeticion},c=${lineaFactura.codigoLinea})}" class="btn btn-danger" role="button">Eliminar</a>
          </td>
        </tr>
      </tbody>

@@ -50,7 +50,7 @@ public class BeneficiarioController {
 		return "beneficiario/update"; 
 	}
 	
-	@RequestMapping(value="/update/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("beneficiario") Beneficiario beneficiario,
 										BindingResult bindingResult) {
 		if (bindingResult.hasErrors())
