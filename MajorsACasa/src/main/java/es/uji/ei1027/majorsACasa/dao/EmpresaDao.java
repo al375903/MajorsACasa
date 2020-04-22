@@ -40,7 +40,7 @@ public class EmpresaDao {
 	   public void updateEmpresa(Empresa empresa) {
 	       jdbcTemplate.update("UPDATE Empresa SET nombreEmpresa=?, tipoServicio=?, "
 	       		+ "nombreManager=?, " + "direccion=?, telefono=?, horarioAtencionCliente=?, "
-	       		+ "emailManager=?, tipoServicio=? WHERE idEmpresa=?",
+	       		+ "emailManager=? WHERE idEmpresa=?",
 	    		   empresa.getNombreEmpresa(), empresa.getTipoServicio(), empresa.getNombreManager(), 
 	    		   empresa.getDireccion(), empresa.getTelefono(), empresa.getHorarioAtencionCliente(), 
 	    		   empresa.getEmailManager(), empresa.getIdEmpresa());

@@ -39,7 +39,7 @@ public class FacturaDao {
 				factura.getCantidad(), factura.getConcepto(), factura.getIdFactura());
 	}
 	
-	Factura getFactura(String idFactura) {
+	public Factura getFactura(String idFactura) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM Factura WHERE idFactura=?",
 					new FacturaRowMapper(), idFactura);
