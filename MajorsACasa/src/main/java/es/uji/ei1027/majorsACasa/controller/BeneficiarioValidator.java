@@ -21,8 +21,10 @@ public class BeneficiarioValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Beneficiario beneficiario = (Beneficiario)obj;
-		if (beneficiario.getNombre().trim().equals(""))
+		
+		if (beneficiario.getNombre().trim().equals("")) {
 			errors.rejectValue("nombre", "obligatorio",
-					"Introduce un valor");
-	    }
+					"Introduce tu nombre.");
+		}
+	}
 }
