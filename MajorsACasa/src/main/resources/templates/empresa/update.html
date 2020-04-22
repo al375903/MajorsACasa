@@ -13,35 +13,35 @@
       <table>
         <tr>
             <td><label>Id Empresa</label></td>
-            <td><input type="text" th:field="*{idEmpresa}" /></td>
+            <td><input type="text" th:field="*{idEmpresa}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Nombre Empresa</label></td>
-            <td><input type="text" th:field="*{nombreEmpresa}" /></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>Tipo Servicio</label></td>
-            <td><input type="text" th:field="*{tipoServicio}" /></td>
+            <td><input type="text" th:field="*{tipoServicio}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Nombre Manager</label></td>
-            <td><input type="text" th:field="*{nombreManager}" /></td>
+            <td><input type="text" th:field="*{nombreManager}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>Direccion</label></td>
-            <td><input type="text" th:field="*{direccion}" /></td>
+            <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>Telefono</label></td>
-            <td><input type="text" th:field="*{telefono}" /></td>
+            <td><input type="text" th:field="*{telefono}" maxlength=12/></td>
         </tr>
         <tr>
             <td><label>Horario Atencion al Cliente</label></td>
-            <td><input type="text" th:field="*{horarioAtencionCliente}" /></td>
+            <td><input type="text" th:field="*{horarioAtencionCliente}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>E-mail Manager</label></td>
-            <td><input type="text" th:field="*{emailManager}" /></td>
+            <td><input type="text" th:field="*{emailManager}" maxlength=50/></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Editar Empresa" /></td>
