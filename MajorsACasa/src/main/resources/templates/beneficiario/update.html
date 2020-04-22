@@ -22,27 +22,26 @@
         <tr>
             <td><label>Email</label></td>
             <td><input type="text" th:field="*{email}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
         </tr>
         <tr>
             <td><label>Dirección</label></td>
             <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
         </tr>
         <tr>
             <td><label>Género</label></td>
-            <td><select class="form_control" type="text" th:field="*{genero}" readonly="readonly"> 
-				<option value="No seleccionada">Selecciona el género</option> 
-				<option value="Femenino">Femenino</option>
-				<option value="Masculino">Masculino</option>
-			</select>
-  			</td>
+            <td><input type="text" th:field="*{genero}" readonly="readonly"></td>
         </tr>
         <tr>
             <td><label>Edad</label></td>
             <td><input type="number" th:field="*{edad}" readonly="readonly"/></td>
+            <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error"></td>
         </tr>
         <tr>
             <td><label>Contraseña</label></td>
             <td><input type="text" th:field="*{contrasenya}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('contrasenya')}" th:errors="*{contrasenya}" class="error"></td>
         </tr>
         <tr>
             <td><label>Hobbies</label></td>
