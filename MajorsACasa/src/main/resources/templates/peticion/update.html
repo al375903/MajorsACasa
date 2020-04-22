@@ -13,15 +13,15 @@
       <table>
         <tr>
             <td><label>Id Petición</label></td>
-            <td><input type="text" th:field="*{idPeticion}" /></td>
+            <td><input type="text" th:field="*{idPeticion}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Id Beneficiario</label></td>
-            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+            <td><input type="text" th:field="*{idBeneficiario}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Id Contrato</label></td>
-            <td><input type="text" th:field="*{idContrato}" /></td>
+            <td><input type="text" th:field="*{idContrato}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Comentarios</label></td>
@@ -29,8 +29,8 @@
         </tr>
         <tr>
             <td><label>Tipo servicio</label></td>
-            <td><select class="form_control" type="text" th:field="*{tipoServicio}">
-				<option value="No seleccionat">Selecciona el tipo del servicio</option>
+            <td><select class="form_control" type="text" th:field="*{tipoServicio}" readonly="readonly">
+				<option value="No seleccionado">Selecciona el tipo del servicio</option>
 				<option value="Comida a domicilio">Comida a domicilio</option>
 				<option value="Servicio de limpieza">Servicio de limpieza</option>
 				<option value="Servicio sanitario">Servicio sanitario</option>
@@ -56,7 +56,7 @@
         </tr>
         <tr>
             <td><label>Fecha creación</label></td>
-            <td><input type="date" th:field="*{fechaCreacion}" /></td>
+            <td><input type="date" th:field="*{fechaCreacion}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Fecha cancelación</label></td>

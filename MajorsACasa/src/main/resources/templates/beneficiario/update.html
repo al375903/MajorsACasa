@@ -13,11 +13,11 @@
       <table>
         <tr>
             <td><label>Id Beneficiario</label></td>
-            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+            <td><input type="text" th:field="*{idBeneficiario}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Nombre</label></td>
-            <td><input type="text" th:field="*{nombre}" /></td>
+            <td><input type="text" th:field="*{nombre}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Email</label></td>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td><label>Género</label></td>
-            <td><select class="form_control" type="text" th:field="*{genero}"> 
+            <td><select class="form_control" type="text" th:field="*{genero}" readonly="readonly"> 
 				<option value="No seleccionada">Selecciona el género</option> 
 				<option value="Femenino">Femenino</option>
 				<option value="Masculino">Masculino</option>
@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <td><label>Edad</label></td>
-            <td><input type="number" th:field="*{edad}" /></td>
+            <td><input type="number" th:field="*{edad}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Contraseña</label></td>
