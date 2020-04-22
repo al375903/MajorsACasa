@@ -11,7 +11,7 @@ import es.uji.ei1027.majorsACasa.model.Voluntario;
 
 
 public class VoluntarioValidator implements Validator {
-	
+	// PRUEBA DE MIERDA
 	@Override
 	public boolean supports(Class<?> cls) {
 		  return Voluntario.class.equals(cls);
