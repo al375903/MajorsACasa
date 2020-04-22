@@ -46,7 +46,7 @@ public class PeticionController {
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET)
 	public String editPeticion(Model model, @PathVariable String id) {
-		model.addAttribute("petifcion", peticionDao.getPeticion(id));
+		model.addAttribute("peticion", peticionDao.getPeticion(id));
 		return "peticion/update";
 	}
 	

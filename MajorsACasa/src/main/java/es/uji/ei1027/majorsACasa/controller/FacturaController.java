@@ -44,7 +44,13 @@ public class FacturaController {
 		return "redirect:list";
 	}
 	
-	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
+	@RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
+	public String editFactura(Model model, @PathVariable String id) { 
+		model.addAttribute("factura", facturaDao.getFactura(id));
+		return "factura/update"; 
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("factura") Factura factura,
 										BindingResult bindingResult) {
 		if(bindingResult.hasErrors())
