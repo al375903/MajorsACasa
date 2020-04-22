@@ -38,6 +38,8 @@ public class PeticionController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("peticion") Peticion peticion,
 									BindingResult bindingResult) {
+		PeticionValidator peticionValidator = new PeticionValidator();
+		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "peticion/add";
 		peticionDao.addPeticion(peticion);
@@ -53,6 +55,8 @@ public class PeticionController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("peticion") Peticion peticion,
 										BindingResult bindingResult) {
+		PeticionValidator peticionValidator = new PeticionValidator();
+		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "peticion/update";
 		peticionDao.updatePeticion(peticion);

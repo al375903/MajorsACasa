@@ -1,5 +1,8 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +41,8 @@ public class ContratoController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("contrato") Contrato contrato,
 									BindingResult bindingResult) {
+		ContratoValidator contratoValidator = new ContratoValidator();
+		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/add";
 		contratoDao.addContrato(contrato);
@@ -53,6 +58,8 @@ public class ContratoController {
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("contrato") Contrato contrato,
 										BindingResult bindingResult) {
+		ContratoValidator contratoValidator = new ContratoValidator();
+		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/update";
 		contratoDao.updateContrato(contrato);

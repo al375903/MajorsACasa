@@ -35,14 +35,16 @@ public class EmpresaController {
 		return "empresa/add";
 	}
    
-   @RequestMapping(value="/add", method = RequestMethod.POST) 
-   public String processAddSubmit(@ModelAttribute("empresa") Empresa empresa,
-                                   BindingResult bindingResult) {  
-   	 if (bindingResult.hasErrors()) 
-   		return "empresa/add";
-   	 empresaDao.addEmpresa(empresa);
-   	 return "redirect:list"; 
-    }
+	@RequestMapping(value="/add", method = RequestMethod.POST) 
+	public String processAddSubmit(@ModelAttribute("empresa") Empresa empresa,
+			BindingResult bindingResult) {  
+		EmpresaValidator empresaValidator = new EmpresaValidator();
+		empresaValidator.validate(empresa, bindingResult);
+		if (bindingResult.hasErrors()) 
+			return "empresa/add";
+		empresaDao.addEmpresa(empresa);
+		return "redirect:list"; 
+	}
    
    @RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
 	public String editEmpresa(Model model, @PathVariable String id) { 
@@ -50,15 +52,17 @@ public class EmpresaController {
 		return "empresa/update"; 
 	}
   
-  @RequestMapping(value="/update", method = RequestMethod.POST) 
-	public String processUpdateSubmit(
-                          @ModelAttribute("empresa") Empresa empresa, 
-                          BindingResult bindingResult) {
-		 if (bindingResult.hasErrors()) 
-			 return "empresa/update";
-		 empresaDao.updateEmpresa(empresa);
-		 return "redirect:list"; 
-	}
+   @RequestMapping(value="/update", method = RequestMethod.POST) 
+   public String processUpdateSubmit(
+		   @ModelAttribute("empresa") Empresa empresa, 
+		   BindingResult bindingResult) {
+	   EmpresaValidator empresaValidator = new EmpresaValidator();
+	   empresaValidator.validate(empresa, bindingResult);
+	   if (bindingResult.hasErrors()) 
+		   return "empresa/update";
+	   empresaDao.updateEmpresa(empresa);
+	   return "redirect:list"; 
+   }
   
   @RequestMapping(value="/delete/{id}")
 	public String processDelete(@PathVariable String id) {

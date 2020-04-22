@@ -39,6 +39,8 @@ public class LineaFacturaController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("lineaFactura") LineaFactura lineaFactura,
 									BindingResult bindingResult) {
+		LineaFacturaValidator lineaFacturaValidator = new LineaFacturaValidator();
+		lineaFacturaValidator.validate(lineaFactura, bindingResult);
 		if(bindingResult.hasErrors())
 			return "lineaFactura/add";
 		lineaFacturaDao.addLineaFactura(lineaFactura);

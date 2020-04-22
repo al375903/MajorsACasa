@@ -38,6 +38,8 @@ public class VoluntarioController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("voluntario") Voluntario voluntario,
 									BindingResult bindingResult) {
+		VoluntarioValidator voluntarioValidator = new VoluntarioValidator();
+		voluntarioValidator.validate(voluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/add";
 		voluntarioDao.addVoluntario(voluntario);
@@ -53,6 +55,8 @@ public class VoluntarioController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("voluntario") Voluntario voluntario,
 										BindingResult bindingResult) {
+		VoluntarioValidator voluntarioValidator = new VoluntarioValidator();
+		voluntarioValidator.validate(voluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/update";
 		voluntarioDao.updateVoluntario(voluntario);

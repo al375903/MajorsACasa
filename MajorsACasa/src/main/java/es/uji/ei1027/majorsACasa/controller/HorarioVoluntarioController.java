@@ -38,6 +38,8 @@ public class HorarioVoluntarioController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("horarioVoluntario") HorarioVoluntario horarioVoluntario,
 									BindingResult bindingResult) {
+		HorarioVoluntarioValidator horarioVoluntarioValidator = new HorarioVoluntarioValidator();
+		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "horarioVoluntario/add";
 		horarioVoluntarioDao.addHorarioVoluntario(horarioVoluntario);
@@ -53,6 +55,8 @@ public class HorarioVoluntarioController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("horarioVoluntario") HorarioVoluntario horarioVoluntario,
 										BindingResult bindingResult) {
+		HorarioVoluntarioValidator horarioVoluntarioValidator = new HorarioVoluntarioValidator();
+		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "horarioVoluntario/update";
 		horarioVoluntarioDao.updateHorarioVoluntario(horarioVoluntario);
