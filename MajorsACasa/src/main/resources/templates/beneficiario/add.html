@@ -29,7 +29,12 @@
         </tr>
         <tr>
             <td><label>Género</label></td>
-            <td><input type="text" th:field="*{genero}" /></td>
+            <td><select class="form_control" type="text" th:field="*{genero}"> 
+				<option value="No seleccionada">Selecciona el género</option> 
+				<option value="Femenino">Femenino</option>
+				<option value="Masculino">Masculino</option>
+			</select>
+  			</td>
         </tr>
         <tr>
             <td><label>Edad</label></td>
