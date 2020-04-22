@@ -29,11 +29,22 @@
         </tr>
         <tr>
             <td><label>Tipo servicio</label></td>
-            <td><input type="text" th:field="*{tipoServicio}" /></td>
+            <td><select class="form_control" type="text" th:field="*{tipoServicio}">
+				<option value="No seleccionat">Selecciona el tipo del servicio</option>
+				<option value="Comida a domicilio">Comida a domicilio</option>
+				<option value="Servicio de limpieza">Servicio de limpieza</option>
+				<option value="Servicio sanitario">Servicio sanitario</option>
+				</select>
+			</td>
         </tr>
         <tr>
             <td><label>Estado</label></td>
-            <td><input type="text" th:field="*{estado}" /></td>
+            <td><select class="form_control" type="text" th:field="*{estado}">
+				<option value="No revisada">No revisada</option>
+				<option value="Aceptada">Acaptada</option>
+				<option value="Denegada">Denegada</option>
+				</select>
+			</td>
         </tr>
         <tr>
             <td><label>Fecha aprobación</label></td>

@@ -21,7 +21,13 @@
         </tr>
         <tr>
             <td><label>Tipo Servicio</label></td>
-            <td><input type="text" th:field="*{tipoServicio}" /></td>
+            <td><select class="form_control" type="text" th:field="*{tipoServicio}">
+				<option value="No seleccionat">Selecciona el tipo del servicio</option>
+				<option value="Comida a domicilio">Comida a domicilio</option>
+				<option value="Servicio de limpieza">Servicio de limpieza</option>
+				<option value="Servicio sanitario">Servicio sanitario</option>
+				</select>
+			</td>
         </tr>
         <tr>
             <td><label>Nombre Manager</label></td>

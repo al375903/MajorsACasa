@@ -15,7 +15,8 @@ import es.uji.ei1027.majorsACasa.model.LineaFactura;
 @Controller
 @RequestMapping("/lineaFactura")
 public class LineaFacturaController {
-
+	
+	// PRUEBA
 	private LineaFacturaDao lineaFacturaDao;
 	
 	@Autowired
@@ -54,7 +55,6 @@ public class LineaFacturaController {
 		lineaFacturaDao.deleteLineaFactura(idF, idP, c);
 		return "redirect:../list";
 	}
-	
 }
 
 
