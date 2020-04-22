@@ -14,18 +14,22 @@
         <tr>
             <td><label>Id Voluntario</label></td>
             <td><input type="text" th:field="*{idVoluntario}" /></td>
+            <td th:if="${#fields.hasErrors('idVoluntario')}" th:errors="*{idVoluntario}" class="error"></td>
         </tr>
         <tr>
             <td><label>Nombre</label></td>
             <td><input type="text" th:field="*{nombre}" /></td>
+            <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></td>
         </tr>
         <tr>
             <td><label>E-mail</label></td>
             <td><input type="text" th:field="*{email}" /></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
         </tr>
         <tr>
             <td><label>Dirección</label></td>
             <td><input type="text" th:field="*{direccion}" /></td>
+            <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
         </tr>
         <tr>
             <td><label>Hobbies</label></td>
@@ -34,14 +38,16 @@
         <tr>
             <td><label>Fecha petición voluntariado</label></td>
             <td><input type="date" th:field="*{fechaPeticionVoluntariado}" /></td>
-        </tr>
+            <!-- <td th:if="${#fields.hasErrors('fechaPeticionVoluntariado')}" th:errors="*{fechaPeticionVoluntariado}" class="error"></td>
+         --></tr>
         <tr>
             <td><label>Fecha aceptación voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaPeticionVoluntariado}" /></td>
-        </tr>
+          <!-- <td><input type="date" th:field="*{fechaAceptacionVoluntariado}" /></td>
+         --></tr>
         <tr>
             <td><label>Fecha fin de voluntariado</label></td>
             <td><input type="date" th:field="*{fechaFin}" /></td>
+            <td th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}" class="error"></td>
         </tr>
         <!-- <tr>
         	<td><label>Aceptada</label></td>
@@ -55,10 +61,12 @@
 				<option value="Masculino">Masculino</option>
 			</select>
   			</td>
+  			<td th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="error"></td>
         </tr>
         <tr>
             <td><label>Edad</label></td>
             <td><input type="number" th:field="*{edad}" /></td>
+            <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error"></td>
         </tr>
         <tr>
             <td><label>Contrasenya</label></td>

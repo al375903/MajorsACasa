@@ -38,6 +38,8 @@ public class FacturaController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("factura") Factura factura,
 									BindingResult bindingResult) {
+		FacturaValidator facturaValidator = new FacturaValidator();
+		facturaValidator.validate(factura, bindingResult);
 		if(bindingResult.hasErrors())
 			return "factura/add";
 		facturaDao.addFactura(factura);
@@ -53,6 +55,8 @@ public class FacturaController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("factura") Factura factura,
 										BindingResult bindingResult) {
+		FacturaValidator facturaValidator = new FacturaValidator();
+		facturaValidator.validate(factura, bindingResult);
 		if(bindingResult.hasErrors())
 			return "factura/update";
 		facturaDao.updateFactura(factura);

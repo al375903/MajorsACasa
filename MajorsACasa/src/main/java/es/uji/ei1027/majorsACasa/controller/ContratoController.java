@@ -38,6 +38,8 @@ public class ContratoController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("contrato") Contrato contrato,
 									BindingResult bindingResult) {
+		ContratoValidator contratoValidator = new ContratoValidator();
+		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/add";
 		contratoDao.addContrato(contrato);
@@ -53,6 +55,8 @@ public class ContratoController {
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("contrato") Contrato contrato,
 										BindingResult bindingResult) {
+		ContratoValidator contratoValidator = new ContratoValidator();
+		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/update";
 		contratoDao.updateContrato(contrato);

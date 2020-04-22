@@ -16,7 +16,6 @@ import es.uji.ei1027.majorsACasa.model.LineaFactura;
 @RequestMapping("/lineaFactura")
 public class LineaFacturaController {
 	
-	// PRUEBA
 	private LineaFacturaDao lineaFacturaDao;
 	
 	@Autowired
@@ -39,6 +38,8 @@ public class LineaFacturaController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("lineaFactura") LineaFactura lineaFactura,
 									BindingResult bindingResult) {
+		LineaFacturaValidator lineaFacturaValidator = new LineaFacturaValidator();
+		lineaFacturaValidator.validate(lineaFactura, bindingResult);
 		if(bindingResult.hasErrors())
 			return "lineaFactura/add";
 		lineaFacturaDao.addLineaFactura(lineaFactura);
@@ -49,7 +50,6 @@ public class LineaFacturaController {
 	// (los tres atributos forman la clave primaria)
 	
 	
-	// NOTA: REVISAR ESTE MÉTODO
 	@RequestMapping(value="/delete/{idF},{idP},{c}")
 	public String processDelete(@PathVariable String idF, @PathVariable String idP, @PathVariable String c) {
 		lineaFacturaDao.deleteLineaFactura(idF, idP, c);
