@@ -11,7 +11,7 @@ import es.uji.ei1027.majorsACasa.model.Voluntario;
 
 
 public class VoluntarioValidator implements Validator {
-	// PRUEBA DE MIERDA
+	//PRUEBA DE MIERDA
 	@Override
 	public boolean supports(Class<?> cls) {
 		  return Voluntario.class.equals(cls);
@@ -37,11 +37,11 @@ public class VoluntarioValidator implements Validator {
 		 if (voluntario.getDireccion().trim().equals(""))
 			 errors.rejectValue("direccion", "obligatorio", "Introduzca una direccion.");
 		 
-		 if (voluntario.getFechaPeticionVoluntariado().equals(null))
-			 errors.rejectValue("fechaPeticionVoluntariado", "obligatorio", "Introduzca la fecha de peticion de voluntariado.");
-		 
-		 if (voluntario.getFechaFin().equals(null))
-			 errors.rejectValue("fechaFin", "obligatorio", "Introduzca la fecha fin.");
+		 if (voluntario.getFechaPeticionVoluntariado().toString().trim().equals(""));
+			errors.rejectValue("fechaPeticionVoluntariado", "obligatorio", "Introduzca la fecha de peticion de voluntariado");
+
+		 if (voluntario.getFechaFin().toString().trim().equals(""));
+			errors.rejectValue("fechaFin", "obligatorio", "Introduzca la fecha fin");
 		 
 		 if (voluntario.getDireccion().trim().equals(""))
 			 errors.rejectValue("direccion", "obligatorio", "Introduzca una direccion.");
