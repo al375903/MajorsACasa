@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +47,17 @@ public class ContratoController {
 		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/add";
-		contratoDao.addContrato(contrato);
+		
+		try {
+			contratoDao.addContrato(contrato);
+		/*} catch (DuplicateKeyException e) {
+			throw new MajorsACasaException(
+			"Ya existe un contrato d'aquest nadador en " + contrato.getIdEmpresa(), "CPduplicada");*/
+		} catch (DataAccessException e) {
+			throw new MajorsACasaException(
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+		}
+		
 		return "redirect:list";
 	}
 	

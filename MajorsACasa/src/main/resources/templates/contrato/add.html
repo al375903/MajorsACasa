@@ -14,10 +14,12 @@
         <tr>
             <td><label>Id Contrato</label></td>
             <td><input type="text" th:field="*{idContrato}" maxlength=5/></td>
+            <td th:if="${#fields.hasErrors('idContrato')}" th:errors="*{idContrato}" class="error"></td>
         </tr>
         <tr>
             <td><label>Id Empresa</label></td>
             <td><input type="text" th:field="*{idEmpresa}" maxlength=5/></td>
+            <td th:if="${#fields.hasErrors('idEmpresa')}" th:errors="*{idEmpresa}" class="error"></td>
         </tr>
         <tr>
             <td><label>Precio</label></td>
