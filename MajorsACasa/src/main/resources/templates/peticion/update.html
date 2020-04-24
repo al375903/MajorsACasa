@@ -25,17 +25,11 @@
         </tr>
         <tr>
             <td><label>Comentarios</label></td>
-            <td><input type="text" th:field="*{comentarios}" /></td>
+            <td><input type="text" th:field="*{comentarios}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>Tipo servicio</label></td>
-            <td><select class="form_control" type="text" th:field="*{tipoServicio}" readonly="readonly">
-				<option value="No seleccionado">Selecciona el tipo del servicio</option>
-				<option value="Comida a domicilio">Comida a domicilio</option>
-				<option value="Servicio de limpieza">Servicio de limpieza</option>
-				<option value="Servicio sanitario">Servicio sanitario</option>
-				</select>
-			</td>
+            <td><input class="text" type="text" th:field="*{tipoServicio}" readonly="readonly"></td>
         </tr>
         <tr>
             <td><label>Estado</label></td>

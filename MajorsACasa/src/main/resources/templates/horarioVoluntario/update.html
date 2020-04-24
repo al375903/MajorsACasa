@@ -21,18 +21,19 @@
         </tr>
         <tr>
             <td><label>Id Beneficiario</label></td>
-            <td><input type="text" th:field="*{idBeneficiario}"/></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+            <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
         </tr>
         <tr>
             <td><label>Hora Inicio</label></td>
-            <td><input type="time" th:field="*{horaInicio}" /></td>
+            <td><input type="time" th:field="*{horaInicio}" required/></td>
         </tr>
         <tr>
             <td><label>Hora Fin</label></td>
-            <td><input type="time" th:field="*{horaFin}" /></td>
+            <td><input type="time" th:field="*{horaFin}" required/></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Editar Horario" /></td>
+            <td colspan="2"><input type="submit" value="Editar Horario" required/></td>
         </tr>
       </table>
     </form>

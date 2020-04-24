@@ -21,5 +21,11 @@ public class LineaFacturaValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		LineaFactura lineaFactura = (LineaFactura)obj;
+		
+		if (lineaFactura.getIdFactura().trim().equals(""))
+			 errors.rejectValue("idFactura", "obligatorio", "Introduzca un Id.");
+		
+		if (lineaFactura.getCodigoLinea().trim().equals(""))
+			 errors.rejectValue("codigoLinea", "obligatorio", "Introduzca un código de línea.");
 	}
 }

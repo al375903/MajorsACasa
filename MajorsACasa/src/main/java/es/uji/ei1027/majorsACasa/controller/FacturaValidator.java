@@ -21,5 +21,10 @@ public class FacturaValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Factura factura = (Factura)obj;
+		if (factura.getIdFactura().trim().equals(""))
+			 errors.rejectValue("idFactura", "obligatorio", "Introduzca un Id.");
+		
+		if (factura.getIdBeneficiario().trim().equals(""))
+			 errors.rejectValue("idBeneficiario", "obligatorio", "Introduzca un Id.");
 	}
 }

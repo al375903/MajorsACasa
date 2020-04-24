@@ -21,5 +21,16 @@ public class ContratoValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Contrato contrato = (Contrato)obj;
+		if (contrato.getIdContrato().trim().equals(""))
+			 errors.rejectValue("idContrato", "obligatorio", "Introduzca un Id.");
+		
+		if (contrato.getIdEmpresa().trim().equals(""))
+			 errors.rejectValue("idEmpresa", "obligatorio", "Introduzca un Id.");
+		
+		/*if (contrato.getFechaInicio().toString().trim().equals(""))
+			 errors.rejectValue("fechaInicio", "obligatorio", "Introduzca una fecha.");
+		
+		if (contrato.getFechaFin().toString().trim().equals(""))
+			 errors.rejectValue("fechaFin", "obligatorio", "Introduzca una fecha.");*/
 	}
 }

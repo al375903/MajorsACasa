@@ -29,7 +29,11 @@
         </tr>
         <tr>
             <td><label>Fecha Fin</label></td>
-            <td><input type="date" th:field="*{fechaFin}" /></td>
+            <td><input type="date" th:field="*{fechaFin}" required/></td>
+        </tr>
+        <tr>
+            <td><label>Concepto</label></td>
+            <td><input type="text" th:field="*{concepto}" maxlength=50/></td>
         </tr>
         <tr>
             <td><label>Cantidad</label></td>

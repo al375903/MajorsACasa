@@ -21,17 +21,17 @@
         </tr>
         <tr>
             <td><label>E-mail</label></td>
-            <td><input type="text" th:field="*{email}" /></td>
+            <td><input type="text" th:field="*{email}" maxlength=50/></td>
             <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
         </tr>
         <tr>
             <td><label>Dirección</label></td>
-            <td><input type="text" th:field="*{direccion}" /></td>
+            <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
             <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
         </tr>
         <tr>
             <td><label>Hobbies</label></td>
-            <td><input type="text" th:field="*{hobbies}" /></td>
+            <td><input type="text" th:field="*{hobbies}" maxlength=400/></td>
         </tr>
         <tr>
             <td><label>Fecha petición voluntariado</label></td>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td><label>Fecha fin de voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaFin}" /></td>
+            <td><input type="date" th:field="*{fechaFin}" required/></td>
             <!-- <td th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}" class="error"></td>
         --> </tr>
         <!-- <tr>

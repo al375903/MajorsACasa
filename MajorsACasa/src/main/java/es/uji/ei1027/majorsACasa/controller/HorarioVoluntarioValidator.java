@@ -21,5 +21,14 @@ public class HorarioVoluntarioValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		HorarioVoluntario horarioVoluntario = (HorarioVoluntario)obj;
+		
+		if (horarioVoluntario.getIdHorario().trim().equals(""))
+			 errors.rejectValue("idHorarioVoluntario", "obligatorio", "Introduzca un Id.");
+		
+		if (horarioVoluntario.getIdVoluntario().trim().equals(""))
+			 errors.rejectValue("idVoluntario", "obligatorio", "Introduzca un Id.");
+		
+		if (horarioVoluntario.getIdBeneficiario().trim().equals(""))
+			 errors.rejectValue("idBeneficiario", "obligatorio", "Introduzca un Id.");
 	}
 }

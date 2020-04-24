@@ -39,7 +39,7 @@ public class BeneficiarioController {
 	public String processAddSubmit(@ModelAttribute("beneficiario") Beneficiario beneficiario,
 									BindingResult bindingResult) {
 		BeneficiarioValidator beneficiarioValidator = new BeneficiarioValidator();
-	   	beneficiarioValidator.validate(beneficiario, bindingResult);
+		beneficiarioValidator.validate(beneficiario, bindingResult);
 		if (bindingResult.hasErrors())
 			return "beneficiario/add";
 		beneficiarioDao.addBeneficiario(beneficiario);
@@ -56,7 +56,7 @@ public class BeneficiarioController {
 	public String processUpdateSubmit(@ModelAttribute("beneficiario") Beneficiario beneficiario,
 										BindingResult bindingResult) {
 		BeneficiarioValidator beneficiarioValidator = new BeneficiarioValidator();
-	   	beneficiarioValidator.validate(beneficiario, bindingResult);
+		beneficiarioValidator.validate(beneficiario, bindingResult);
 		if (bindingResult.hasErrors())
 			return "beneficiario/add";
 		beneficiarioDao.updateBeneficiario(beneficiario);

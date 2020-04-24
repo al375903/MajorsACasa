@@ -13,19 +13,23 @@
       <table>
         <tr>
             <td><label>Id Contrato</label></td>
-            <td><input type="text" th:field="*{idContrato}" /></td>
+            <td><input type="text" th:field="*{idContrato}" maxlength=5/></td>
         </tr>
         <tr>
             <td><label>Id Empresa</label></td>
-            <td><input type="text" th:field="*{idEmpresa}" /></td>
+            <td><input type="text" th:field="*{idEmpresa}" maxlength=5/></td>
+        </tr>
+        <tr>
+            <td><label>Precio</label></td>
+            <td><input type="number" th:field="*{precio}"/></td>
         </tr>
         <tr>
             <td><label>Fecha Inicio</label></td>
-            <td><input type="date" th:field="*{fechaInicio}" /></td>
+            <td><input type="date" th:field="*{fechaInicio}" required/></td>
         </tr>
         <tr>
             <td><label>Fecha fin</label></td>
-            <td><input type="date" th:field="*{fechaFin}" /></td>
+            <td><input type="date" th:field="*{fechaFin}" required/></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Anyadir Contrato" /></td>

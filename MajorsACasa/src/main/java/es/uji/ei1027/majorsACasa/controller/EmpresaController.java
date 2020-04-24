@@ -43,8 +43,8 @@ public class EmpresaController {
 	   if (bindingResult.hasErrors()) 
    		return "empresa/add";
    	 empresaDao.addEmpresa(empresa);
-   	 return "redirect:list"; 
-    }
+   	 return "redirect:list";
+	}
    
    @RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
 	public String editEmpresa(Model model, @PathVariable String id) { 
