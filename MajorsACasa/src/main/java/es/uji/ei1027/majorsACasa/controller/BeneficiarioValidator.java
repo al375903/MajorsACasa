@@ -21,9 +21,9 @@ public class BeneficiarioValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Beneficiario beneficiario = (Beneficiario)obj;
-		if (beneficiario.getIdBeneficiario().trim().length() != 5) {
+		if (beneficiario.getIdBeneficiario().trim().length() != 9) {
 			errors.rejectValue("idBeneficiario", "obligatorio",
-					"Introduzca un id de 5 caracteres.");
+					"Introduzca un id de 9 caracteres.");
 		}
 		
 		if (beneficiario.getNombre().trim().equals("")) {
@@ -47,14 +47,14 @@ public class BeneficiarioValidator implements Validator {
 					"Introduzca un genero.");
 		}
 		
-		if (beneficiario.getEdad()<18) {
+		if (beneficiario.getEdad()<55) {
 			errors.rejectValue("edad", "incorrecta",
-					"Debe ser >18.");
+					"Debe ser 55 o más.");
 		}
 		
 		if (beneficiario.getContrasenya().trim().equals("")) {
 			errors.rejectValue("contrasenya", "obligatorio",
-					"Introduzca una contrasenya.");
+					"Introduzca una contraseña.");
 		}
 	}
 }
