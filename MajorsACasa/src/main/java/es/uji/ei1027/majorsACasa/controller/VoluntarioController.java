@@ -1,6 +1,8 @@
 package es.uji.ei1027.majorsACasa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +44,15 @@ public class VoluntarioController {
 		voluntarioValidator.validate(voluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/add";
-		voluntarioDao.addVoluntario(voluntario);
+		try {
+			voluntarioDao.addVoluntario(voluntario);
+		} catch (DuplicateKeyException e) {
+			throw new MajorsACasaException(
+					"Ya existe un voluntario con id " + voluntario.getIdVoluntario(), "CPduplicada");
+		} catch (DataAccessException e) {
+			throw new MajorsACasaException(
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+		}
 		return "redirect:list";
 	}
 	

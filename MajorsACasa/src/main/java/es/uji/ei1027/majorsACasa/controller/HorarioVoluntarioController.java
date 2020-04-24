@@ -1,6 +1,8 @@
 package es.uji.ei1027.majorsACasa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +44,15 @@ public class HorarioVoluntarioController {
 		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "horarioVoluntario/add";
-		horarioVoluntarioDao.addHorarioVoluntario(horarioVoluntario);
+		try {
+			horarioVoluntarioDao.addHorarioVoluntario(horarioVoluntario);
+		} catch (DuplicateKeyException e) {
+			throw new MajorsACasaException(
+					"Ya existe un horario con id " + horarioVoluntario.getIdHorario(), "CPduplicada");
+		} catch (DataAccessException e) {
+			throw new MajorsACasaException(
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+		}
 		return "redirect:list";
 	}
 	

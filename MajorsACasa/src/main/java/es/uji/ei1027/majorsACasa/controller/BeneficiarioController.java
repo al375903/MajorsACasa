@@ -1,6 +1,8 @@
 package es.uji.ei1027.majorsACasa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +44,15 @@ public class BeneficiarioController {
 		beneficiarioValidator.validate(beneficiario, bindingResult);
 		if (bindingResult.hasErrors())
 			return "beneficiario/add";
-		beneficiarioDao.addBeneficiario(beneficiario);
+		try {
+			beneficiarioDao.addBeneficiario(beneficiario);
+		} catch (DuplicateKeyException e) {
+			throw new MajorsACasaException(
+					"Ya existe un contrato con id " + beneficiario.getIdBeneficiario(), "CPduplicada");
+		} catch (DataAccessException e) {
+			throw new MajorsACasaException(
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+		}
 		return "redirect:list";
 	}
 	

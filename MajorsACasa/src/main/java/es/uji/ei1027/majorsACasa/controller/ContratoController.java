@@ -52,7 +52,7 @@ public class ContratoController {
 			contratoDao.addContrato(contrato);
 		/*} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
-			"Ya existe un contrato d'aquest nadador en " + contrato.getIdEmpresa(), "CPduplicada");*/
+			"Ya existe un contrato " + contrato.getIdEmpresa(), "CPduplicada");*/
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
 					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
