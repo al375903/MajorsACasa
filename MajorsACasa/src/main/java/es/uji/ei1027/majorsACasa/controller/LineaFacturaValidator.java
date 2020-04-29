@@ -23,7 +23,10 @@ public class LineaFacturaValidator implements Validator {
 		LineaFactura lineaFactura = (LineaFactura)obj;
 		
 		if (lineaFactura.getIdFactura().trim().equals(""))
-			 errors.rejectValue("idFactura", "obligatorio", "Introduzca un Id.");
+			 errors.rejectValue("idFactura", "obligatorio", "Introduzca un Id de factura.");
+		
+		if (lineaFactura.getIdPeticion().trim().equals(""))
+			 errors.rejectValue("idPeticion", "obligatorio", "Introduzca un Id de petición.");
 		
 		if (lineaFactura.getCodigoLinea().trim().equals(""))
 			 errors.rejectValue("codigoLinea", "obligatorio", "Introduzca un código de línea.");

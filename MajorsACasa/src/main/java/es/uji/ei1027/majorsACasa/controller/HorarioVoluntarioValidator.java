@@ -22,13 +22,14 @@ public class HorarioVoluntarioValidator implements Validator {
 	public void validate(Object obj, Errors errors) {
 		HorarioVoluntario horarioVoluntario = (HorarioVoluntario)obj;
 		
-		if (horarioVoluntario.getIdHorario().trim().equals(""))
-			 errors.rejectValue("idHorarioVoluntario", "obligatorio", "Introduzca un Id.");
-		
 		if (horarioVoluntario.getIdVoluntario().trim().equals(""))
-			 errors.rejectValue("idVoluntario", "obligatorio", "Introduzca un Id.");
+			 errors.rejectValue("idVoluntario", "obligatorio", "Introduzca un Id de voluntario.");
 		
-		if (horarioVoluntario.getIdBeneficiario().trim().equals(""))
-			 errors.rejectValue("idBeneficiario", "obligatorio", "Introduzca un Id.");
+		if (horarioVoluntario.getIdHorario().trim().equals(""))
+			 errors.rejectValue("idHorario", "obligatorio", "Introduzca un Id de horario.");
+		
+		
+		
+		
 	}
 }

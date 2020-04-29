@@ -7,7 +7,7 @@
      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
-    <h2>Nueva Linea Factura</h2>
+    <h2>Nueva Línea Factura</h2>
     <form action="#" th:action="@{/lineaFactura/add}"
                      th:object="${lineaFactura}" method="post">
       <table>
@@ -17,16 +17,17 @@
             <td th:if="${#fields.hasErrors('idFactura')}" th:errors="*{idFactura}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Nombre Peticion</label></td>
+            <td><label>Id Petición</label></td>
             <td><input type="text" th:field="*{idPeticion}" /></td>
+        	<td th:if="${#fields.hasErrors('idPeticion')}" th:errors="*{idPeticion}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Codigo Linea</label></td>
+            <td><label>Código Línea</label></td>
             <td><input type="text" th:field="*{codigoLinea}" /></td>
             <td th:if="${#fields.hasErrors('codigoLinea')}" th:errors="*{codigoLinea}" class="error"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Anyadir Linea Factura" /></td>
+            <td colspan="2"><input type="submit" value="Añadir Linea Factura" /></td>
         </tr>
       </table>
     </form>

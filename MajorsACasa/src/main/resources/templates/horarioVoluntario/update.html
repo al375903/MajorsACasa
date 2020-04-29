@@ -11,18 +11,22 @@
     <form action="#" th:action="@{/horarioVoluntario/update}"
                      th:object="${horarioVoluntario}" method="post">
       <table>
+      	<tr>
+            <td><label>Id Horario</label></td>
+            <td><input type="text" th:field="*{idHorario}" readonly="readonly"/></td>
+        </tr>
         <tr>
             <td><label>Id Voluntario</label></td>
             <td><input type="text" th:field="*{idVoluntario}" readonly="readonly"/></td>
         </tr>
         <tr>
-            <td><label>Id Horario</label></td>
-            <td><input type="text" th:field="*{idHorario}" readonly="readonly"/></td>
-        </tr>
-        <tr>
             <td><label>Id Beneficiario</label></td>
             <td><input type="text" th:field="*{idBeneficiario}" /></td>
             <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha</label></td>
+            <td><input type="date" th:field="*{fecha}" required/></td>
         </tr>
         <tr>
             <td><label>Hora Inicio</label></td>

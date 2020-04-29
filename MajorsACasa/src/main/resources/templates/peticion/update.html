@@ -35,7 +35,7 @@
             <td><label>Estado</label></td>
             <td><select class="form_control" type="text" th:field="*{estado}">
 				<option value="No revisada">No revisada</option>
-				<option value="Aceptada">Acaptada</option>
+				<option value="Aceptada">Aceptada</option>
 				<option value="Denegada">Denegada</option>
 				</select>
 			</td>
@@ -43,10 +43,12 @@
         <tr>
             <td><label>Fecha aprobación</label></td>
             <td><input type="date" th:field="*{fechaAprobacion}" /></td>
+        	<td th:if="${#fields.hasErrors('fechaAprobacion')}" th:errors="*{fechaAprobacion}" class="error"></td>
         </tr>
         <tr>
             <td><label>Fecha denegación</label></td>
             <td><input type="date" th:field="*{fechaDenegacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaDenegacion')}" th:errors="*{fechaDenegacion}" class="error"></td>
         </tr>
         <tr>
             <td><label>Fecha creación</label></td>
@@ -55,6 +57,7 @@
         <tr>
             <td><label>Fecha cancelación</label></td>
             <td><input type="date" th:field="*{fechaCancelacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaCancelacion')}" th:errors="*{fechaCancelacion}" class="error"></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Editar Peticion" /></td>
