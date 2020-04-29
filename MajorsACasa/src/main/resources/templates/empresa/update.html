@@ -30,17 +30,17 @@
             <td th:if="${#fields.hasErrors('nombreManager')}" th:errors="*{nombreManager}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Direccion</label></td>
+            <td><label>Dirección</label></td>
             <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
             <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Telefono</label></td>
+            <td><label>Teléfono</label></td>
             <td><input type="text" th:field="*{telefono}" maxlength=12/></td>
             <td th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Horario Atención al Cliente</label></td>
+            <td><label>Horario de Atención al Cliente</label></td>
             <td><input type="text" th:field="*{horarioAtencionCliente}" maxlength=50/></td>
             <td th:if="${#fields.hasErrors('horarioAtencionCliente')}" th:errors="*{horarioAtencionCliente}" class="error"></td>
         </tr>

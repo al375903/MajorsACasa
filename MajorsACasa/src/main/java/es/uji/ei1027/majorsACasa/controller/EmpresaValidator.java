@@ -38,11 +38,23 @@ public class EmpresaValidator implements Validator {
 		if (empresa.getDireccion().trim().equals(""))
 			 errors.rejectValue("direccion", "obligatorio", "Introduzca una dirección.");
 		
-		if (empresa.getTelefono().trim().length()<12)
-			 errors.rejectValue("telefono", "incorrecto", "Introduzca un teléfono válido de 12 dígitos.");
+		if (empresa.getTelefono().trim().length()<9)
+			 errors.rejectValue("telefono", "incorrecto", "Introduzca un teléfono de al menos 9 dígitos.");
+		
+		/*String abecedario = "abcdefghijklmnñymnopqrstuvwxyz";
+		for(int i = 0; i < abecedario.length(); i++) {
+			if(empresa.getEmailManager().trim().contains(abecedario[i])){
+				 errors.rejectValue("telefono", "letras", "No puede haber letras en el número.");
+				 break;
+			}
+		}*/
 		
 		if (empresa.getEmailManager().trim().equals(""))
 			 errors.rejectValue("emailManager", "obligatorio", "Introduzca un e-mail.");
+		
+		if (!empresa.getEmailManager().trim().contains("@")) {
+			errors.rejectValue("emailManager", "arroba", "La dirección debe llevar @.");
+		}
 		
 		if (empresa.getHorarioAtencionCliente().trim().equals(""))
 			 errors.rejectValue("horarioAtencionCliente", "obligatorio", "Introduzca la descripción del horario.");
