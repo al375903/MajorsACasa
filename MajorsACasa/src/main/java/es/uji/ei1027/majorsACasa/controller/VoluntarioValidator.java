@@ -22,7 +22,7 @@ public class VoluntarioValidator implements Validator {
 	public void validate(Object obj, Errors errors) {
 		 Voluntario voluntario = (Voluntario)obj;
 		 if (voluntario.getIdVoluntario().trim().length() < 9)
-			 errors.rejectValue("idVoluntario", "minimo", "Introduzca un Id de al menos 9 caracteres.");
+			 errors.rejectValue("idVoluntario", "minimo", "Introduzca un Id de 9 caracteres.");
 		 
 		 if (voluntario.getNombre().trim().equals(""))
 			 errors.rejectValue("nombre", "obligatorio", "Introduzca un nombre.");
@@ -33,12 +33,9 @@ public class VoluntarioValidator implements Validator {
 		 if (voluntario.getDireccion().trim().equals(""))
 			 errors.rejectValue("direccion", "obligatorio", "Introduzca una direccion.");
 		 
-		 /*if (voluntario.getFechaPeticionVoluntariado().toString().trim().equals(""));
-			errors.rejectValue("fechaPeticionVoluntariado", "obligatorio", "Introduzca la fecha de peticion de voluntariado");
-		
-		 if (voluntario.getFechaFin().toString().trim().equals(""));
-			errors.rejectValue("fechaFin", "obligatorio", "Introduzca la fecha fin");*/
-		 
+		 if (voluntario.getFechaPeticionVoluntariado() == null);
+			errors.rejectValue("fechaPeticionVoluntariado", "obligatorio", "Introduzca la fecha de petición de voluntariado");
+				 
 		 List<String> valores = Arrays.asList("Femenino", "Masculino");
 		 if(!valores.contains(voluntario.getGenero()))
 			 errors.rejectValue("genero", "valor incorrecto", "Seleccione el género.");

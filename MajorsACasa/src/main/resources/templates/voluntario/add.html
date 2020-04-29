@@ -37,17 +37,16 @@
         </tr>
         <tr>
             <td><label>Fecha petición voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaPeticionVoluntariado}" required/></td>
-            <!-- <td th:if="${#fields.hasErrors('fechaPeticionVoluntariado')}" th:errors="*{fechaPeticionVoluntariado}" class="error"></td>
-         --></tr>
+            <td><input type="date" th:field="*{fechaPeticionVoluntariado}" /></td>
+            <td th:if="${#fields.hasErrors('fechaPeticionVoluntariado')}" th:errors="*{fechaPeticionVoluntariado}" class="error"></td>
+        </tr>
         <tr>
             <td><label>Fecha aceptación voluntariado</label></td>
-          <!-- <td><input type="date" th:field="*{fechaAceptacionVoluntariado}" /></td>
-         --></tr>
+            <td><input type="date" th:field="*{fechaAceptacionVoluntariado}" /></td>
+        </tr>
         <tr>
             <td><label>Fecha fin de voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaFin}" required/></td>
-            <!--<td th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}" class="error"></td>-->
+            <td><input type="date" th:field="*{fechaFin}"/></td>
         </tr>
         <!-- <tr>
         	<td><label>Aceptada</label></td>
@@ -69,11 +68,11 @@
             <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Contrasenya</label></td>
+            <td><label>Contraseña</label></td>
             <td><input type="text" th:field="*{contrasenya}" /></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Anyadir Voluntario" /></td>
+            <td colspan="2"><input type="submit" value="Añadir Voluntario" /></td>
         </tr>
       </table>
     </form>
