@@ -48,7 +48,7 @@ public class BeneficiarioController {
 			beneficiarioDao.addBeneficiario(beneficiario);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
-					"Ya existe un contrato con id " + beneficiario.getIdBeneficiario(), "CPduplicada");
+					"Ya existe un beneficiario con id " + beneficiario.getIdBeneficiario(), "CPduplicada");
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
 					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
@@ -68,7 +68,7 @@ public class BeneficiarioController {
 		BeneficiarioValidator beneficiarioValidator = new BeneficiarioValidator();
 		beneficiarioValidator.validate(beneficiario, bindingResult);
 		if (bindingResult.hasErrors())
-			return "beneficiario/add";
+			return "beneficiario/update";
 		beneficiarioDao.updateBeneficiario(beneficiario);
 		return "redirect:list";
 	}

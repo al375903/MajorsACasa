@@ -21,7 +21,7 @@ public class BeneficiarioValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Beneficiario beneficiario = (Beneficiario)obj;
-		if (beneficiario.getIdBeneficiario().trim().length() != 9) {
+		if (beneficiario.getIdBeneficiario().trim().length() < 9) {
 			errors.rejectValue("idBeneficiario", "obligatorio",
 					"Introduzca un id de 9 caracteres.");
 		}
@@ -36,20 +36,24 @@ public class BeneficiarioValidator implements Validator {
 					"Introduzca su e-mail.");
 		}
 		
+		if (!beneficiario.getEmail().trim().contains("@")) {
+			errors.rejectValue("email", "arroba", "La dirección debe llevar @.");
+		}
+		
 		if (beneficiario.getDireccion().trim().equals("")) {
 			errors.rejectValue("direccion", "obligatorio",
-					"Introduzca su direccion.");
+					"Introduzca su dirección.");
 		}
 		
 		List<String> valores = Arrays.asList("Femenino", "Masculino");
 		if (!valores.contains(beneficiario.getGenero())) {
 			errors.rejectValue("genero", "valor incorrecto",
-					"Introduzca un genero.");
+					"Seleccione un género.");
 		}
 		
 		if (beneficiario.getEdad()<55) {
 			errors.rejectValue("edad", "incorrecta",
-					"Debe ser 55 o más.");
+					"Debe tener 55 años o más.");
 		}
 		
 		if (beneficiario.getContrasenya().trim().equals("")) {
