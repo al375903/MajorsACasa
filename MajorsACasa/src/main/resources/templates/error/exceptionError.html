@@ -8,11 +8,12 @@
 </head>
 <body>
 <div class="container">
-   <div class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
+   <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
-       <p>Pulsa el botón para ir al inicio o el botón del navegador para ir hacia atrás.</p>
+       <p>Pulse el botón de inicio o el botón para volver atrás.</p>
    </div>
    <div th:align="center">
+   	   <a class="btn btn-light" th:align="left" onclick="history.back()">Atrás</a>
        <a href="/" class="btn btn-primary" th:align="left">Inicio</a>
    </div>
 </div>

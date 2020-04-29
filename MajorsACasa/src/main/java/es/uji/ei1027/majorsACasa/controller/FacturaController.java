@@ -51,7 +51,7 @@ public class FacturaController {
 					"Ya existe una factura con id " + factura.getIdFactura(), "CPduplicada");
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
-					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+					"No existe un beneficiario con id " + factura.getIdBeneficiario(), "ErrorAccediendoDatos");
 		}
 		return "redirect:list";
 	}
