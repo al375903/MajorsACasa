@@ -22,12 +22,12 @@ public class ContratoSrv implements ContratoService{
 	@Override
 	public String getEmpresaTipoServicio(String id) {
 		List<Contrato> listaContrato = contratoDao.getContratoPorId(id);
- 		String tipoServicio = null;
+ 		String tipoServicio = "";
 		for(Contrato contrato : listaContrato) {
 			List<Empresa> listaEmpresa = empresaDao.getEmpresaPorId(contrato.getIdEmpresa());
 			for(Empresa empresa: listaEmpresa) {
 				if(contrato.getIdEmpresa().equals(empresa.getIdEmpresa())) {
-					tipoServicio = empresa.getTipoServicio();
+					tipoServicio = tipoServicio + empresa.getTipoServicio();
 				}
 			}
 		}
