@@ -35,7 +35,7 @@ public class FakeUserProvider implements UserDao {
   }
 
   @Override
-  public UserDetails loadUserByUsername(String username, String password, String tipo) { 
+  public UserDetails loadUserByUsername(String username, String password) { 
       UserDetails user = knownUsers.get(username.trim());
       if (user == null)
           return null; // Usuari no trobat

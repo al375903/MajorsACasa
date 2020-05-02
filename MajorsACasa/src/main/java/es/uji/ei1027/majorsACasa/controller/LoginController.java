@@ -56,7 +56,7 @@ public class LoginController {
             }
                // Comprova que el login siga correcte 
             // intentant carregar les dades de l'usuari 
-            user = userDao.loadUserByUsername(user.getUsername(), user.getPassword(), user.getTipo()); 
+            user = userDao.loadUserByUsername(user.getUsername(), user.getPassword()); 
             if (user == null) {
                 bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta"); 
                 return "login";
