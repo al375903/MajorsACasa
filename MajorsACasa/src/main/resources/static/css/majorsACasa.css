@@ -6,13 +6,15 @@ body {
 
 /* Capçalera de nivell 1 */
 h1 {
-   font-size: x-large; 
+   font-size: 300%; 
+   font-style: bold;
    color: #6495ED;
 }
 
 /* Capçalera de nivell 2 */
 h2 {
-   font-size: large; 
+   font-size: 200%;
+   font-style: bold; 
    color: #87CEFA;
 }
 
