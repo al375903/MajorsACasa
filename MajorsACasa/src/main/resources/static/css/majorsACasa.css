@@ -26,6 +26,23 @@ h2 {
    padding-bottom: 3px;
 }
 
+label {
+	display: block;
+	margin: 0px 0px 15px 0px;
+}
+
+td {
+	width: 200px;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+
+input, select {
+	font-size: 103%;
+}
+
+
 /* Classe CSS error */
 .error {
      color: #8B0000;
