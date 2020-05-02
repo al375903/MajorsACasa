@@ -17,10 +17,9 @@ h1 {
 
 /* Capçalera de nivell 2 */
 h2 {
-   font-size: 225%;
+   font-size: 180%;
    font-weight: bold;
-   font-style: italic; 
-   color: #4169E1;
+   color: #00008B;
    border-bottom: 2px solid #ddd;
    margin-bottom: 15px;
    padding-bottom: 3px;
@@ -51,4 +50,17 @@ input, select {
 .center {
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-primary {
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
