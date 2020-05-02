@@ -3,8 +3,8 @@
 <head>
    <title>Crear horario voluntario</title>
    <meta charset="UTF-8" />
-	<link rel="stylesheet"       
-     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
     <h2>Nuevo Horario</h2>
@@ -39,7 +39,7 @@
             <td><input type="time" th:field="*{horaFin}" required/></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="add" class="btn btn-primary" role="button">Añadir Horario</a></td>
+            <td colspan="2"><input type="submit" value="Añadir Horario" class="btn-primary" role="button" /></td>
         </tr>
       </table>
     </form>

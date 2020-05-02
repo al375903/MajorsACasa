@@ -3,8 +3,8 @@
 <head>
    <title>Crear nueva Linea Factura</title>
    <meta charset="UTF-8" />
-	<link rel="stylesheet"       
-     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
     <h2>Nueva Línea Factura</h2>
@@ -27,7 +27,7 @@
             <td th:if="${#fields.hasErrors('codigoLinea')}" th:errors="*{codigoLinea}" class="error"></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="add" class="btn btn-primary" role="button">Añadir Línea de Factura</a></td>
+            <td colspan="2"><input type="submit" value="Añadir Línea de Factura" class="btn-primary" role="button" /></td>
         </tr>
       </table>
     </form>

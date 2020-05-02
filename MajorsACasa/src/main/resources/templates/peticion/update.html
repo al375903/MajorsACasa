@@ -3,8 +3,8 @@
 <head>
    <title>Editar una petición</title>
    <meta charset="UTF-8" />
-	<link rel="stylesheet"       
-     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
     <h2>Editar petición</h2>
@@ -60,7 +60,7 @@
             <td th:if="${#fields.hasErrors('fechaCancelacion')}" th:errors="*{fechaCancelacion}" class="error"></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="add" class="btn btn-primary" role="button">Editar Petición</a></td>
+            <td colspan="2"><input type="submit" value="Editar Petición" class="btn-primary" role="button" /></td>
         </tr>
       </table>
     </form>
