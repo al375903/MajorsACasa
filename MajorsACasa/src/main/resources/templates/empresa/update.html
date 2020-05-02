@@ -3,8 +3,8 @@
 <head>
    <title>Editar una empresa</title>
    <meta charset="UTF-8" />
-	<link rel="stylesheet"       
-     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
     <h2>Editar empresa</h2>
@@ -50,7 +50,7 @@
             <td th:if="${#fields.hasErrors('emailManager')}" th:errors="*{emailManager}" class="error"></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="add" class="btn btn-primary" role="button">Editar Empresa</a></td>
+            <td colspan="2"><input type="submit" value="Editar empresa" class="btn-primary" role="button" /></td>
         </tr>
       </table>
     </form>
