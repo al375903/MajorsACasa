@@ -10,7 +10,7 @@ body {
 
 /* Capçalera de nivell 1 */
 h1 {
-   font-size: 300%; 
+   font-size: 250%; 
    font-weight: bold;
    color: #000080;
    magin-bottom: 10px;
@@ -30,23 +30,21 @@ h2 {
 label {
 	font-weight: bold;
 	display: block;
-	margin: 0px 0px 15px 0px;
+	margin: 0px 10px 15px 0px;
 }
-
-
 
 input, select {
 	font-size: 103%;
 }
 
 .error {
-	 height: auto;
 	 width: 400px;
      color: #8B0000;
      font-size:85%;
-     float: left;
-     display: inline-block;
-     margin-left: 5px;
+     text-align: left;
+     vertical-align: middle;
+     padding-left: 10px;
+     /*margin: 0px 0px 0px 30px;*/
 }
 
 .center {
