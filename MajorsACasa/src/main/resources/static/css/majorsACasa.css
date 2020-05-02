@@ -1,3 +1,5 @@
+<link rel="stylesheet"      
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 /* Estil aplicat al cos de la pàgina */
 body {
    font-family: Helvetica, Arial, sans-serif; 
@@ -31,12 +33,7 @@ label {
 	margin: 0px 0px 15px 0px;
 }
 
-td {
-	width: 200px;
-	float: left;
-	padding-top: 8px;
-	padding-right: 5px;
-}
+
 
 input, select {
 	font-size: 103%;
@@ -44,10 +41,10 @@ input, select {
 
 .error {
 	 height: auto;
-	 width: auto;
+	 width: 400px;
      color: #8B0000;
      font-size:85%;
-     text-align: center;
+     float: left;
      display: inline-block;
      margin-left: 5px;
 }

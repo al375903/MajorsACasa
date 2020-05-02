@@ -34,9 +34,7 @@ public class BeneficiarioValidator implements Validator {
 		if (beneficiario.getEmail().trim().equals("")) {
 			errors.rejectValue("email", "obligatorio",
 					"Introduzca su e-mail.");
-		}
-		
-		if (!beneficiario.getEmail().trim().contains("@")) {
+		} else if (!beneficiario.getEmail().trim().contains("@")) {
 			errors.rejectValue("email", "arroba", "La dirección debe llevar @.");
 		}
 		
