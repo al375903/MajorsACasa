@@ -2,29 +2,33 @@
 body {
    font-family: Helvetica, Arial, sans-serif; 
    background-color: white;
+   max-width: 500px;
+   padding: 20px 12px 10px 20px;
+   background-color: white;
 }
 
 /* Capçalera de nivell 1 */
 h1 {
    font-size: 300%; 
-   font-style: bold;
+   font-weight: bold;
    color: #000080;
+   magin-bottom: 10px;
+   padding-bottom: 3px;
 }
 
 /* Capçalera de nivell 2 */
 h2 {
    font-size: 225%;
-   font-style: bold; 
+   font-weight: bold;
+   font-style: italic; 
    color: #4169E1;
+   border-bottom: 2px solid #ddd;
+   margin-bottom: 15px;
+   padding-bottom: 3px;
 }
 
 /* Classe CSS error */
 .error {
      color: #8B0000;
-     font-size:80%
-}
-
-.estilo-formulario{
-	max-width: 500px;
-	padding: 20px 12px 10px 20px;
+     font-size:85%
 }
