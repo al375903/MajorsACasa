@@ -57,6 +57,10 @@ public class ContratoController {
 		if (bindingResult.hasErrors())
 			return "contrato/add";
 		
+		if(!contratoService.getIdEmpresa(contrato.getIdContrato())) {
+			return "empresa/add";
+		}
+		
 		try {
 			contratoDao.addContrato(contrato, tipoServicio);
 		} catch (DuplicateKeyException e) {

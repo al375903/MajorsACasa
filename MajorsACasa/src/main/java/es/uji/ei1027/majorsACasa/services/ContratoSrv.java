@@ -24,14 +24,28 @@ public class ContratoSrv implements ContratoService{
 		List<Contrato> listaContrato = contratoDao.getContratoPorId(id);
  		String tipoServicio = null;
 		for(Contrato contrato : listaContrato) {
-			List<Empresa> listaEmpresa = empresaDao.getEmpresaPorId(id);
+			List<Empresa> listaEmpresa = empresaDao.getEmpresaPorId(contrato.getIdEmpresa());
 			for(Empresa empresa: listaEmpresa) {
-				if(contrato.getIdEmpresa() == empresa.getIdEmpresa()) {
+				if(contrato.getIdEmpresa().equals(empresa.getIdEmpresa())) {
 					tipoServicio = empresa.getTipoServicio();
 				}
 			}
 		}
 		return tipoServicio;
+	}
+	
+	public boolean getIdEmpresa(String id) {
+		List<Contrato> listaContrato = contratoDao.getContratoPorId(id);
+		boolean existe = false;
+		for(Contrato contrato : listaContrato) {
+			List<Empresa> listaEmpresa = empresaDao.getEmpresas();
+			for(Empresa empresa: listaEmpresa) {
+				if(contrato.getIdEmpresa().equals(empresa.getIdEmpresa())) {
+					existe = true;
+				}
+			}
+		}
+		return existe;
 	}
 	
 }
