@@ -64,3 +64,15 @@ input, select {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 }
+
+/* Classe CSS per atributs erronis */
+.needcorrection {
+     color: red;
+     background-color:yellow;
+}
+
+.loggeduser { 
+    color: gray;                
+    text-align: right;
+	margin-right: 10pt;
+}
