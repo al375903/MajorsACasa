@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}"> 
 <head>
    <title>Crear nueva factura</title>
    <meta charset="UTF-8" />
@@ -7,6 +9,7 @@
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
+<div layout:fragment="content">
     <h2>Nueva factura</h2>
     <form action="#" th:action="@{/factura/add}"
                      th:object="${factura}" method="post">
@@ -46,5 +49,6 @@
         </tr>
       </table>
     </form>
+</div>
 </body>
 </html>

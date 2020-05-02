@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
    <meta charset="UTF-8">
    <title>Mensaje de excepcion</title>
@@ -7,6 +9,7 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
 <body>
+<div layout:fragment="content">
 <div class="container">
    <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
@@ -16,6 +19,7 @@
    	   <a class="btn btn-light" th:align="left" onclick="history.back()">Atrás</a>
        <a href="/" class="btn btn-primary" th:align="left">Inicio</a>
    </div>
+</div>
 </div>
 </body>
 </html>

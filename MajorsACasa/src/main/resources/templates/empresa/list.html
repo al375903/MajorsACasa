@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
    <title>Gestionar Empresas</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
+<div layout:fragment="content">
 <div class="container">
    <h1>Lista de Empresas</h1>
    <table class="table table-striped">
@@ -41,6 +44,7 @@
      </tbody>
    </table>
    <a href="add" class="btn btn-success" role="button">Añadir Empresa</a>
+</div>
 </div>
 </body>
 </html>

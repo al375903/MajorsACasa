@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}"> 
 <head>
    <title>Editar horario voluntario</title>
    <meta charset="UTF-8" />
@@ -7,6 +9,7 @@
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
+<div layout:fragment="content">
     <h2>Editar Horario</h2>
     <form action="#" th:action="@{/horarioVoluntario/update}"
                      th:object="${horarioVoluntario}" method="post">
@@ -41,6 +44,7 @@
         </tr>
       </table>
     </form>
+</div>
 </body>
 </html>
    

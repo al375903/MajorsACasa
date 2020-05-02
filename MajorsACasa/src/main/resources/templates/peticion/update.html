@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
    <title>Editar una petición</title>
    <meta charset="UTF-8" />
@@ -7,6 +9,7 @@
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
+<div layout:fragment="content">
     <h2>Editar petición</h2>
     <form action="#" th:action="@{/peticion/update}"
                      th:object="${peticion}" method="post">
@@ -64,5 +67,6 @@
         </tr>
       </table>
     </form>
+</div>
 </body>
 </html>

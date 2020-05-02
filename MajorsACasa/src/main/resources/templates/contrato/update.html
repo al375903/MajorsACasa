@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}"> 
 <head>
    <title>Editar contrato</title>
    <meta charset="UTF-8" />
@@ -7,6 +9,7 @@
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
+<div layout:fragment="content">
     <h2>Editar Contrato</h2>
     <form action="#" th:action="@{/contrato/update}"
                      th:object="${contrato}" method="post">
@@ -36,6 +39,7 @@
         </tr>
       </table>
     </form>
+</div>
 </body>
 </html>
    
