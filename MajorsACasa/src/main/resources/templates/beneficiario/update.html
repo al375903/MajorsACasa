@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}"> 
 <head>
    <title>Editar un beneficiario</title>
    <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
-<body class="center">
+<body>
+<div layout:fragment="content">
     <h2>Editar beneficiario</h2>
     <form action="#" th:action="@{/beneficiario/update}"
                      th:object="${beneficiario}" method="post">
@@ -60,5 +63,6 @@
         </tr>
       </table>
     </form>
+</div>
 </body>
 </html>
