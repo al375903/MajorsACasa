@@ -6,15 +6,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.majorsACasa.model.Contrato;
+import es.uji.ei1027.majorsACasa.model.Empresa;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
 public class ContratoDao {
 
 	private JdbcTemplate jdbcTemplate;
+	private EmpresaDao empresaDao;
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {

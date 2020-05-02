@@ -1,6 +1,7 @@
 package es.uji.ei1027.majorsACasa.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -15,6 +16,8 @@ import es.uji.ei1027.majorsACasa.model.Empresa;
 @Repository
 public class EmpresaDao {
 	private JdbcTemplate jdbcTemplate;
+	ArrayList<Empresa> listaEmpresas;
+	HashMap<String, String> mapa;
 
 	   @Autowired
 	   public void setDataSource(DataSource dataSource) {
@@ -66,4 +69,5 @@ public class EmpresaDao {
 	           return new ArrayList<Empresa>();
 	       }
 	   }
+	   
 }
