@@ -2,20 +2,21 @@
 body {
    font-family: Helvetica, Arial, sans-serif; 
    background-color: white;
+   padding: 20px 12px 10px 20px;
 }
 
 /* Capçalera de nivell 1 */
 h1 {
    font-size: 300%; 
    font-style: bold;
-   color: #6495ED;
+   color: #000080;
 }
 
 /* Capçalera de nivell 2 */
 h2 {
-   font-size: 200%;
+   font-size: 225%;
    font-style: bold; 
-   color: #87CEFA;
+   color: #4169E1;
 }
 
 /* Classe CSS error */
