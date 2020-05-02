@@ -15,17 +15,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.ContratoDao;
+import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
 import es.uji.ei1027.majorsACasa.model.Contrato;
+import es.uji.ei1027.majorsACasa.services.ContratoService;
 
 @Controller
 @RequestMapping("/contrato")
 public class ContratoController {
 	
 	private ContratoDao contratoDao;
+	private ContratoService contratoService;
 	
 	@Autowired
 	public void setContratoDao(ContratoDao contratoDao) {
 		this.contratoDao = contratoDao;
+	}
+	
+	@Autowired
+	public void setContratoService(ContratoService contratoService) {
+		this.contratoService = contratoService;
 	}
 	
 	@RequestMapping("/list")
@@ -43,16 +51,17 @@ public class ContratoController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("contrato") Contrato contrato,
 									BindingResult bindingResult) {
+		String tipoServicio = contratoService.getEmpresaTipoServicio(contrato.getIdContrato());
 		ContratoValidator contratoValidator = new ContratoValidator();
 		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
 			return "contrato/add";
 		
 		try {
-			contratoDao.addContrato(contrato);
-		/*} catch (DuplicateKeyException e) {
+			contratoDao.addContrato(contrato, tipoServicio);
+		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
-			"Ya existe un contrato " + contrato.getIdEmpresa(), "CPduplicada");*/
+			"Ya existe un contrato " + contrato.getIdContrato(), "CPduplicada");
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
 					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");

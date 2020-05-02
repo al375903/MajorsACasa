@@ -11,13 +11,13 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
 
 @Repository
 public class EmpresaDao {
 	private JdbcTemplate jdbcTemplate;
-	ArrayList<Empresa> listaEmpresas;
-	HashMap<String, String> mapa;
+	public HashMap<String, Empresa> mapaEmpresas = new HashMap<String, Empresa>();
 
 	   @Autowired
 	   public void setDataSource(DataSource dataSource) {
@@ -31,6 +31,7 @@ public class EmpresaDao {
 	              empresa.getTipoServicio(), empresa.getNombreManager(), 
 	              empresa.getDireccion(), empresa.getTelefono(), 
 	              empresa.getHorarioAtencionCliente(), empresa.getEmailManager());
+	       mapaEmpresas.put(empresa.getIdEmpresa(), empresa);
 	   }
 
 	   /* Esborra la empresa de la base de dades */
@@ -70,4 +71,18 @@ public class EmpresaDao {
 	       }
 	   }
 	   
+	   public HashMap<String, Empresa> getMapaEmpresas(){
+		   return mapaEmpresas;
+	   }
+	   
+	   public List<Empresa> getEmpresaPorId(String id) {
+			try {
+				return this.jdbcTemplate.query(
+						"SELECT * FROM empresa WHERE idEmpresa=?",
+						new Object[] {id}, new EmpresaRowMapper());
+			}
+			catch(EmptyResultDataAccessException e) {
+			    return null;
+			}
+		}
 }

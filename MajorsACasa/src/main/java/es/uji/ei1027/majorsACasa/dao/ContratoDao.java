@@ -17,17 +17,17 @@ import java.util.List;
 public class ContratoDao {
 
 	private JdbcTemplate jdbcTemplate;
-	private EmpresaDao empresaDao;
+	public EmpresaDao empresaDao;
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public void addContrato(Contrato contrato) {
+	public void addContrato(Contrato contrato, String tipoServicio) {
 		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?,?)",
 				contrato.getIdContrato(), contrato.getIdEmpresa(), 
-				contrato.getPrecio(), contrato.getTipoServicio(), 
+				contrato.getPrecio(), tipoServicio, 
 				contrato.getFechaInicio(), contrato.getFechaFin());
 	}
 	
@@ -58,6 +58,18 @@ public class ContratoDao {
 			return new ArrayList<Contrato>();
 		}
 	}
+	
+	public List<Contrato> getContratoPorId(String id) {
+		try {
+			return this.jdbcTemplate.query(
+					"SELECT * FROM contrato WHERE idContrato=?",
+					new Object[] {id}, new ContratoRowMapper());
+		}
+		catch(EmptyResultDataAccessException e) {
+		    return null;
+		}
+	}
+
 }
 
 
