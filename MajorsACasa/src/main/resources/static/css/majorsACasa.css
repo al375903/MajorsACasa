@@ -43,8 +43,13 @@ input, select {
 }
 
 .error {
+	 height: auto;
+	 width: auto;
      color: #8B0000;
      font-size:85%;
+     text-align: center;
+     display: inline-block;
+     margin-left: 5px;
 }
 
 .center {
@@ -65,7 +70,6 @@ input, select {
 	-moz-border-radius: 3px;
 }
 
-/* Classe CSS per atributs erronis */
 .needcorrection {
      color: red;
      background-color:yellow;
