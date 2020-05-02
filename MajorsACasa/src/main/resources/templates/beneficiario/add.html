@@ -8,66 +8,68 @@
 </head>
 <body>
     <h2>Nuevo beneficiario</h2>
-    <form action="#" th:action="@{/beneficiario/add}"
-                     th:object="${beneficiario}" method="post">
-      <table>
-        <tr>
-            <td><label>Id Beneficiario</label></td>
-            <td><input type="text" th:field="*{idBeneficiario}" maxlength=9 /></td>
-            <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Nombre</label></td>
-            <td><input type="text" th:field="*{nombre}" maxlength=50/></td>
-            <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Email</label></td>
-            <td><input type="text" th:field="*{email}" maxlength=50/></td>
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Dirección</label></td>
-            <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
-            <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Género</label></td>
-            <td><select class="form_control" type="text" th:field="*{genero}"> 
-				<option value="No seleccionada">Seleccione su género</option> 
-				<option value="Femenino">Femenino</option>
-				<option value="Masculino">Masculino</option>
-			</select>
-  			</td>
-  			<td th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Edad</label></td>
-            <td><input type="number" th:field="*{edad}" /></td>
-            <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Contraseña</label></td>
-            <td><input type="text" th:field="*{contrasenya}" maxlength=50/></td>
-            <td th:if="${#fields.hasErrors('contrasenya')}" th:errors="*{contrasenya}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Hobbies</label></td>
-            <td><input type="text" th:field="*{hobbies}" maxlength=400/></td>
-        </tr>
-        <tr>
-            <td><label>Alergias</label></td>
-            <td><input type="text" th:field="*{alergias}" maxlength=150/></td>
-        </tr>
-        <tr>
-            <td><label>Enfermedades </label></td>
-            <td><input type="text" th:field="*{enfermedades}" maxlength=300/></td>
-        </tr>
-        <tr>
-			<td colspan="2"><input type="submit" value="Añadir Beneficiario" class="btn-primary" role="button" /></td>
-		</tr>
-      </table>
-    </form>
+    <div class="form-style-2">
+	    <form action="#" th:action="@{/beneficiario/add}"
+	                     th:object="${beneficiario}" method="post">
+	      <table>
+	        <tr>
+	            <td><label>Id Beneficiario</label></td>
+	            <td><input type="text" th:field="*{idBeneficiario}" maxlength=9 /></td>
+	            <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Nombre</label></td>
+	            <td><input type="text" th:field="*{nombre}" maxlength=50/></td>
+	            <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Email</label></td>
+	            <td><input type="text" th:field="*{email}" maxlength=50/></td>
+	            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Dirección</label></td>
+	            <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
+	            <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Género</label></td>
+	            <td><select class="form_control" type="text" th:field="*{genero}"> 
+					<option value="No seleccionada">Seleccione su género</option> 
+					<option value="Femenino">Femenino</option>
+					<option value="Masculino">Masculino</option>
+				</select>
+	  			</td>
+	  			<td th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Edad</label></td>
+	            <td><input type="number" th:field="*{edad}" /></td>
+	            <td th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Contraseña</label></td>
+	            <td><input type="text" th:field="*{contrasenya}" maxlength=50/></td>
+	            <td th:if="${#fields.hasErrors('contrasenya')}" th:errors="*{contrasenya}" class="error"></td>
+	        </tr>
+	        <tr>
+	            <td><label>Hobbies</label></td>
+	            <td><input type="text" th:field="*{hobbies}" maxlength=400/></td>
+	        </tr>
+	        <tr>
+	            <td><label>Alergias</label></td>
+	            <td><input type="text" th:field="*{alergias}" maxlength=150/></td>
+	        </tr>
+	        <tr>
+	            <td><label>Enfermedades </label></td>
+	            <td><input type="text" th:field="*{enfermedades}" maxlength=300/></td>
+	        </tr>
+	        <tr>
+				<td colspan="2"><input type="submit" value="Añadir Beneficiario" class="btn-primary" role="button" /></td>
+			</tr>
+	      </table>
+	    </form>
+	</div>
 </body>
 </html>
    
