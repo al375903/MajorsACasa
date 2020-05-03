@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
+<head>
+   <meta charset="UTF-8">
+   <title>Mensaje de excepcion</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+   <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
+       <h3 th:text="${message}"></h3>
+       <p>¿Quieres añadir la empresa?</p>
+   </div>
+   <div th:align="center">
+   	   <a class="btn btn-light" th:align="left" onclick="history.back()">Atrás</a>
+       <a href="/empresa/add" class="btn btn-primary" th:align="left">Añadir empresa</a>
+   </div>
+</div>
+</div>
+</body>
+</html>

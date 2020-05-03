@@ -57,9 +57,9 @@ public class ContratoController {
 		if (bindingResult.hasErrors())
 			return "contrato/add";
 		
-		if(!contratoService.getIdEmpresa(contrato.getIdContrato())) {
+		/*if(!contratoService.getIdEmpresa(contrato.getIdContrato())) {
 			return "empresa/add";
-		}
+		}*/
 		
 		try {
 			contratoDao.addContrato(contrato, tipoServicio);
@@ -68,7 +68,7 @@ public class ContratoController {
 			"Ya existe un contrato " + contrato.getIdContrato(), "CPduplicada");
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
-					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+					"La empresa introducida no existe.", "ErrorAccediendoDatosEmpresa");
 		}
 		
 		return "redirect:list";

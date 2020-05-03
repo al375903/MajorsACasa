@@ -10,6 +10,9 @@ public class MajorsACasaControllerAdvice {
 	@ExceptionHandler(value = MajorsACasaException.class)
 	public ModelAndView handleClubException(MajorsACasaException ex){
 		ModelAndView mav = new ModelAndView("error/exceptionError");
+		if(ex.getErrorName().equals("ErrorAccediendoDatosEmpresa")){
+			mav = new ModelAndView("error/exceptionErrorContrato");
+		}
 		mav.addObject("message", ex.getMessage());
 	    mav.addObject("errorName", ex.getErrorName());
 	    return mav;
