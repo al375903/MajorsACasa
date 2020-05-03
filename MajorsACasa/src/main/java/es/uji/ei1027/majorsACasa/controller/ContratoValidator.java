@@ -1,9 +1,5 @@
 package es.uji.ei1027.majorsACasa.controller;
 
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import es.uji.ei1027.majorsACasa.model.Contrato;

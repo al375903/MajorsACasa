@@ -8,7 +8,6 @@ public class Contrato {
 	private String idContrato;
 	private String idEmpresa;
 	private float precio;
-	private String tipoServicio;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate fechaInicio;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
@@ -41,14 +40,6 @@ public class Contrato {
 		this.precio = precio;
 	}
 
-	public String getTipoServicio() {
-		return tipoServicio;
-	}
-
-	public void setTipoServicio(String tipoServicio) {
-		this.tipoServicio = tipoServicio;
-	}
-
 	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
@@ -68,8 +59,7 @@ public class Contrato {
 	@Override
 	public String toString() {
 		return "Contrato [idContrato=" + idContrato + ", idEmpresa=" + idEmpresa 
-				+ ", precio=" + precio + ", tipoServicio=" + tipoServicio 
-				+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
+				+ ", precio=" + precio + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}
 	
 }

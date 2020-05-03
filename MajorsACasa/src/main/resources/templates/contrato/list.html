@@ -18,7 +18,6 @@
          <th>Id Contrato</th>
          <th>Id Empresa</th>
          <th>Precio</th>
-         <th>Tipo Servicio</th>
          <th>Fecha Inicio</th>
          <th>Fecha Fin</th>
          <th></th>
@@ -30,7 +29,6 @@
          <td th:text="${contrato.idContrato}"></td>
          <td th:text="${contrato.idEmpresa}"></td>
          <td th:text="${contrato.precio}"></td>
-         <td th:text="${contrato.tipoServicio}"></td>
          <td th:text="${contrato.fechaInicio}"></td>
          <td th:text="${contrato.fechaFin}"></td>
          <td><a th:href="@{/contrato/update/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button">Editar</a>

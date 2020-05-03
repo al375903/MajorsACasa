@@ -13,7 +13,6 @@ public final class ContratoRowMapper implements RowMapper<Contrato>{
 	       contrato.setIdContrato(rs.getString("idContrato"));
 	       contrato.setIdEmpresa(rs.getString("idEmpresa"));
 	       contrato.setPrecio(rs.getFloat("precio"));
-	       contrato.setTipoServicio(rs.getString("tipoServicio"));
 	       contrato.setFechaInicio(rs.getObject("fechaInicio", LocalDate.class));
 	       contrato.setFechaFin(rs.getObject("fechaFin", LocalDate.class));
 	       return contrato;

@@ -6,11 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.majorsACasa.model.Contrato;
-import es.uji.ei1027.majorsACasa.model.Empresa;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -24,11 +22,10 @@ public class ContratoDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public void addContrato(Contrato contrato, String tipoServicio) {
-		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?,?)",
+	public void addContrato(Contrato contrato) {
+		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?)",
 				contrato.getIdContrato(), contrato.getIdEmpresa(), 
-				contrato.getPrecio(), tipoServicio, 
-				contrato.getFechaInicio(), contrato.getFechaFin());
+				contrato.getPrecio(), contrato.getFechaInicio(), contrato.getFechaFin());
 	}
 	
 	public void deleteContrato(String idContrato) {
@@ -36,9 +33,9 @@ public class ContratoDao {
 	}
 	
 	public void updateContrato(Contrato contrato) {
-		jdbcTemplate.update("UPDATE Contrato SET precio=?, tipoServicio=?, fechaInicio=?, "
+		jdbcTemplate.update("UPDATE Contrato SET precio=?, fechaInicio=?, "
 				+ "fechaFin=? WHERE idContrato=?",
-				contrato.getPrecio(), contrato.getTipoServicio(), contrato.getFechaInicio(), 
+				contrato.getPrecio(), contrato.getFechaInicio(), 
 				contrato.getFechaFin(), contrato.getIdContrato());
 	}
 	
