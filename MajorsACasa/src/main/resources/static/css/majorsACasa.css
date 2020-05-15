@@ -65,6 +65,45 @@ input, select {
 	-moz-border-radius: 3px;
 }
 
+.btn-success2 {
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.btn-warning2 {
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.btn-danger2 {
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
 .needcorrection {
      color: red;
      background-color:yellow;

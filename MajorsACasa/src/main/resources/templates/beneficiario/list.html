@@ -5,7 +5,8 @@
 <head>
    <title>Gestionar Beneficiarios</title>
    <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" 
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
+   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" 
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
@@ -25,8 +26,8 @@
          <th>Hobbies</th>
          <th>Alergias</th>
 		 <th>Enfermedades</th>
-         <th></th>
-         <th></th>
+         <th>Editar</th>
+         <th>Eliminar</th>
        </tr>
      </thead>
      <tbody>
@@ -41,9 +42,12 @@
          <td th:text="${beneficiario.hobbies}"></td>
          <td th:text="${beneficiario.alergias}"></td>
          <td th:text="${beneficiario.enfermedades}"></td>
-         <td><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button">Editar</a>
+         
+         <td><center><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button"><span class="glyphicon glyphicon-pencil"></span></a></center>
          </td>
-         <td><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><center><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash"></span></a></center>
+         
+      
          </td>
        </tr>
      </tbody>
