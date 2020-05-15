@@ -5,11 +5,34 @@
 <head>
    <title>Gestionar Empresas</title>
    <meta charset="UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
 <body>
+
 <div layout:fragment="content">
+<div class="container">
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">¿Desea eliminar?</h4>
+			</div>
+			<div class="modal-body">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
 <div class="container">
    <h1>Lista de Empresas</h1>
    <table class="table table-striped">
@@ -39,12 +62,33 @@
          <td th:text="${empresa.emailManager}"></td>
          <td><a th:href="@{/empresa/update/{id}(id=${empresa.idEmpresa})}" class="btn btn-warning" role="button">Editar</a>
          </td>
-         <td><a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td>
+         	<a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" data-toggle="modal" data-target="#miModal">Eliminar</a>
          </td>
        </tr>
      </tbody>
    </table>
    <a href="add" class="btn btn-success" role="button">Añadir Empresa</a>
+   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#miModal">Abrir modal</button>
+   	<!-- <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">¿Desea eliminar?</h4>
+				</div>
+				<div class="modal-body">
+				<p>Pues eso<p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">OK</button>
+				</div>
+			</div>
+			</div>
+			</div>-->
+			
+
 </div>
 </div>
 </body>

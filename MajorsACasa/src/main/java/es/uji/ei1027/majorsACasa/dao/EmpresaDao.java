@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
 
 @Repository
@@ -36,7 +36,7 @@ public class EmpresaDao {
 
 	   /* Esborra la empresa de la base de dades */
 	   public void deleteEmpresa(String idEmpresa) {
-	       jdbcTemplate.update("DELETE FROM Empresa WHERE idEmpresa=?",
+		   jdbcTemplate.update("DELETE FROM Empresa WHERE idEmpresa=?",
 	                           idEmpresa);
 	   }
 
