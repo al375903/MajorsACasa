@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -39,7 +41,7 @@ public class EmpresaController {
    
    @RequestMapping(value="/add", method = RequestMethod.POST) 
    public String processAddSubmit(@ModelAttribute("empresa") Empresa empresa,
-                                   BindingResult bindingResult) {  
+                                   BindingResult bindingResult, HttpSession session) {  
 	   EmpresaValidator empresaValidator = new EmpresaValidator();
 	   empresaValidator.validate(empresa, bindingResult);
 	   if (bindingResult.hasErrors()) 
@@ -53,7 +55,14 @@ public class EmpresaController {
 			throw new MajorsACasaException(
 					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
 		}
-   	 return "redirect:list";
+	   // Torna a la pàgina principal
+       //return "redirect:/";
+       String nextUrl = "list";
+       /*if(session.getAttribute("nextUrl") != null) {
+	       	nextUrl = (String) session.getAttribute("nextUrl");
+	       	session.removeAttribute("nextUrl");
+       }*/
+   	 return "redirect:" + nextUrl;
 	}
    
    @RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
