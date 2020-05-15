@@ -15,7 +15,7 @@
                      th:object="${empresa}" method="post">
       <table>
         <tr>
-            <td><label>Id Empresa</label></td>
+            <td><label>CIF</label></td>
             <td><input type="text" th:field="*{idEmpresa}" maxlength=20/></td>
             <td th:if="${#fields.hasErrors('idEmpresa')}" th:errors="*{idEmpresa}" class="error"></td>
         </tr>
@@ -36,7 +36,7 @@
 			<td th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Nombre Manager</label></td>
+            <td><label>Persona de contacto</label></td>
             <td><input type="text" th:field="*{nombreManager}" maxlength=50/></td>
             <td th:if="${#fields.hasErrors('nombreManager')}" th:errors="*{nombreManager}" class="error"></td>
         </tr>

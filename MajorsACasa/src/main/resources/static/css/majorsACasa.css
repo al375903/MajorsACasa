@@ -2,7 +2,7 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 /* Estil aplicat al cos de la pàgina */
 body {
-   font-family: Helvetica, Arial, sans-serif; 
+   font-family: Roboto, Helvetica, Arial, sans-serif; 
    background-color: white;
    max-width: 500px;
    padding: 20px 12px 10px 20px;
