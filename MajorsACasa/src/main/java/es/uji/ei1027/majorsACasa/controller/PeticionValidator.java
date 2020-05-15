@@ -59,7 +59,7 @@ public class PeticionValidator implements Validator {
 			}
 		}
 		
-		if(peticion.getEstado().equals("No revisada")) {
+		if(peticion.getEstado().equals("NoRevisada")) {
 			if(peticion.getFechaDenegacion() != null) {
 				errors.rejectValue("fechaDenegacion", "noDenegación", "No puede seleccionar una fecha de denegación.");
 			}

@@ -45,6 +45,14 @@ public class PeticionController {
 		if(bindingResult.hasErrors())
 			return "peticion/add";
 		try {
+			for(Peticion peticion2 : peticionDao.getPeticiones()) {
+				if(peticion2.getIdBeneficiario().equals(peticion.getIdBeneficiario())) {
+					if(peticion2.getEstado().equals("Aceptada") || peticion2.getEstado().equals("NoRevisada")) {
+						throw new MajorsACasaException(
+								"No puede realizar una nueva petición teniendo una petición aceptado o por revisar", "ErrorCrearPetición");
+					}
+				}
+			}
 			peticionDao.addPeticion(peticion);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
