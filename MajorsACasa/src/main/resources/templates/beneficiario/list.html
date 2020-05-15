@@ -12,7 +12,7 @@
 <body>
 <div layout:fragment="content">
 <div class="container">
-   <h1>Lista de Beneficiarios</h1>
+   <h1>Lista de Beneficiarios  <i class="fas fa-blind fa-lg"></i></h1>
    <table class="table table-striped">
      <thead>
        <tr>
@@ -26,8 +26,8 @@
          <th>Hobbies</th>
          <th>Alergias</th>
 		 <th>Enfermedades</th>
-         <th>Editar</th>
-         <th>Eliminar</th>
+         <th><font size="+1">Editar</font></th>
+         <th><font size="+1">Eliminar</font></th>
        </tr>
      </thead>
      <tbody>
@@ -43,16 +43,16 @@
          <td th:text="${beneficiario.alergias}"></td>
          <td th:text="${beneficiario.enfermedades}"></td>
          
-         <td><center><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button"><i class="fas fa-edit"></i></a></center>
+         <td><center><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
-         <td><center><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button"><i class="fas fa-trash"></i></a></center>
+         <td><center><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
          
       
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Beneficiario</a>
+   <a href="add" class="btn btn-success" role="button">Añadir Beneficiario <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>
