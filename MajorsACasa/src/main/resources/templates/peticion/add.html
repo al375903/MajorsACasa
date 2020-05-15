@@ -15,17 +15,17 @@
                      th:object="${peticion}" method="post">
       <table>
         <tr>
-            <td><label>Id Petición</label></td>
+            <td><label>Número Petición</label></td>
             <td><input type="text" th:field="*{idPeticion}" /></td>
             <td th:if="${#fields.hasErrors('idPeticion')}" th:errors="*{idPeticion}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Id Beneficiario</label></td>
+            <td><label>DNI Beneficiario</label></td>
             <td><input type="text" th:field="*{idBeneficiario}" /></td>
             <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Id Contrato</label></td>
+            <td><label>Número Contrato</label></td>
             <td><input type="text" th:field="*{idContrato}" /></td>
             <td th:if="${#fields.hasErrors('idContrato')}" th:errors="*{idContrato}" class="error"></td>
         </tr>

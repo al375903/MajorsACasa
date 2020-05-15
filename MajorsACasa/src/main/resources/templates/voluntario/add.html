@@ -15,7 +15,7 @@
                      th:object="${voluntario}" method="post">
       <table>
         <tr>
-            <td><label>Id Voluntario</label></td>
+            <td><label>DNI</label></td>
             <td><input type="text" th:field="*{idVoluntario}" maxlength=9/></td>
             <td th:if="${#fields.hasErrors('idVoluntario')}" th:errors="*{idVoluntario}" class="error"></td>
         </tr>

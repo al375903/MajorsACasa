@@ -15,12 +15,12 @@
                      th:object="${lineaFactura}" method="post">
       <table>
         <tr>
-            <td><label>Id Factura</label></td>
+            <td><label>Número Factura</label></td>
             <td><input type="text" th:field="*{idFactura}" /></td>
             <td th:if="${#fields.hasErrors('idFactura')}" th:errors="*{idFactura}" class="error"></td>
         </tr>
         <tr>
-            <td><label>Id Petición</label></td>
+            <td><label>Número Petición</label></td>
             <td><input type="text" th:field="*{idPeticion}" /></td>
         	<td th:if="${#fields.hasErrors('idPeticion')}" th:errors="*{idPeticion}" class="error"></td>
         </tr>

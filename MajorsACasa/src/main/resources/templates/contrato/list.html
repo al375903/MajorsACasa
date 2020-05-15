@@ -15,8 +15,7 @@
    <table class="table table-striped"> 
      <thead>
        <tr>
-         <th>Id Contrato</th>
-         <th>Id Empresa</th>
+         <th>Nombre Empresa</th>
          <th>Precio</th>
          <th>Fecha Inicio</th>
          <th>Fecha Fin</th>
@@ -26,8 +25,7 @@
      </thead>
      <tbody>
        <tr th:each="contrato: ${contratos}">
-         <td th:text="${contrato.idContrato}"></td>
-         <td th:text="${contrato.idEmpresa}"></td>
+         <td th:text="${contrato.idEmpresa}"></td> <!-- Nombre Empresa -->
          <td th:text="${contrato.precio}"></td>
          <td th:text="${contrato.fechaInicio}"></td>
          <td th:text="${contrato.fechaFin}"></td>
