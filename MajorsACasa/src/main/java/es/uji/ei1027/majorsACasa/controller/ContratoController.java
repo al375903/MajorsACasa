@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -12,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.ContratoDao;
+import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
 import es.uji.ei1027.majorsACasa.model.Contrato;
+import es.uji.ei1027.majorsACasa.model.Empresa;
 
 @Controller
 @RequestMapping("/contrato")
 public class ContratoController {
 	
 	private ContratoDao contratoDao;
+	public EmpresaDao empresaDao;
 	
 	@Autowired
 	public void setContratoDao(ContratoDao contratoDao) {
@@ -60,6 +65,31 @@ public class ContratoController {
 		}
 		
 		return "redirect:list";
+	}
+	
+	@RequestMapping(value="addEmpresaPorContrato")
+	public String addEmpresaPorContrato(Model model) {
+		model.addAttribute("empresa", new Empresa());
+		return "contrato/addEmpresaPorContrato";
+	}
+   
+   @RequestMapping(value="/addEmpresaPorContrato", method = RequestMethod.POST) 
+   public String processAddSubmitPorContrato(@ModelAttribute("empresa") Empresa empresa,
+                                   BindingResult bindingResult, HttpSession session) {  
+	   EmpresaValidator empresaValidator = new EmpresaValidator();
+	   empresaValidator.validate(empresa, bindingResult);
+	   if (bindingResult.hasErrors()) 
+   		return "contrato/addEmpresaPorContrato";
+	   try {
+		   contratoDao.addEmpresa(empresa);
+		} catch (DuplicateKeyException e) {
+			throw new MajorsACasaException(
+					"Ya existe una empresa con id " + empresa.getIdEmpresa(), "CPduplicada");
+		} catch (DataAccessException e) {
+			throw new MajorsACasaException(
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+		}
+   	 return "redirect:add";
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET)

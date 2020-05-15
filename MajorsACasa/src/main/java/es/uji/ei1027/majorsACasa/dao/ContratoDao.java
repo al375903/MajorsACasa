@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.majorsACasa.model.Contrato;
+import es.uji.ei1027.majorsACasa.model.Empresa;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -27,6 +28,14 @@ public class ContratoDao {
 				contrato.getIdContrato(), contrato.getIdEmpresa(), 
 				contrato.getPrecio(), contrato.getFechaInicio(), contrato.getFechaFin());
 	}
+	
+	 public void addEmpresa(Empresa empresa) {
+	       jdbcTemplate.update("INSERT INTO Empresa VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+	              empresa.getIdEmpresa(), empresa.getNombreEmpresa(), 
+	              empresa.getTipoServicio(), empresa.getNombreManager(), 
+	              empresa.getDireccion(), empresa.getTelefono(), 
+	              empresa.getHorarioAtencionCliente(), empresa.getEmailManager());
+	   }
 	
 	public void deleteContrato(String idContrato) {
 		jdbcTemplate.update("DELETE FROM Contrato WHERE idContrato=?", idContrato);

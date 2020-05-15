@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}"> 
+<head>
+   <title>Crear nueva empresa</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Nueva empresa</h2>
+    <form action="#" th:action="@{/contrato/addEmpresaPorContrato}"
+                     th:object="${empresa}" method="post">
+      <table>
+        <tr>
+            <td><label>CIF</label></td>
+            <td><input type="text" th:field="*{idEmpresa}" maxlength=20/></td>
+            <td th:if="${#fields.hasErrors('idEmpresa')}" th:errors="*{idEmpresa}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Nombre de la Empresa</label></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Tipo Servicio</label></td>
+            <td><select class="form_control" type="text" th:field="*{tipoServicio}">
+				<option value="No seleccionado">Selecciona el tipo del servicio</option>
+				<option value="Comida a domicilio">Comida a domicilio</option>
+				<option value="Servicio de limpieza">Servicio de limpieza</option>
+				<option value="Servicio sanitario">Servicio sanitario</option>
+				</select>
+			</td>
+			<td th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Persona de contacto</label></td>
+            <td><input type="text" th:field="*{nombreManager}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('nombreManager')}" th:errors="*{nombreManager}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Dirección</label></td>
+            <td><input type="text" th:field="*{direccion}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Teléfono</label></td>
+            <td><input type="text" th:field="*{telefono}" maxlength=12/></td>
+            <td th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Horario Atención al Cliente </label></td>
+            <td><input type="text" th:field="*{horarioAtencionCliente}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('horarioAtencionCliente')}" th:errors="*{horarioAtencionCliente}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>E-mail Manager</label></td>
+            <td><input type="text" th:field="*{emailManager}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('emailManager')}" th:errors="*{emailManager}" class="error"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Añadir Empresa" class="btn-primary" role="button" /></td>
+        </tr>
+      </table>
+    </form>
+</div>
+</body>
+</html>
+   

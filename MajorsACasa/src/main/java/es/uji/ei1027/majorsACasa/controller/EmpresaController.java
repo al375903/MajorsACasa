@@ -66,6 +66,7 @@ public class EmpresaController {
    	 return "redirect:" + nextUrl;
 	}
    
+   
    @RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
 	public String editEmpresa(Model model, @PathVariable String id) { 
 		model.addAttribute("empresa", empresaDao.getEmpresa(id));
