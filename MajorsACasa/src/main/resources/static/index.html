@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<title>Majors A Casa</title>
+	<title layout:title-pattern="$CONTENT_TITLE">Majors a casa</title>
 	<meta charset="UTF-8"/>
+	<meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" 
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
-<body>
-<div layout:fragment="content">
+<body class="container">
+
+<div class="loggeduser" th:object="${session}">
+    <p th:if="*{user == null}">
+      No autenticado <a href="/login" th:href="@{/login}">Entrar</a>
+    </p>
+    <p th:unless="*{user == null}">
+      Autenticado como <span th:text="*{user.username}"></span> <a
+            href="/logout" th:href="@{/logout}">Salir</a>
+    </p>
+</div>
+
 <div class="container">
 	<h1>Gestión de Majors a casa</h1>
 	<h2>Pruebas de la aplicación</h2>
@@ -25,7 +36,6 @@
 	<li><a href="voluntario/list">Gestión de voluntarios</a></li>
 	<li><a href="user/list">Login</a></li>
 	</ul>
-</div>
 </div>
 </body>
 </html>
