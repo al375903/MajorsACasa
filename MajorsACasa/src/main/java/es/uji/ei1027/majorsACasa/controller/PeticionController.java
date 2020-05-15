@@ -49,7 +49,7 @@ public class PeticionController {
 				if(peticion2.getIdBeneficiario().equals(peticion.getIdBeneficiario())) {
 					if(peticion2.getEstado().equals("Aceptada") || peticion2.getEstado().equals("NoRevisada")) {
 						throw new MajorsACasaException(
-								"No puede realizar una nueva petición teniendo una petición aceptado o por revisar", "ErrorCrearPetición");
+								"No puede realizar una nueva petición teniendo una petición aceptada o por revisar", "ErrorCrearPetición");
 					}
 				}
 			}

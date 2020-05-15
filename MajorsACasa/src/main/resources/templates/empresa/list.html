@@ -14,24 +14,7 @@
 <body>
 
 <div layout:fragment="content">
-<div class="container">
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">¿Desea eliminar?</h4>
-			</div>
-			<div class="modal-body">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary">OK</button>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+
 
 <div class="container">
    <h1>Lista de Empresas</h1>
@@ -63,30 +46,33 @@
          <td><a th:href="@{/empresa/update/{id}(id=${empresa.idEmpresa})}" class="btn btn-warning" role="button">Editar</a>
          </td>
          <td>
-         	<a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" data-toggle="modal" data-target="#miModal">Eliminar</a>
+         	<a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" role="button">Eliminar</a>
          </td>
        </tr>
      </tbody>
    </table>
    <a href="add" class="btn btn-success" role="button">Añadir Empresa</a>
-   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#miModal">Abrir modal</button>
-   	<!-- <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
+			
+	<!-- <div id="delete" class="modal fade" style="display: none;">
+		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">¿Desea eliminar?</h4>
-				</div>
-				<div class="modal-body">
-				<p>Pues eso<p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-primary">OK</button>
-				</div>
+				<form>
+					<div class="modal-header">						
+						<h4 class="modal-title">Delete Employee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">					
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<button href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" type="submit" class="btn btn-danger" value="Delete"></button>
+					</div>
+				</form>
 			</div>
-			</div>
-			</div>-->
+		</div>
+	</div>-->
 			
 
 </div>

@@ -27,7 +27,7 @@
         <tr>
             <td><label>Tipo Servicio</label></td>
             <td><select class="form_control" type="text" th:field="*{tipoServicio}">
-				<option value="No seleccionat">Selecciona el tipo del servicio</option>
+				<option value="No seleccionado">Selecciona el tipo del servicio</option>
 				<option value="Comida a domicilio">Comida a domicilio</option>
 				<option value="Servicio de limpieza">Servicio de limpieza</option>
 				<option value="Servicio sanitario">Servicio sanitario</option>
@@ -61,11 +61,28 @@
             <td th:if="${#fields.hasErrors('emailManager')}" th:errors="*{emailManager}" class="error"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Añadir Empresa" class="btn-primary" role="button" /></td>
+            <td colspan="2"><button href="#ok" value="submit" class="btn-primary" role="button" data-toggle="modal"/>Añadir Empresa</td>
         </tr>
       </table>
     </form>
 </div>
+
+<div id="ok" class="modal fade in" style="display: block;">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Creada!</h4>	
+			</div>
+			<div class="modal-body">
+				<p class="text-center">Se ha registrado la nueva empresa.</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>
    
