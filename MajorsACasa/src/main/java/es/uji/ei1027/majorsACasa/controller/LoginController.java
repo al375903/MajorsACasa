@@ -73,14 +73,14 @@ public class LoginController {
             }
             
             if(user.getTipo()=="casManager") {
-            	return "casManager";
+            	return "casManager/index";
             }else if(user.getTipo()=="casVolunteer") {
-            	nextUrl="casVolunteer";
+            	return "casVolunteer/index";
             }else if(user.getTipo()=="casCommittee") {
-            	nextUrl="casCommittee";
+            	return "casCommittee/index";
             }
-            
-            return "redirect:" + nextUrl;
+            nextUrl = "index2";
+            return nextUrl;
         }
 
         @RequestMapping("/logout") 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/baseVolunteer}">
+<head>
+	<title>Majors a casa</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="container">
+		<h1>Gestión de Majors a casa</h1>
+		<h2>Opciones de Gestor de Voluntarios</h2>
+		<ul>
+		<li><a href="horarioVoluntario/list">Gestión de horarios de voluntarios</a></li>
+		<li><a href="voluntario/list">Gestión de voluntarios</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

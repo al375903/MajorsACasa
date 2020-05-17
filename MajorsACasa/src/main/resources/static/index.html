@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
-	<title layout:title-pattern="$CONTENT_TITLE">Majors a casa</title>
+	<title>Majors A Casa</title>
 	<meta charset="UTF-8"/>
-	<meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" 
                                     th:href="@{/css/majorsACasa.css}"/>
 </head>
-<body class="container">
-
-<div class="loggeduser" th:object="${session}">
-    <p th:if="*{user == null}">
-      No autenticado <a href="/login" th:href="@{/login}">Entrar</a>
-    </p>
-    <p th:unless="*{user == null}">
-      Autenticado como <span th:text="*{user.username}"></span> <a
-            href="/logout" th:href="@{/logout}">Salir</a>
-    </p>
-</div>
-
+<body>
+<h1>MAJORS A CASA</h1>
+<div layout:fragment="content">
 <div class="container">
-	<h1>Gestión de Majors a casa</h1>
-	<h2>Pruebas de la aplicación</h2>
-	<ul>
-	<li><a href="beneficiario/list">Gestión de beneficiarios</a></li>
-	<li><a href="contrato/list">Gestión de contratos</a></li>
-	<li><a href="empresa/list">Gestión de empresas</a></li>
-	<li><a href="factura/list">Gestión de facturas</a></li>
-	<li><a href="horarioVoluntario/list">Gestión de horarios de voluntarios</a></li>
-	<li><a href="lineaFactura/list">Gestión de líneas de factura</a></li>
-	<li><a href="peticion/list">Gestión de peticiones</a></li>
-	<li><a href="voluntario/list">Gestión de voluntarios</a></li>
-	<li><a href="user/list">Login</a></li>
-	<li><a href="casManager/casManagerMenu">casManager</a></li>
-	</ul>
+	<div th:align="center">
+   	   <a href="user/list" class="btn btn-light" th:align="left">Entrar</a>
+       <a href="/" class="btn btn-primary" th:align="left">Registrarse</a>
+   </div>
+</div>
 </div>
 </body>
 </html>
