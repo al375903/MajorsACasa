@@ -18,20 +18,27 @@ public class FakeUserProvider implements UserDao {
 	    UserDetails responsableContratacion = new UserDetails(); 
 	    responsableContratacion.setUsername("casManager"); 
 	    responsableContratacion.setPassword(passwordEncryptor.encryptPassword("casManager")); 
-	    responsableContratacion.setTipo("Responsable Contratación");
+	    responsableContratacion.setTipo("casManager");
 	    knownUsers.put("casManager", responsableContratacion);
 	      
 	   UserDetails comite = new UserDetails(); 
 	   comite.setUsername("casCommitee"); 
 	   comite.setPassword(passwordEncryptor.encryptPassword("casCommitee")); 
-	   comite.setTipo("Comité");
+	   comite.setTipo("casCommitee");
 	   knownUsers.put("casCommitee", comite);
 	   
 	   UserDetails supervisorVoluntarios = new UserDetails(); 
 	   supervisorVoluntarios.setUsername("casVolunteer"); 
 	   supervisorVoluntarios.setPassword(passwordEncryptor.encryptPassword("casVolunteer")); 
-	   supervisorVoluntarios.setTipo("Supervisor Voluntarios");
+	   supervisorVoluntarios.setTipo("casVolunteer");
 	   knownUsers.put("casVolunteer", supervisorVoluntarios);
+	   
+	   //Usuario que tiene acceso a todo
+	    UserDetails jefe = new UserDetails(); 
+	    jefe.setUsername("jefe"); 
+	    jefe.setPassword(passwordEncryptor.encryptPassword("jefe")); 
+	    jefe.setTipo("jefe");
+	    knownUsers.put("jefe", jefe);
   }
 
   @Override

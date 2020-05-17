@@ -63,15 +63,23 @@ public class LoginController {
             }
             // Autenticats correctament. 
             // Guardem les dades de l'usuari autenticat a la sessió
-            session.setAttribute("user", user); 
-                
-            // Torna a la pàgina principal
+            session.setAttribute("user", user);
+            // Torna a la pàgina
             //return "redirect:/";
-            String nextUrl = "";
+            String nextUrl = "/";
             if(session.getAttribute("nextUrl") != null) {
             	nextUrl = (String) session.getAttribute("nextUrl");
             	session.removeAttribute("nextUrl");
             }
+            
+            if(user.getTipo()=="casManager") {
+            	nextUrl="casManager/index";
+            }else if(user.getTipo()=="casVolunteer") {
+            	nextUrl="casVolunteer/index";
+            }else if(user.getTipo()=="casCommitee") {
+            	nextUrl="casCommitee/index";
+            }
+            
             return "redirect:" + nextUrl;
         }
 
