@@ -7,6 +7,7 @@
    <meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
                                     th:href="@{/css/majorsACasa.css}"/>
+    <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -19,8 +20,8 @@
          <th>Precio</th>
          <th>Fecha Inicio</th>
          <th>Fecha Fin</th>
-         <th></th>
-         <th></th>
+         <th><font size="+1">Editar</font></th>
+         <th><font size="+1">Eliminar</font></th>
        </tr>
      </thead>
      <tbody>
@@ -29,14 +30,14 @@
          <td th:text="${contrato.precio}"></td>
          <td th:text="${contrato.fechaInicio}"></td>
          <td th:text="${contrato.fechaFin}"></td>
-         <td><a th:href="@{/contrato/update/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button">Editar</a>
+         <td><a th:href="@{/contrato/update/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a>
          </td>
-         <td><a th:href="@{/contrato/delete/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><a th:href="@{/contrato/delete/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a>
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Contrato</a>
+   <a href="add" class="btn btn-success" role="button">Añadir Contrato <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>

@@ -5,11 +5,12 @@
 <head>
    <title>Gestionar Empresas</title>
    <meta charset="UTF-8" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  -->
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
                                     th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -29,8 +30,8 @@
          <th>Teléfono</th>
          <th>Horario de Atención al Cliente</th>
          <th>E-mail Manager</th>
-         <th></th>
-         <th></th>
+         <th><font size="+1">Editar</font></th>
+         <th><font size="+1">Eliminar</font></th>
        </tr>
      </thead>
      <tbody>
@@ -43,15 +44,14 @@
          <td th:text="${empresa.telefono}"></td>
          <td th:text="${empresa.horarioAtencionCliente}"></td>
          <td th:text="${empresa.emailManager}"></td>
-         <td><a th:href="@{/empresa/update/{id}(id=${empresa.idEmpresa})}" class="btn btn-warning" role="button">Editar</a>
+         <td><center><a th:href="@{/empresa/update/{id}(id=${empresa.idEmpresa})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
-         <td>
-         	<a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><center><a th:href="@{/empresa/delete/{id}(id=${empresa.idEmpresa})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Empresa</a>
+   <a href="add" class="btn btn-success" role="button">Añadir Empresa <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 			
 	<!-- <div id="delete" class="modal fade" style="display: none;">
 		<div class="modal-dialog">

@@ -42,12 +42,9 @@
          <td th:text="${beneficiario.hobbies}"></td>
          <td th:text="${beneficiario.alergias}"></td>
          <td th:text="${beneficiario.enfermedades}"></td>
-         
          <td><center><a th:href="@{/beneficiario/update/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
          <td><center><a th:href="@{/beneficiario/delete/{id}(id=${beneficiario.idBeneficiario})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
-         
-      
          </td>
        </tr>
      </tbody>

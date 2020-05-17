@@ -6,6 +6,7 @@
    <title>Gestionar Voluntarios</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -25,8 +26,8 @@
          <th>Género</th>
          <th>Edad</th>
          <th>Contraseña</th>
-         <th></th>
-         <th></th>
+         <th><font size="+1">Editar</font></th>
+         <th><font size="+1">Eliminar</font></th>
        </tr>
      </thead>
      <tbody>
@@ -42,14 +43,14 @@
          <td th:text="${voluntario.genero}"></td>
          <td th:text="${voluntario.edad}"></td>
          <td th:text="${voluntario.contrasenya}"></td>
-         <td><a th:href="@{/voluntario/update/{id}(id=${voluntario.idVoluntario})}" class="btn btn-warning" role="button">Editar</a>
+         <td><center><a th:href="@{/voluntario/update/{id}(id=${voluntario.idVoluntario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
-         <td><a th:href="@{/voluntario/delete/{id}(id=${voluntario.idVoluntario})}" class="btn btn-danger" role="button">Eliminar</a>
+         <td><center><a th:href="@{/voluntario/delete/{id}(id=${voluntario.idVoluntario})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Voluntario</a>
+   <a href="add" class="btn btn-success" role="button">Añadir Voluntario <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>

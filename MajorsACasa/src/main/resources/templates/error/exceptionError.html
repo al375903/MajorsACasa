@@ -8,6 +8,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
                                     th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -17,7 +18,7 @@
        <p>Pulse el botón de inicio o el botón para volver atrás.</p>
    </div>
    <div th:align="center">
-   	   <a class="btn btn-light" th:align="left" onclick="history.back()">Atrás</a>
+   	   <a class="btn btn-light" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
        <a href="/" class="btn btn-primary" th:align="left">Inicio</a>
    </div>
 </div>
