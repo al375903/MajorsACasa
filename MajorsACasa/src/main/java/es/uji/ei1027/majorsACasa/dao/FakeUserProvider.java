@@ -22,10 +22,10 @@ public class FakeUserProvider implements UserDao {
 	    knownUsers.put("casManager", responsableContratacion);
 	      
 	   UserDetails comite = new UserDetails(); 
-	   comite.setUsername("casCommitee"); 
-	   comite.setPassword(passwordEncryptor.encryptPassword("casCommitee")); 
-	   comite.setTipo("casCommitee");
-	   knownUsers.put("casCommitee", comite);
+	   comite.setUsername("casCommittee"); 
+	   comite.setPassword(passwordEncryptor.encryptPassword("casCommittee")); 
+	   comite.setTipo("casCommittee");
+	   knownUsers.put("casCommittee", comite);
 	   
 	   UserDetails supervisorVoluntarios = new UserDetails(); 
 	   supervisorVoluntarios.setUsername("casVolunteer"); 

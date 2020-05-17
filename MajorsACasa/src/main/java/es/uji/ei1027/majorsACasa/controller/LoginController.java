@@ -73,11 +73,11 @@ public class LoginController {
             }
             
             if(user.getTipo()=="casManager") {
-            	nextUrl="casManager/index";
+            	return "casManager";
             }else if(user.getTipo()=="casVolunteer") {
-            	nextUrl="casVolunteer/index";
-            }else if(user.getTipo()=="casCommitee") {
-            	nextUrl="casCommitee/index";
+            	nextUrl="casVolunteer";
+            }else if(user.getTipo()=="casCommittee") {
+            	nextUrl="casCommittee";
             }
             
             return "redirect:" + nextUrl;
