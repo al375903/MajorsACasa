@@ -17,6 +17,7 @@ import es.uji.ei1027.majorsACasa.dao.ContratoDao;
 import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
 import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
+import es.uji.ei1027.majorsACasa.services.ContratoService;
 
 @Controller
 @RequestMapping("/contrato")
@@ -24,6 +25,12 @@ public class ContratoController {
 	
 	private ContratoDao contratoDao;
 	public EmpresaDao empresaDao;
+	private ContratoService contratoService;
+	
+	@Autowired
+	public void setContratoService(ContratoService contratoService) {
+		this.contratoService = contratoService;
+	}
 	
 	@Autowired
 	public void setContratoDao(ContratoDao contratoDao) {
@@ -115,4 +122,11 @@ public class ContratoController {
 		return "redirect:../list";
 	}
 	
+	
+	@RequestMapping("/portipo/{idEmpresa}")
+	public String listContrPorTipo(Model model, @PathVariable String idEmpresa) {
+		model.addAttribute("contratos", contratoService.getContratoByTipo(idEmpresa));
+		model.addAttribute("idEmpresa", idEmpresa);
+		return "contrato/portipo";
+	}
 }

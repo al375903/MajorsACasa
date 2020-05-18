@@ -79,7 +79,7 @@ public class LoginController {
             }else if(user.getTipo()=="casCommittee") {
             	return "casCommittee/index";
             }
-            nextUrl = "index2";
+            nextUrl = "redirect:/index2";
             return nextUrl;
         }
 

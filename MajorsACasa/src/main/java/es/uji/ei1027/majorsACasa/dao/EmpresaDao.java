@@ -82,7 +82,7 @@ public class EmpresaDao {
 						new Object[] {id}, new EmpresaRowMapper());
 			}
 			catch(EmptyResultDataAccessException e) {
-			    return null;
+			    return new ArrayList<>();
 			}
 		}
 }

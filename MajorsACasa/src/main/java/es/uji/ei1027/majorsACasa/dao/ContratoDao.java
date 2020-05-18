@@ -65,14 +65,14 @@ public class ContratoDao {
 		}
 	}
 	
-	public List<Contrato> getContratoPorId(String id) {
+	public List<Contrato> getContratoEmpresa(String idEmpresa) {
 		try {
 			return this.jdbcTemplate.query(
-					"SELECT * FROM contrato WHERE idContrato=?",
-					new Object[] {id}, new ContratoRowMapper());
+					"SELECT * FROM contrato WHERE idEmpresa=?",
+					new Object[] {idEmpresa}, new ContratoRowMapper());
 		}
 		catch(EmptyResultDataAccessException e) {
-		    return null;
+		    return new ArrayList<>();
 		}
 	}
 
