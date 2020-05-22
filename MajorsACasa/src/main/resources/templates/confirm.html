@@ -1,16 +1,31 @@
-<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
-<form action="#" method="POST">
-  <button class='btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete"><span class="fa fa-times"></span> delete</button>
-</form>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"  
+      href="/css/majorsACasa.css"
+      th:href="@{/css/majorsACasa.css}"/>
+<title>Confirm</title>
+<meta charset="UTF-8"/>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
 
-<div id="confirm" class="modal hide fade">
-  <div class="modal-body">
-    Are you sure?
-  </div>
-  <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+</head>
+<body>
+	<h2>Confirmar</h2>
+	<form action="#" th:action="@{/confirm}" 
+	      th:object="${accion}" method="post">
+		<p>
+		   	<button type="button" data-dismiss="modal" class="btn">Cancel</button>
+            <input class="form_control" type="text" th:field="*{username}"/>
+		</p>
+	<button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
     <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-  </div>
-</div>
+		
+		<p>
+		   	<label>Contrasenya:</label>
+            <input class="form_control" type="password" th:field="*{password}"/>
+		</p>		
+		<input type="submit" value="Accedir" />
+	</form>
+
+</body>
+</html>

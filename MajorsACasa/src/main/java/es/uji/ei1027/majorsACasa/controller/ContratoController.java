@@ -17,6 +17,7 @@ import es.uji.ei1027.majorsACasa.dao.ContratoDao;
 import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
 import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
+import es.uji.ei1027.majorsACasa.model.UserDetails;
 import es.uji.ei1027.majorsACasa.services.ContratoService;
 
 @Controller
@@ -38,13 +39,25 @@ public class ContratoController {
 	}
 	
 	@RequestMapping("/list")
-	public String listEmpresas(Model model) {
+	public String listEmpresas(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/list");
+          return "login";
+        }
 		model.addAttribute("contratos", contratoDao.getContratos());
 		return "contrato/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addContrato(Model model) {
+	public String addContrato(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/add");
+          return "login";
+        }
 		model.addAttribute("contrato", new Contrato());
 		return "contrato/add";
 	}
@@ -71,7 +84,13 @@ public class ContratoController {
 	}
 	
 	@RequestMapping(value="addEmpresaPorContrato")
-	public String addEmpresaPorContrato(Model model) {
+	public String addEmpresaPorContrato(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/addEmpresaPorContrato");
+          return "login";
+        }
 		model.addAttribute("empresa", new Empresa());
 		return "contrato/addEmpresaPorContrato";
 	}
@@ -96,7 +115,13 @@ public class ContratoController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET)
-	public String editContrato(Model model, @PathVariable String id) {
+	public String editContrato(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/update");
+          return "login";
+        }
 		model.addAttribute("contrato", contratoDao.getContrato(id));
 		return "contrato/update";
 	}
@@ -113,14 +138,26 @@ public class ContratoController {
 	}
 	
 	@RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
+	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../list");
+          return "login";
+        }
 		contratoDao.deleteContrato(id);
 		return "redirect:../list";
 	}
 	
 	
 	@RequestMapping("/portipo/{idEmpresa}")
-	public String listContrPorTipo(Model model, @PathVariable String idEmpresa) {
+	public String listContrPorTipo(HttpSession session, Model model, @PathVariable String idEmpresa) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/portipo");
+          return "login";
+        }
 		model.addAttribute("contratos", contratoService.getContratoByTipo(idEmpresa));
 		model.addAttribute("idEmpresa", idEmpresa);
 		return "contrato/portipo";
