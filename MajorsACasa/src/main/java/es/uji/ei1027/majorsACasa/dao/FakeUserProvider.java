@@ -15,11 +15,11 @@ public class FakeUserProvider implements UserDao {
   public FakeUserProvider() {
 	    BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
 	    
-	    UserDetails responsableContratacion = new UserDetails(); 
-	    responsableContratacion.setUsername("casManager"); 
-	    responsableContratacion.setPassword(passwordEncryptor.encryptPassword("casManager")); 
-	    responsableContratacion.setTipo("casManager");
-	    knownUsers.put("casManager", responsableContratacion);
+		UserDetails responsableContratacion = new UserDetails(); 
+		responsableContratacion.setUsername("casManager"); 
+		responsableContratacion.setPassword(passwordEncryptor.encryptPassword("casManager")); 
+		responsableContratacion.setTipo("casManager");
+		knownUsers.put("casManager", responsableContratacion);
 	      
 	   UserDetails comite = new UserDetails(); 
 	   comite.setUsername("casCommittee"); 
@@ -45,22 +45,23 @@ public class FakeUserProvider implements UserDao {
 
   @Override
   public UserDetails loadUserByUsername(String username, String password) { 
-      UserDetails user = knownUsers.get(username.trim());
+	  UserDetails user = knownUsers.get(username.trim());
       //Si no es ninguno de estos buscar por tablas
-      if (user == null)
-          //buscar por el resto de tablas con jdbtemplate
+      if (user == null) {
+    	  //buscar por el resto de tablas con jdbtemplate
     	  //try catch
     	  return null; // Usuari no trobat
       // Contrasenya
-     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
-     if (passwordEncryptor.checkPassword(password, user.getPassword())) {
-     // Es deuria esborrar de manera segura el camp password abans de tornar-lo
-         return user; 
-        } 
-     else {
-         return null; // bad login!
-         }
+  	}
+      BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
+      if (passwordEncryptor.checkPassword(password, user.getPassword())) {
+    	  // Es deuria esborrar de manera segura el camp password abans de tornar-lo
+    	  return user; 
+      } 
+      else {
+    	  return null; // bad login!
       }
+  }
 
       @Override 
       public Collection<UserDetails> listAllUsers() {
