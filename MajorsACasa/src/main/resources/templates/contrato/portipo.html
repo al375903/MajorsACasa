@@ -19,7 +19,7 @@
       <h4 th:text="${tipo}"></h4>
       <ul>
           <li th:each="empresa: ${contratos.get(tipo)}">
-            <span th:text="${empresa.idEmpresa}"></span>
+            <span th:text="${empresa.nombreEmpresa}"></span>
           </li>
       </ul>
     </div>

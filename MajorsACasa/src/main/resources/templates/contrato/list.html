@@ -28,7 +28,7 @@
      </thead>
      <tbody>
        <tr th:each="contrato: ${contratos}">
-         <td th:text="${contrato.idEmpresa}"></td> <!-- Nombre Empresa -->
+         <td th:text="${contrato.nombreEmpresa}"></td>
          <td th:text="${contrato.tipoServicio}"></td>
          <td th:text="${contrato.precio}"></td>
          <td th:text="${contrato.fechaInicio}"></td>
@@ -37,7 +37,7 @@
          </td>
          <td><a th:href="@{/contrato/delete/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a>
          </td>
-         <td><a th:href="@{/contrato/portipo/{idEmpresa}(idEmpresa=${contrato.idEmpresa})}" class="btn btn-info" role="button">Contratos</a>
+         <td><a th:href="@{/contrato/portipo/{nombreEmpresa}(nombreEmpresa=${contrato.nombreEmpresa})}" class="btn btn-info" role="button">Contratos</a>
          </td>
        </tr>
      </tbody>

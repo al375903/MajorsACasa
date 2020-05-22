@@ -34,7 +34,7 @@ public class ContratoSrv implements ContratoService{
 		for(Contrato contrato : listaContrato) {
 			List<Empresa> listaEmpresa = empresaDao.getEmpresas();
 			for(Empresa empresa: listaEmpresa) {
-				if(contrato.getIdEmpresa().equals(empresa.getIdEmpresa())) {
+				if(contrato.getNombreEmpresa().equals(empresa.getIdEmpresa())) {
 					existe = true;
 				}
 			}
@@ -46,7 +46,7 @@ public class ContratoSrv implements ContratoService{
 		List<Contrato> contrEmpresa = contratoDao.getContratoEmpresa(idEmpresa);
 		HashMap<String,List<Empresa>> empresaPorTipo = new HashMap<String,List<Empresa>>();
 		for (Contrato c: contrEmpresa) {
-			Empresa empresa = empresaDao.getEmpresa(c.getIdEmpresa());
+			Empresa empresa = empresaDao.getEmpresa(c.getNombreEmpresa());
 			if(!empresaPorTipo.containsKey(empresa.getTipoServicio()))
 				empresaPorTipo.put(empresa.getTipoServicio(), new ArrayList<Empresa>());
 			empresaPorTipo.get(empresa.getTipoServicio()).add(empresa);

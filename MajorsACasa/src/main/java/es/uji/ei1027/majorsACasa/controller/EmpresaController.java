@@ -1,7 +1,6 @@
 package es.uji.ei1027.majorsACasa.controller;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -87,7 +86,12 @@ public class EmpresaController {
   
   @RequestMapping(value="/delete/{id}")
 	public String processDelete(@PathVariable String id) {
-	  empresaDao.deleteEmpresa(id);
+	  try {
+		 empresaDao.deleteEmpresa(id);
+		} catch (DataAccessException e) {//DataIntegrityViolationException
+			throw new MajorsACasaException(
+					"Esta empresa aún tiene contratos pendientes, no se puede eliminar", "ContratosPendientes");
+		}
 	  return "redirect:../list";
 	}
 }

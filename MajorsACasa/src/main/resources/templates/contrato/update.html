@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}"> 
+     layout:decorate="~{fragments/baseCommittee}"> 
 <head>
    <title>Editar contrato</title>
    <meta charset="UTF-8" />
@@ -20,8 +20,8 @@
             <td><input type="text" th:field="*{idContrato}" readonly="readonly"/></td>
         </tr>
         <tr>
-            <td><label>CIF Empresa</label></td>
-            <td><input type="text" th:field="*{idEmpresa}" readonly="readonly"/></td>
+            <td><label>Nombre Empresa</label></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" readonly="readonly"/></td>
         </tr>
         <tr>
             <td><label>Precio</label></td>

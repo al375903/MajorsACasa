@@ -25,7 +25,7 @@ public class ContratoDao {
 	
 	public void addContrato(Contrato contrato) {
 		jdbcTemplate.update("INSERT INTO Contrato VALUES(?,?,?,?,?)",
-				contrato.getIdContrato(), contrato.getIdEmpresa(), 
+				contrato.getIdContrato(), contrato.getNombreEmpresa(), 
 				contrato.getPrecio(), contrato.getFechaInicio(), contrato.getFechaFin());
 	}
 	
@@ -59,17 +59,17 @@ public class ContratoDao {
 	
 	public List<Contrato> getContratos(){
 		try {
-			return jdbcTemplate.query("SELECT * FROM Contrato JOIN Empresa ON idEmpresa", new ContratoRowMapper());
+			return jdbcTemplate.query("SELECT Contrato.*, Empresa.* FROM Contrato JOIN Empresa USING (nombreEmpresa)", new ContratoRowMapper());
 		} catch(EmptyResultDataAccessException e) {
 			return new ArrayList<Contrato>();
 		}
 	}
 	
-	public List<Contrato> getContratoEmpresa(String idEmpresa) {
+	public List<Contrato> getContratoEmpresa(String nombreEmpresa) {
 		try {
 			return this.jdbcTemplate.query(
-					"SELECT * FROM contrato WHERE idEmpresa=?",
-					new Object[] {idEmpresa}, new ContratoRowMapper());
+					"SELECT * FROM contrato WHERE nombreEmpresa=?",
+					new Object[] {nombreEmpresa}, new ContratoRowMapper());
 		}
 		catch(EmptyResultDataAccessException e) {
 		    return new ArrayList<>();

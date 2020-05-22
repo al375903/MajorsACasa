@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Contrato {
 	private String idContrato;
-	private String idEmpresa;
+	private String nombreEmpresa;
 	private String tipoServicio;
 	private float precio;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
@@ -25,12 +25,12 @@ public class Contrato {
 		this.idContrato = idContrato;
 	}
 
-	public String getIdEmpresa() {
-		return idEmpresa;
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
 	}
 
-	public void setIdEmpresa(String idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
 	}
 	
 	public String getTipoServicio() {
@@ -64,10 +64,10 @@ public class Contrato {
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Contrato [idContrato=" + idContrato + ", idEmpresa=" + idEmpresa 
+		return "Contrato [idContrato=" + idContrato + ", nombreEmpresa=" + nombreEmpresa 
 				+ ", precio=" + precio + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}
 	

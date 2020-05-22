@@ -52,7 +52,6 @@ public class ContratoController {
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("contrato") Contrato contrato,
 									BindingResult bindingResult) {
-		contrato.setTipoServicio(contratoService.getEmpresaTipoServicio(contrato.getIdEmpresa()));
 		ContratoValidator contratoValidator = new ContratoValidator();
 		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())

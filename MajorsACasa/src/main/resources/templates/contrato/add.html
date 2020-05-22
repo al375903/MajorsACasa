@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+     layout:decorate="~{fragments/baseCommittee}">
 <head>
    <title>Crear nuevo contrato</title>
    <meta charset="UTF-8" />
@@ -21,9 +21,9 @@
             <td th:if="${#fields.hasErrors('idContrato')}" th:errors="*{idContrato}" class="error"></td>
         </tr>
         <tr>
-            <td><label>CIF Empresa</label></td>
-            <td><input type="text" th:field="*{idEmpresa}" maxlength=5/></td>
-            <td th:if="${#fields.hasErrors('idEmpresa')}" th:errors="*{idEmpresa}" class="error"></td>
+            <td><label>Nombre Empresa</label></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" maxlength=50/></td>
+            <td th:if="${#fields.hasErrors('nombreEmpresa')}" th:errors="*{nombreEmpresa}" class="error"></td>
         </tr>
         <tr>
             <td><label>Precio</label></td>

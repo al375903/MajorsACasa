@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -96,4 +95,5 @@ public class EmpresaDao {
 			    return new ArrayList<>();
 			}
 	   }
+	   
 }
