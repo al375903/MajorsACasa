@@ -73,13 +73,13 @@ public class LoginController {
             }
             
             if(user.getTipo()=="casManager") {
-            	return "casManager/index";
+            	return "redirect:peticion/list";
             }else if(user.getTipo()=="casVolunteer") {
-            	return "casVolunteer/index";
+            	return "redirect:voluntario/list	";
             }else if(user.getTipo()=="casCommittee") {
-            	return "casCommittee/index";
+            	return "redirect:empresa/list";
             }
-            nextUrl = "redirect:/index2";
+            nextUrl = "/index2";//redirect:
             return nextUrl;
         }
 

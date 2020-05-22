@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Contrato {
 	private String idContrato;
 	private String idEmpresa;
+	private String tipoServicio;
 	private float precio;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate fechaInicio;
@@ -30,6 +31,14 @@ public class Contrato {
 
 	public void setIdEmpresa(String idEmpresa) {
 		this.idEmpresa = idEmpresa;
+	}
+	
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+	
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
 	}
 
 	public float getPrecio() {

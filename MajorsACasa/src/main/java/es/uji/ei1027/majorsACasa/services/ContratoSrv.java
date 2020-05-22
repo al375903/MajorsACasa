@@ -22,19 +22,10 @@ public class ContratoSrv implements ContratoService{
 	@Autowired
 	ContratoDao contratoDao;
 	
+	//Desde contrato para saber el tipo de servicio de una empresa
 	@Override
-	public String getEmpresaTipoServicio(String id) {
-		List<Contrato> listaContrato = contratoDao.getContratoEmpresa(id);
- 		String tipoServicio = "";
-		for(Contrato contrato : listaContrato) {
-			List<Empresa> listaEmpresa = empresaDao.getEmpresaPorId(contrato.getIdEmpresa());
-			for(Empresa empresa: listaEmpresa) {
-				if(contrato.getIdEmpresa().equals(empresa.getIdEmpresa())) {
-					tipoServicio = tipoServicio + empresa.getTipoServicio();
-				}
-			}
-		}
-		return tipoServicio;
+	public String getEmpresaTipoServicio(String idEmpresa) {
+		return empresaDao.getEmpresa(idEmpresa).getTipoServicio();
 	}
 	
 	public boolean getIdEmpresa(String id) {
@@ -61,6 +52,13 @@ public class ContratoSrv implements ContratoService{
 			empresaPorTipo.get(empresa.getTipoServicio()).add(empresa);
 		}
 		return empresaPorTipo;
+	}
+	
+	
+	
+	public List<Empresa> getEmpresasByTipo(String tipo){
+		List<Empresa> empresas = empresaDao.getEmpresasByTipo(tipo);
+		return empresas;
 	}
 	
 }

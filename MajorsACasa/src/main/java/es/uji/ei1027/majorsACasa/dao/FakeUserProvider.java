@@ -39,13 +39,18 @@ public class FakeUserProvider implements UserDao {
 	    jefe.setPassword(passwordEncryptor.encryptPassword("jefe")); 
 	    jefe.setTipo("jefe");
 	    knownUsers.put("jefe", jefe);
+	    
+	    //Hacer put de todos los usuarios de las tablas
   }
 
   @Override
   public UserDetails loadUserByUsername(String username, String password) { 
       UserDetails user = knownUsers.get(username.trim());
+      //Si no es ninguno de estos buscar por tablas
       if (user == null)
-          return null; // Usuari no trobat
+          //buscar por el resto de tablas con jdbtemplate
+    	  //try catch
+    	  return null; // Usuari no trobat
       // Contrasenya
      BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
      if (passwordEncryptor.checkPassword(password, user.getPassword())) {

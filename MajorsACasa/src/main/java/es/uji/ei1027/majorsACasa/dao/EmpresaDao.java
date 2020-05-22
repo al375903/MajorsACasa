@@ -85,4 +85,15 @@ public class EmpresaDao {
 			    return new ArrayList<>();
 			}
 		}
+	   
+	   public List<Empresa> getEmpresasByTipo(String tipo){
+		   try {
+				return this.jdbcTemplate.query(
+						"SELECT * FROM empresa WHERE tipoServicio=?",
+						new Object[] {tipo}, new EmpresaRowMapper());
+			}
+			catch(EmptyResultDataAccessException e) {
+			    return new ArrayList<>();
+			}
+	   }
 }
