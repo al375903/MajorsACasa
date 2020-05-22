@@ -14,7 +14,7 @@ import es.uji.ei1027.majorsACasa.model.Beneficiario;
 
 @Repository
 public class BeneficiarioDao {
-	private JdbcTemplate jdbcTemplate;
+	public JdbcTemplate jdbcTemplate;
 
 	   @Autowired
 	   public void setDataSource(DataSource dataSource) {

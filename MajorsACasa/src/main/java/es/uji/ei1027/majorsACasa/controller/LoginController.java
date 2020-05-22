@@ -78,6 +78,12 @@ public class LoginController {
             	return "redirect:voluntario/list	";
             }else if(user.getTipo()=="casCommittee") {
             	return "redirect:empresa/list";
+            }else if(user.getTipo()=="beneficiario") {
+            	return "redirect:beneficiario/list	";
+            }else if(user.getTipo()=="voluntario") {
+            	return "redirect:voluntario/list";
+            }else if(user.getTipo()=="empresa") {
+            	return "redirect:empresa/list";
             }
             nextUrl = "/index2";//redirect:
             return nextUrl;

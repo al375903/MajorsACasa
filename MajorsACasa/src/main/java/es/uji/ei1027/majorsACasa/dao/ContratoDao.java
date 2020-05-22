@@ -59,7 +59,7 @@ public class ContratoDao {
 	
 	public List<Contrato> getContratos(){
 		try {
-			return jdbcTemplate.query("SELECT * FROM Contrato JOIN tipoServicio FROM empresa", new ContratoRowMapper());
+			return jdbcTemplate.query("SELECT * FROM Contrato JOIN Empresa ON idEmpresa", new ContratoRowMapper());
 		} catch(EmptyResultDataAccessException e) {
 			return new ArrayList<Contrato>();
 		}

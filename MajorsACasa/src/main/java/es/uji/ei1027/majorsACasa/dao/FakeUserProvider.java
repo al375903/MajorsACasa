@@ -5,12 +5,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
+
+import es.uji.ei1027.majorsACasa.model.Beneficiario;
+import es.uji.ei1027.majorsACasa.model.Empresa;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
+import es.uji.ei1027.majorsACasa.model.Voluntario;
 
 @Repository
 public class FakeUserProvider implements UserDao {
   final Map<String, UserDetails> knownUsers = new HashMap<String, UserDetails>();
+  BeneficiarioDao beneficiarioDao;
+  VoluntarioDao voluntarioDao;
+  EmpresaDao empresaDao;
 
   public FakeUserProvider() {
 	    BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
@@ -39,8 +47,6 @@ public class FakeUserProvider implements UserDao {
 	    jefe.setPassword(passwordEncryptor.encryptPassword("jefe")); 
 	    jefe.setTipo("jefe");
 	    knownUsers.put("jefe", jefe);
-	    
-	    //Hacer put de todos los usuarios de las tablas
   }
 
   @Override
@@ -50,8 +56,37 @@ public class FakeUserProvider implements UserDao {
       if (user == null) {
     	  //buscar por el resto de tablas con jdbtemplate
     	  //try catch
-    	  return null; // Usuari no trobat
-      // Contrasenya
+    	  try {
+        	  Beneficiario beneficiario = beneficiarioDao.getBeneficiario(username);
+        	  if(beneficiario != null) {
+	        	  user = new UserDetails();
+		          user.setUsername(beneficiario.getIdBeneficiario());
+		          user.setPassword(beneficiario.getContrasenya());
+		          user.setTipo("beneficiario");
+		          return user;
+        	  }
+        	  Voluntario voluntario = voluntarioDao.getVoluntario(username);
+        	  if(voluntario != null) {
+        		  user = new UserDetails();
+		          user.setUsername(voluntario.getIdVoluntario());
+		          user.setPassword(voluntario.getContrasenya());
+		          user.setTipo("voluntario");
+		          return user;
+        	  }
+        	  Empresa empresa = empresaDao.getEmpresa(username);
+        	  if(empresa != null) {
+        		  user = new UserDetails();
+		          user.setUsername(empresa.getIdEmpresa());
+		          user.setPassword(empresa.getIdEmpresa());
+		          user.setTipo("empresa");
+		          return user;
+        	  }
+        	  return null;
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return null;
+	       }
+    	  //return null; // Usuari no trobat
   	}
       BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
       if (passwordEncryptor.checkPassword(password, user.getPassword())) {
