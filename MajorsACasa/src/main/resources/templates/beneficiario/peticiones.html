@@ -40,9 +40,9 @@
          <td th:text="${peticion.fechaDenegacion}"></td>
          <td th:text="${peticion.fechaCreacion}"></td>
          <td th:text="${peticion.fechaCancelacion}"></td>
-         <td><center><a th:href="@{/peticion/update/{id}(id=${peticion.idPeticion})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
+         <td><center><a th:href="@{/beneficiario/updatePeticion/{id}(id=${peticion.idPeticion})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
-         <td><center><a th:href="@{/peticion/delete/{id}(id=${peticion.idPeticion})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
+         <td><center><a th:href="@{/beneficiario/deletePeticion/{id}(id=${peticion.idPeticion})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>
          </td>
        </tr>
      </tbody>

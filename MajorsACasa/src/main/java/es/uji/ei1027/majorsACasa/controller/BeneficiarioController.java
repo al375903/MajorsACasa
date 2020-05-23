@@ -189,4 +189,49 @@ public class BeneficiarioController {
 		model.addAttribute("peticiones", peticionService.getPeticionesBeneficario("20902106M")); //user.getUsername();
 		return "beneficiario/peticiones";
 	}
+	
+	@RequestMapping(value="/updatePeticion/{id}", method = RequestMethod.GET)
+	public String editPeticion(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "beneficiario/updatePeticion");
+          return "login";
+        }
+		model.addAttribute("peticion", peticionDao.getPeticion(id));
+		return "beneficiario/updatePeticion";
+	}
+	
+	@RequestMapping(value="/updatePeticion", method=RequestMethod.POST)
+	public String processUpdateSubmit(@ModelAttribute("peticion") Peticion peticion,
+										BindingResult bindingResult) {
+		PeticionValidator peticionValidator = new PeticionValidator();
+		peticionValidator.validate(peticion, bindingResult);
+		if(bindingResult.hasErrors())
+			return "beneficiario/updatePeticion";
+		peticionDao.updatePeticion(peticion);
+		return "redirect:peticiones";
+	}
+	
+	@RequestMapping(value="/deletePeticion/{id}")
+	public String processDeletePeticion(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../peticiones");
+          return "login";
+        }
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/beneficiario/deletePeticion/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		peticionDao.deletePeticion(id);
+	    	}
+	    }
+		return "redirect:../peticiones";
+	}
 }

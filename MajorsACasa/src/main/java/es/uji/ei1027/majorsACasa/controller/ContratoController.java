@@ -159,18 +159,4 @@ public class ContratoController {
 	    }
     	return "redirect:../list";
 	}
-	
-	
-	@RequestMapping("/portipo/{idEmpresa}")
-	public String listContrPorTipo(HttpSession session, Model model, @PathVariable String idEmpresa) {
-		UserDetails user = (UserDetails)session.getAttribute("user");
-	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
-          model.addAttribute("user", new UserDetails());
-          session.setAttribute("nextUrl", "contrato/portipo");
-          return "login";
-        }
-		model.addAttribute("contratos", contratoService.getContratoByTipo(idEmpresa));
-		model.addAttribute("idEmpresa", idEmpresa);
-		return "contrato/portipo";
-	}
 }

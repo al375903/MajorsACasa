@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.majorsACasa.dao.ContratoDao;
 import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
 import es.uji.ei1027.majorsACasa.model.Accion;
+import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
+import es.uji.ei1027.majorsACasa.services.ContratoService;
 
 @Controller
 @RequestMapping("/empresa")
@@ -27,6 +30,20 @@ public class EmpresaController {
 	@Autowired
 	public void setEmpresaDao(EmpresaDao empresaDao) {
 		this.empresaDao = empresaDao;
+	}
+	
+	private ContratoDao contratoDao;
+	
+	@Autowired
+	public void setContratoDao(ContratoDao contratoDao) {
+		this.contratoDao = contratoDao;
+	}
+	
+	private ContratoService contratoService;
+	
+	@Autowired
+	public void setContratoService(ContratoService contratoService) {
+		this.contratoService = contratoService;
 	}
 	
 	@RequestMapping("/list")
@@ -129,5 +146,73 @@ public class EmpresaController {
 					"Esta empresa aún tiene contratos pendientes, no se puede eliminar", "ContratosPendientes");
 		}
 	  return "redirect:../list";
+	}
+  
+  @RequestMapping("/index")
+	public String indexBeneficiario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("empresa"))) { 
+        model.addAttribute("user", new UserDetails());
+        session.setAttribute("nextUrl", "empresa/index");
+        return "login";
+      }
+		return "empresa/index";
+	}
+	
+	@RequestMapping("/contratos")
+	public String listPeticionesBeneficiario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("empresa"))) { 
+        model.addAttribute("user", new UserDetails());
+        session.setAttribute("nextUrl", "empresa/contratos");
+        return "login";
+      }
+		model.addAttribute("contratos", contratoService.getContratosDeUnaEmpresa("Empresa SA")); //user.getUsername();
+		return "empresa/contratos";
+	}
+	
+	@RequestMapping(value="/updateContrato/{id}", method = RequestMethod.GET)
+	public String editContrato(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("empresa"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "empresa/updateContrato");
+          return "login";
+        }
+		model.addAttribute("contrato", contratoDao.getContrato(id));
+		return "empresa/updateContrato";
+	}
+	
+	@RequestMapping(value="/updateContrato", method = RequestMethod.POST)
+	public String processUpdateSubmit(@ModelAttribute("contrato") Contrato contrato,
+										BindingResult bindingResult) {
+		ContratoValidator contratoValidator = new ContratoValidator();
+		contratoValidator.validate(contrato, bindingResult);
+		if (bindingResult.hasErrors())
+			return "empresa/updateContrato";
+		contratoDao.updateContrato(contrato);
+		return "redirect:contratos";
+	}
+	
+	@RequestMapping(value="/deleteContrato/{id}") 
+	public String processDeleteContrato(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("empresa"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../contratos");
+          return "login";
+        }
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/empresa/deleteContrato/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+		    	contratoDao.deleteContrato(id);
+	    	}
+	    }
+    	return "redirect:../contratos";
 	}
 }

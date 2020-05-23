@@ -16,8 +16,7 @@
    <table class="table table-striped"> 
      <thead>
        <tr>
-         <th>Nombre Empresa</th>
-         <th>Tipo de Servicio</th>
+         <th>Indice contrato</th>
          <th>Precio</th>
          <th>Fecha Inicio</th>
          <th>Fecha Fin</th>
@@ -28,18 +27,16 @@
      </thead>
      <tbody>
        <tr th:each="contrato: ${contratos}">
-         <td th:text="${contrato.nombreEmpresa}"></td>
-         <td th:text="${contrato.tipoServicio}"></td>
+         <td th:text="${contrato.idContrato}"></td>
          <td th:text="${contrato.precio}"></td>
          <td th:text="${contrato.fechaInicio}"></td>
          <td th:text="${contrato.fechaFin}"></td>
-         <td><a th:href="@{/contrato/update/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a>
+         <td><a th:href="@{/empresa/updateContrato/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a>
          </td>
-         <td><a th:href="@{/contrato/delete/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a>
+         <td><a th:href="@{/empresa/deleteContrato/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a>
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Contrato <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>

@@ -15,8 +15,7 @@ import es.uji.ei1027.majorsACasa.model.Empresa;
 
 @Repository
 public class EmpresaDao {
-	private JdbcTemplate jdbcTemplate;
-	public HashMap<String, Empresa> mapaEmpresas = new HashMap<String, Empresa>();
+	   private JdbcTemplate jdbcTemplate;
 
 	   @Autowired
 	   public void setDataSource(DataSource dataSource) {
@@ -30,7 +29,6 @@ public class EmpresaDao {
 	              empresa.getTipoServicio(), empresa.getNombreManager(), 
 	              empresa.getDireccion(), empresa.getTelefono(), 
 	              empresa.getHorarioAtencionCliente(), empresa.getEmailManager());
-	       mapaEmpresas.put(empresa.getIdEmpresa(), empresa);
 	   }
 
 	   /* Esborra la empresa de la base de dades */
@@ -70,10 +68,6 @@ public class EmpresaDao {
 	       }
 	   }
 	   
-	   public HashMap<String, Empresa> getMapaEmpresas(){
-		   return mapaEmpresas;
-	   }
-	   
 	   public List<Empresa> getEmpresaPorId(String id) {
 			try {
 				return this.jdbcTemplate.query(
@@ -85,15 +79,6 @@ public class EmpresaDao {
 			}
 		}
 	   
-	   public List<Empresa> getEmpresasByTipo(String tipo){
-		   try {
-				return this.jdbcTemplate.query(
-						"SELECT * FROM empresa WHERE tipoServicio=?",
-						new Object[] {tipo}, new EmpresaRowMapper());
-			}
-			catch(EmptyResultDataAccessException e) {
-			    return new ArrayList<>();
-			}
-	   }
+	  
 	   
 }
