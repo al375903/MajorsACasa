@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
    <meta charset="UTF-8">
    <title>Mensaje de excepcion</title>
@@ -11,7 +10,6 @@
    <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div layout:fragment="content">
 <div class="container">
    <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
@@ -21,7 +19,6 @@
    	   <a class="btn btn-light" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
        <a href="/contrato/addEmpresaPorContrato" class="btn btn-primary" th:align="left">Añadir empresa <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
    </div>
-</div>
 </div>
 </body>
 </html>
