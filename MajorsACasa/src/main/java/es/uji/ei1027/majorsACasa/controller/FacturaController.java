@@ -30,7 +30,13 @@ public class FacturaController {
 	}
 	
 	@RequestMapping("/list")
-	public String listFacturas(Model model) {
+	public String listFacturas(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "factura/list");
+          return "login";
+        }
 		model.addAttribute("facturas", facturaDao.getFacturas());
 		return "factura/list";
 	}

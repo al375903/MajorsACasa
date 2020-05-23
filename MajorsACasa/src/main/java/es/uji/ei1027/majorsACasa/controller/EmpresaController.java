@@ -30,14 +30,26 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping("/list")
-	public String listEmpresas(Model model) {
+	public String listEmpresas(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "empresa/list");
+          return "login";
+        }
 		model.addAttribute("empresas", empresaDao.getEmpresas());
 		return "empresa/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addEmpresa(Model model) {
-		model.addAttribute("empresa", new Empresa());
+	public String addEmpresa(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "empresa/add");
+          return "login";
+        }
+	    model.addAttribute("empresa", new Empresa());
 		return "empresa/add";
 	}
    
@@ -69,8 +81,14 @@ public class EmpresaController {
    
    
    @RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
-	public String editEmpresa(Model model, @PathVariable String id) { 
-		model.addAttribute("empresa", empresaDao.getEmpresa(id));
+	public String editEmpresa(HttpSession session, Model model, @PathVariable String id) { 
+	   UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+         model.addAttribute("user", new UserDetails());
+         session.setAttribute("nextUrl", "empresa/update");
+         return "login";
+       }
+	    model.addAttribute("empresa", empresaDao.getEmpresa(id));
 		return "empresa/update"; 
 	}
   
