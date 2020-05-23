@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.majorsACasa.model.Accion;
+
 @Controller
 public class confirmController {
 
@@ -19,11 +21,15 @@ public class confirmController {
     }
 
     @RequestMapping(value="/confirm", method=RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("accion") String accion,          
+    public String checkLogin(@ModelAttribute("accion") Accion accion,          
                 BindingResult bindingResult, HttpSession session) {
         
-        session.setAttribute("accion", accion);
-        String nextUrl = (String) session.getAttribute("nextUrl");
+    	String nextUrl = "/";
+        if(session.getAttribute("accion") != null) { //En este if accion = nextUrl = delete/id
+        	nextUrl = (String) session.getAttribute("accion");
+        	session.removeAttribute("accion");
+        }
+        session.setAttribute("confirmar", accion);
         return "redirect:"+nextUrl;
     }
 }

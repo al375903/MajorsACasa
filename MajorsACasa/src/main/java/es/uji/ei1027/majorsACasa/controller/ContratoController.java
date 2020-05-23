@@ -137,7 +137,7 @@ public class ContratoController {
 		return "redirect:list";
 	}
 	
-	@RequestMapping(value="/delete/{id}")
+	@RequestMapping(value="/delete/{id}") //Sin acabar confirm
 	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
@@ -145,8 +145,14 @@ public class ContratoController {
           session.setAttribute("nextUrl", "redirect:../list");
           return "login";
         }
-		contratoDao.deleteContrato(id);
-		return "redirect:../list";
+	    if ((String)session.getAttribute("confirmar")=="True")
+			contratoDao.deleteContrato(id);
+	    else if(session.getAttribute("confirmar")==null) {
+	    	session.setAttribute("accion", "/contrato/delete/"+id);
+	    	return "confirm";
+	    }
+	    session.removeAttribute("confirmar");
+    	return "redirect:../list";
 	}
 	
 	

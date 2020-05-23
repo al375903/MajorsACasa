@@ -11,21 +11,9 @@
 </head>
 <body>
 	<h2>Confirmar</h2>
-	<form action="#" th:action="@{/confirm}" 
-	      th:object="${accion}" method="post">
-		<p>
-		   	<button type="button" data-dismiss="modal" class="btn">Cancel</button>
-            <input class="form_control" type="text" th:field="*{username}"/>
-		</p>
-	<button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
-    <button type="button" data-dismiss="modal" class="btn">Cancel</button>
-		
-		<p>
-		   	<label>Contrasenya:</label>
-            <input class="form_control" type="password" th:field="*{password}"/>
-		</p>		
-		<input type="submit" value="Accedir" />
+	<form action="#" th:action="@{/confirm}" th:object="${accion}" method="post">
+		<input class="form_control" type="text" th:field="*{accion}" value=True/>
+	    <button type="submit" class="btn" value="False">Cancel</button>
 	</form>
-
 </body>
 </html>

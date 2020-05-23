@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Empresa;
+import es.uji.ei1027.majorsACasa.model.UserDetails;
 
 @Controller
 @RequestMapping("/empresa")
@@ -85,13 +87,27 @@ public class EmpresaController {
 	}
   
   @RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
+	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
 	  try {
-		 empresaDao.deleteEmpresa(id);
+		    UserDetails user = (UserDetails)session.getAttribute("user");
+		    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casCommittee"))) { 
+	          model.addAttribute("user", new UserDetails());
+	          session.setAttribute("nextUrl", "redirect:../list");
+	          return "login";
+	        }
+		    Accion accion=(Accion)session.getAttribute("confirmar");
+		    if (session.getAttribute("confirmar")==null) {
+		    	session.setAttribute("accion", "/empresa/delete/"+id);
+		    	return "confirm";
+		    }else if(accion.getAccion()=="True") {
+		    	session.removeAttribute("confirmar");
+		    	empresaDao.deleteEmpresa(id);
+		    }
 		} catch (DataAccessException e) {//DataIntegrityViolationException
 			throw new MajorsACasaException(
 					"Esta empresa aún tiene contratos pendientes, no se puede eliminar", "ContratosPendientes");
 		}
+	  session.removeAttribute("confirmar");
 	  return "redirect:../list";
 	}
 }
