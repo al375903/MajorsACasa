@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.BeneficiarioDao;
 import es.uji.ei1027.majorsACasa.dao.PeticionDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.Peticion;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
@@ -152,7 +153,17 @@ public class BeneficiarioController {
           session.setAttribute("nextUrl", "redirect:../list");
           return "login";
         }
-		beneficiarioDao.deleteBeneficiario(id);
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/beneficiario/delete/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		beneficiarioDao.deleteBeneficiario(id);
+	    	}
+	    }
 		return "redirect:../list";
 	}
 	

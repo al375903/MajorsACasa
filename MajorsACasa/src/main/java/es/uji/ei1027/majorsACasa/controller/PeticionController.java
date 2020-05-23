@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.PeticionDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Peticion;
+import es.uji.ei1027.majorsACasa.model.UserDetails;
 
 @Controller
 @RequestMapping("/peticion")
@@ -82,8 +86,24 @@ public class PeticionController {
 	}
 	
 	@RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
-		peticionDao.deletePeticion(id);
+	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casManager"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../list");
+          return "login";
+        }
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/peticion/delete/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		peticionDao.deletePeticion(id);
+	    	}
+	    }
 		return "redirect:../list";
 	}
 }

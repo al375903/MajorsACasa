@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.ContratoDao;
 import es.uji.ei1027.majorsACasa.dao.EmpresaDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Contrato;
 import es.uji.ei1027.majorsACasa.model.Empresa;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
@@ -145,13 +146,17 @@ public class ContratoController {
           session.setAttribute("nextUrl", "redirect:../list");
           return "login";
         }
-	    if ((String)session.getAttribute("confirmar")=="True")
-			contratoDao.deleteContrato(id);
-	    else if(session.getAttribute("confirmar")==null) {
-	    	session.setAttribute("accion", "/contrato/delete/"+id);
-	    	return "confirm";
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/contrato/delete/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+		    	contratoDao.deleteContrato(id);
+	    	}
 	    }
-	    session.removeAttribute("confirmar");
     	return "redirect:../list";
 	}
 	

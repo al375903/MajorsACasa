@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import es.uji.ei1027.majorsACasa.model.Accion;
 
 @Controller
-public class confirmController {
+public class ConfirmController {
 
     @RequestMapping("/confirm")
     public String confirm(Model model) {

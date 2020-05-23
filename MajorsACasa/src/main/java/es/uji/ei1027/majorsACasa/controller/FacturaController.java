@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.FacturaDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Factura;
+import es.uji.ei1027.majorsACasa.model.UserDetails;
 
 @Controller
 @RequestMapping("/factura")
@@ -74,8 +78,24 @@ public class FacturaController {
 	}
 	
 	@RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
-		facturaDao.deleteFactura(id);
+	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../list");
+          return "login";
+        }
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/factura/delete/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		facturaDao.deleteFactura(id);
+	    	}
+	    }
 		return "redirect:../list";
 	}
 }
