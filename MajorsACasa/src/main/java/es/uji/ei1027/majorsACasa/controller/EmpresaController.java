@@ -95,19 +95,21 @@ public class EmpresaController {
 	          session.setAttribute("nextUrl", "redirect:../list");
 	          return "login";
 	        }
-		    Accion accion=(Accion)session.getAttribute("confirmar");
-		    if (session.getAttribute("confirmar")==null) {
-		    	session.setAttribute("accion", "/empresa/delete/"+id);
-		    	return "confirm";
-		    }else if(accion.getAccion()=="True") {
-		    	session.removeAttribute("confirmar");
-		    	empresaDao.deleteEmpresa(id);
+		    if (session.getAttribute("accion") == null) {
+		    	model.addAttribute("accion", new Accion());
+		    	session.setAttribute("ruta", "/empresa/delete/"+id);
+		    	return "confirm"; 
+		    } else {
+			    Accion accion=(Accion) session.getAttribute("accion");
+		    	session.removeAttribute("accion");
+		    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+			    	empresaDao.deleteEmpresa(id);
+		    	}
 		    }
 		} catch (DataAccessException e) {//DataIntegrityViolationException
 			throw new MajorsACasaException(
 					"Esta empresa aún tiene contratos pendientes, no se puede eliminar", "ContratosPendientes");
 		}
-	  session.removeAttribute("confirmar");
 	  return "redirect:../list";
 	}
 }

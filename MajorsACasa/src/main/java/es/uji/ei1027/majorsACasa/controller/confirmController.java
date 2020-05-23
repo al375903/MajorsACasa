@@ -16,20 +16,20 @@ public class confirmController {
 
     @RequestMapping("/confirm")
     public String confirm(Model model) {
-        model.addAttribute("accion", new String());
+        model.addAttribute("accion", new Accion());
         return "confirm";
     }
 
     @RequestMapping(value="/confirm", method=RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("accion") Accion accion,          
+    public String checkConfirm(@ModelAttribute("accion") Accion accion,          
                 BindingResult bindingResult, HttpSession session) {
         
-    	String nextUrl = "/";
-        if(session.getAttribute("accion") != null) { //En este if accion = nextUrl = delete/id
-        	nextUrl = (String) session.getAttribute("accion");
-        	session.removeAttribute("accion");
+    	session.setAttribute("accion", accion);//accion = confirmacion
+    	String ruta = "/";
+        if(session.getAttribute("ruta") != null) { //En este if ruta = nextUrl = delete/id
+        	ruta = (String) session.getAttribute("ruta");
+        	session.removeAttribute("ruta");
         }
-        session.setAttribute("confirmar", accion);
-        return "redirect:"+nextUrl;
+        return "redirect:"+ruta;
     }
 }

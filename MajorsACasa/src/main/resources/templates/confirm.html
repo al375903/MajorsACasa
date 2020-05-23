@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<link rel="stylesheet" type="text/css"  
-      href="/css/majorsACasa.css"
-      th:href="@{/css/majorsACasa.css}"/>
-<title>Confirm</title>
+<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+<title>Confirmar</title>
 <meta charset="UTF-8"/>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
 
@@ -12,8 +12,22 @@
 <body>
 	<h2>Confirmar</h2>
 	<form action="#" th:action="@{/confirm}" th:object="${accion}" method="post">
-		<input class="form_control" type="text" th:field="*{accion}" value=True/>
-	    <button type="submit" class="btn" value="False">Cancel</button>
+		 <!-- <input type="button" class="btn btn-primary" onclick="*{accion}=True" value="True">OK
+	     <input type="button" class="btn" onclick="submit" value="False">Cancel 
+	
+		<p><input class="form_control" type="button" th:field="*{confirmacion}" value="True"/></p>-->
+		
+		<span> 
+            <input class="form_control" type="radio" th:field ="*{confirmacion}" 
+                   value="False" id="tipus1" /> 
+            <label for="tipus1">Cancelar</label>
+        </span>
+        <span> 
+            <input class="form_control" type="radio" th:field ="*{confirmacion}"  
+                   value="True" id="tipus2" />
+            <label for="tipus2">Confirmar</label> 
+        </span>
+		<input type="submit" value="Aceptar" />
 	</form>
 </body>
 </html>

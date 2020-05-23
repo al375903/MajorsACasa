@@ -1,13 +1,13 @@
 package es.uji.ei1027.majorsACasa.model;
 
 public class Accion {
-	String accion;
+	String confirmacion;
 	
-	public void setAccion(String accion) {
-		this.accion=accion;
+	public void setConfirmacion(String confirmacion) {
+		this.confirmacion = confirmacion;
 	}
 	
-	public String getAccion() {
-		return accion;
+	public String getConfirmacion() {
+		return confirmacion;
 	}
 }
