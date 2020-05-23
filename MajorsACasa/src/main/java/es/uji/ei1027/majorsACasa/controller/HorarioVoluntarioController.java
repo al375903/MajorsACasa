@@ -30,13 +30,25 @@ public class HorarioVoluntarioController {
 	}
 	
 	@RequestMapping("/list")
-	public String listHorariosVoluntarios(Model model) {
+	public String listHorariosVoluntarios(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "horarioVoluntario/list");
+          return "login";
+        }
 		model.addAttribute("horariosVoluntarios", horarioVoluntarioDao.getHorariosVoluntarios());
 		return "horarioVoluntario/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addHorarioVoluntario(Model model) {
+	public String addHorarioVoluntario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "horarioVoluntario/add");
+          return "login";
+        }
 		model.addAttribute("horarioVoluntario", new HorarioVoluntario());
 		return "horarioVoluntario/add";
 	}
@@ -61,7 +73,13 @@ public class HorarioVoluntarioController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
-	public String editHorarioVoluntario(Model model, @PathVariable String id) {
+	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "horarioVoluntario/update");
+          return "login";
+        }
 		model.addAttribute("horarioVoluntario", horarioVoluntarioDao.getHorarioVoluntario(id));
 		return "horarioVoluntario/update";
 	}

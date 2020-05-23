@@ -30,13 +30,25 @@ public class LineaFacturaController {
 	}
 	
 	@RequestMapping("/list")
-	public String listLineasFactura(Model model) {
-		model.addAttribute("lineasFactura", lineaFacturaDao.getLineasFactura());
+	public String listLineasFactura(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "lineaFactura/list");
+          return "login";
+        }
+	    model.addAttribute("lineasFactura", lineaFacturaDao.getLineasFactura());
 		return "lineaFactura/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addLineaFactura(Model model) {
+	public String addLineaFactura(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "lineaFactura/add");
+          return "login";
+        }
 		model.addAttribute("lineaFactura", new LineaFactura());
 		return "lineaFactura/add";
 	}

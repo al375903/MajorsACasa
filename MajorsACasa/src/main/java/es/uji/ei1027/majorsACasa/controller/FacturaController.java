@@ -42,7 +42,13 @@ public class FacturaController {
 	}
 	
 	@RequestMapping(value="add")
-	public String addFactura(Model model) {
+	public String addFactura(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "factura/add");
+          return "login";
+        }
 		model.addAttribute("factura", new Factura());
 		return "factura/add";
 	}
@@ -67,7 +73,13 @@ public class FacturaController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET) 
-	public String editFactura(Model model, @PathVariable String id) { 
+	public String editFactura(HttpSession session, Model model, @PathVariable String id) { 
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "factura/update");
+          return "login";
+        }
 		model.addAttribute("factura", facturaDao.getFactura(id));
 		return "factura/update"; 
 	}

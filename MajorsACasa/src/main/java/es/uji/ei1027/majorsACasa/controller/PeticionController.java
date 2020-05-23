@@ -30,13 +30,25 @@ public class PeticionController {
 	}
 	
 	@RequestMapping("/list")
-	public String listPeticiones(Model model) {
+	public String listPeticiones(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casManager"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "peticion/list");
+          return "login";
+        }
 		model.addAttribute("peticiones", peticionDao.getPeticiones());
 		return "peticion/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addPeticion(Model model) {
+	public String addPeticion(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casManager"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "peticion/add");
+          return "login";
+        }
 		model.addAttribute("peticion", new Peticion());
 		return "peticion/add";
 	}
@@ -69,7 +81,13 @@ public class PeticionController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET)
-	public String editPeticion(Model model, @PathVariable String id) {
+	public String editPeticion(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casManager"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "peticion/update");
+          return "login";
+        }
 		model.addAttribute("peticion", peticionDao.getPeticion(id));
 		return "peticion/update";
 	}

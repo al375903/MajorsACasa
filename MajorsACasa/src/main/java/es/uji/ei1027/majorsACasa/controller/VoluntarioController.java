@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.HorarioVoluntarioDao;
 import es.uji.ei1027.majorsACasa.dao.VoluntarioDao;
+import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.HorarioVoluntario;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
 import es.uji.ei1027.majorsACasa.model.Voluntario;
@@ -46,13 +47,25 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping("/list")
-	public String listVoluntarios(Model model) {
+	public String listVoluntarios(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/list");
+          return "login";
+        }
 		model.addAttribute("voluntarios", voluntarioDao.getVoluntarios());
 		return "voluntario/list";
 	}
 	
 	@RequestMapping(value="add")
-	public String addVoluntario(Model model) {
+	public String addVoluntario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/add");
+          return "login";
+        }
 		model.addAttribute("voluntario", new Voluntario());
 		return "voluntario/add";
 	}
@@ -77,7 +90,13 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="addHorario")
-	public String addHorarioVoluntario(Model model) {
+	public String addHorarioVoluntario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/addHorario");
+          return "login";
+        }
 		model.addAttribute("horarioVoluntario", new HorarioVoluntario());
 		return "voluntario/addHorario";
 	}
@@ -102,7 +121,13 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
-	public String editVoluntario(Model model, @PathVariable String id) {
+	public String editVoluntario(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/update");
+          return "login";
+        }
 		model.addAttribute("voluntario", voluntarioDao.getVoluntario(id));
 		return "voluntario/update";
 	}
@@ -120,8 +145,24 @@ public class VoluntarioController {
 	
 	
 	@RequestMapping(value="/delete/{id}")
-	public String processDelete(@PathVariable String id) {
-		voluntarioDao.deleteVoluntario(id);
+	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "redirect:../list");
+          return "login";
+        }
+	    if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/voluntario/delete/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		voluntarioDao.deleteVoluntario(id);
+	    	}
+	    }
 		return "redirect:../list";
 	}
 	
@@ -139,7 +180,7 @@ public class VoluntarioController {
 	@RequestMapping("/horarios")
 	public String listPeticionesBeneficiario(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
-	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("beneficiario"))) { 
+	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("voluntario"))) { 
           model.addAttribute("user", new UserDetails());
           session.setAttribute("nextUrl", "voluntario/horarios");
           return "login";
@@ -149,7 +190,13 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="/updateHorario/{id}", method=RequestMethod.GET)
-	public String editHorarioVoluntario(Model model, @PathVariable String id) {
+	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/updateHorario");
+          return "login";
+        }
 		model.addAttribute("horarioVoluntario", horarioVoluntarioDao.getHorarioVoluntario(id));
 		return "voluntario/updateHorario";
 	}
@@ -166,8 +213,24 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="/deleteHorario/{id}")
-	public String processDeleteHorario(@PathVariable String id) {
-		horarioVoluntarioDao.deleteHorarioVoluntario(id);
+	public String processDeleteHorario(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/deleteHorario");
+          return "login";
+        }
+		if (session.getAttribute("accion") == null) {
+	    	model.addAttribute("accion", new Accion());
+	    	session.setAttribute("ruta", "/voluntario/deleteHorario/"+id);
+	    	return "confirm"; 
+	    } else {
+		    Accion accion=(Accion) session.getAttribute("accion");
+	    	session.removeAttribute("accion");
+	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		horarioVoluntarioDao.deleteHorarioVoluntario(id);
+	    	}
+	    }
 		return "redirect:../horarios";
 	}
 	
