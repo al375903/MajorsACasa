@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import es.uji.ei1027.majorsACasa.dao.BeneficiarioDao;
 import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
+import es.uji.ei1027.majorsACasa.services.PeticionService;
 
 @Controller
 @RequestMapping("/beneficiario")
@@ -26,6 +27,13 @@ public class BeneficiarioController {
 	@Autowired
 	public void setBeneficiarioDao(BeneficiarioDao beneficiarioDao) {
 		this.beneficiarioDao = beneficiarioDao;
+	}
+	
+	private PeticionService peticionService;
+	
+	@Autowired
+	public void setPeticionService(PeticionService peticionService) {
+		this.peticionService = peticionService;
 	}
 
 	@RequestMapping("/list")
@@ -104,5 +112,20 @@ public class BeneficiarioController {
         }
 		beneficiarioDao.deleteBeneficiario(id);
 		return "redirect:../list";
+	}
+	
+
+	
+	
+	@RequestMapping("/peticiones")
+	public String listPeticionesBeneficiario(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "beneficiario/peticiones");
+          return "login";
+        }
+		model.addAttribute("peticiones", peticionService.getPeticionesBeneficario("20902106M")); //user.getUsername();
+		return "beneficiario/peticiones";
 	}
 }

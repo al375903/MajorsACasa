@@ -62,6 +62,15 @@ public class PeticionDao {
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Peticion>();
 	       }
-	   }
+	}
+	
+	public List<Peticion> getPeticionBeneficiario(String idBeneficiario){
+		try {
+	           return jdbcTemplate.query("SELECT * FROM Peticion WHERE idBeneficiario=?",
+	                   new Object[] {idBeneficiario}, new PeticionRowMapper());
+	       } catch (EmptyResultDataAccessException e) {
+	           return new ArrayList<Peticion>();
+	       }
+	}
 
 }
