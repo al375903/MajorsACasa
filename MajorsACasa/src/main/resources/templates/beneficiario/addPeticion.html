@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
+<head>
+   <title>Crear nueva petición</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Nueva petición</h2>
+    <form action="#" th:action="@{/beneficiario/addPeticion}"
+                     th:object="${peticion}" method="post">
+      <table>
+        <tr>
+            <td><label>Número Petición</label></td>
+            <td><input type="text" th:field="*{idPeticion}" /></td>
+            <td th:if="${#fields.hasErrors('idPeticion')}" th:errors="*{idPeticion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>DNI Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" /></td>
+            <td th:if="${#fields.hasErrors('idBeneficiario')}" th:errors="*{idBeneficiario}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Número Contrato</label></td>
+            <td><input type="text" th:field="*{idContrato}" /></td>
+            <td th:if="${#fields.hasErrors('idContrato')}" th:errors="*{idContrato}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Comentarios</label></td>
+            <td><input type="text" th:field="*{comentarios}" maxlength=50/></td>
+        </tr>
+        <tr>
+            <td><label>Tipo servicio</label></td>
+            <td><select class="form_control" type="text" th:field="*{tipoServicio}">
+				<option value="No seleccionado">Selecciona el tipo del servicio</option>
+				<option value="Comida a domicilio">Comida a domicilio</option>
+				<option value="Servicio de limpieza">Servicio de limpieza</option>
+				<option value="Servicio sanitario">Servicio sanitario</option>
+				</select>
+			</td>
+			<td th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Estado</label></td>
+            <td><select class="form_control" type="text" th:field="*{estado}">
+				<option value="NoRevisada">No revisada</option>
+				<option value="Aceptada">Aceptada</option>
+				<option value="Denegada">Denegada</option>
+				</select>
+			</td>
+        </tr>
+        <tr>
+            <td><label>Fecha aprobación</label></td>
+            <td><input type="date" th:field="*{fechaAprobacion}" /></td>
+        	<td th:if="${#fields.hasErrors('fechaAprobacion')}" th:errors="*{fechaAprobacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha denegación</label></td>
+            <td><input type="date" th:field="*{fechaDenegacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaDenegacion')}" th:errors="*{fechaDenegacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha creación</label></td>
+            <td><input type="date" th:field="*{fechaCreacion}" required/></td>
+        </tr>
+        <tr>
+            <td><label>Fecha cancelación</label></td>
+            <td><input type="date" th:field="*{fechaCancelacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaCancelacion')}" th:errors="*{fechaCancelacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Añadir Petición" class="btn-primary" role="button" /></td>
+        </tr>
+      </table>
+    </form>
+</div>
+</body>
+</html>
