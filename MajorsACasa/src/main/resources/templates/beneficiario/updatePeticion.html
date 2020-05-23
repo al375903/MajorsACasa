@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/baseManager}">
+<head>
+   <title>Editar una petición</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Editar petición</h2>
+    <form action="#" th:action="@{/beneficiario/updatePeticion}"
+                     th:object="${peticion}" method="post">
+      <table>
+        <tr>
+            <td><label>Número Petición</label></td>
+            <td><input type="text" th:field="*{idPeticion}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>DNI Beneficiario</label></td>
+            <td><input type="text" th:field="*{idBeneficiario}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Número Contrato</label></td>
+            <td><input type="text" th:field="*{idContrato}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Comentarios</label></td>
+            <td><input type="text" th:field="*{comentarios}" maxlength=50/></td>
+        </tr>
+        <tr>
+            <td><label>Tipo servicio</label></td>
+            <td><input class="text" type="text" th:field="*{tipoServicio}" readonly="readonly"></td>
+        </tr>
+        <tr>
+            <td><label>Estado</label></td>
+            <td><select class="form_control" type="text" th:field="*{estado}">
+				<option value="NoRevisada">No revisada</option>
+				<option value="Aceptada">Aceptada</option>
+				<option value="Denegada">Denegada</option>
+				</select>
+			</td>
+        </tr>
+        <tr>
+            <td><label>Fecha aprobación</label></td>
+            <td><input type="date" th:field="*{fechaAprobacion}" /></td>
+        	<td th:if="${#fields.hasErrors('fechaAprobacion')}" th:errors="*{fechaAprobacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha denegación</label></td>
+            <td><input type="date" th:field="*{fechaDenegacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaDenegacion')}" th:errors="*{fechaDenegacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha creación</label></td>
+            <td><input type="date" th:field="*{fechaCreacion}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Fecha cancelación</label></td>
+            <td><input type="date" th:field="*{fechaCancelacion}" /></td>
+            <td th:if="${#fields.hasErrors('fechaCancelacion')}" th:errors="*{fechaCancelacion}" class="error"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Editar Petición" class="btn-primary" role="button" /></td>
+        </tr>
+      </table>
+    </form>
+</div>
+</body>
+</html>

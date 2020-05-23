@@ -58,6 +58,15 @@ public class HorarioVoluntarioDao {
 		}
 	}
 	
+	public List<HorarioVoluntario> getHorariosDeUnVoluntario(String idVoluntario){
+		try {
+			return jdbcTemplate.query("SELECT * FROM HorarioVoluntario WHERE idVoluntario=?",
+					new Object[] {idVoluntario}, new HorarioVoluntarioRowMapper());
+		} catch(EmptyResultDataAccessException e) {
+			return new ArrayList<HorarioVoluntario>();
+		}
+	}
+	
 }
 
 
