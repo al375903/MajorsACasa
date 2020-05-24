@@ -5,7 +5,18 @@ public class UserDetails {
     String password; 
     String tipo;
     
-    public String getUsername() {
+    public UserDetails() {
+		super();
+	}
+    
+    public UserDetails(String username, String password, String tipo) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.tipo = tipo;
+	}
+
+	public String getUsername() {
         return username; 
     }
 
