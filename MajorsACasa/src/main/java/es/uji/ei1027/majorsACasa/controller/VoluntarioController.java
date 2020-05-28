@@ -185,7 +185,7 @@ public class VoluntarioController {
           session.setAttribute("nextUrl", "voluntario/horarios");
           return "login";
         }
-		model.addAttribute("horarios", horarioService.getHorariosDeUnVoluntario("34291039P")); //user.getUsername();
+		model.addAttribute("horarios", horarioService.getHorariosDeUnVoluntario(user.getUsername()));
 		return "voluntario/horarios";
 	}
 	

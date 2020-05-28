@@ -186,7 +186,7 @@ public class BeneficiarioController {
           session.setAttribute("nextUrl", "beneficiario/peticiones");
           return "login";
         }
-		model.addAttribute("peticiones", peticionService.getPeticionesBeneficario("20902106M")); //user.getUsername();
+		model.addAttribute("peticiones", peticionService.getPeticionesBeneficario(user.getUsername()));
 		return "beneficiario/peticiones";
 	}
 	

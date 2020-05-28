@@ -68,7 +68,7 @@ public class ContratoDao {
 	public List<Contrato> getContratoEmpresa(String nombreEmpresa) {
 		try {
 			return this.jdbcTemplate.query(
-					"SELECT * FROM contrato WHERE nombreEmpresa=?",
+					"SELECT Contrato.*, Empresa.* FROM Contrato JOIN Empresa USING (nombreEmpresa) WHERE nombreEmpresa=?",//"SELECT * FROM contrato WHERE nombreEmpresa=?"
 					new Object[] {nombreEmpresa}, new ContratoRowMapper());
 		}
 		catch(EmptyResultDataAccessException e) {
