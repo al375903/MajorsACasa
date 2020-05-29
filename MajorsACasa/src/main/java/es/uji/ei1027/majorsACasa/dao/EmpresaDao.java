@@ -1,7 +1,6 @@
 package es.uji.ei1027.majorsACasa.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -65,6 +64,16 @@ public class EmpresaDao {
 	                   new EmpresaRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Empresa>();
+	       }
+	   }
+	   
+	   public Empresa getEmpresaByNombre(String nombreEmpresa) {
+	       try {
+	           return jdbcTemplate.queryForObject("SELECT * FROM Empresa WHERE nombreEmpresa=?",
+	                   new EmpresaRowMapper(), nombreEmpresa);
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return null;
 	       }
 	   }
 	   

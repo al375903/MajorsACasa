@@ -90,7 +90,13 @@ public class BeneficiarioController {
 	}
 	
 	@RequestMapping(value="addPeticion")
-	public String addPeticion(Model model) {
+	public String addPeticion(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "beneficiario/addPeticion");
+          return "login";
+        }
 		model.addAttribute("peticion", new Peticion());
 		return "beneficiario/addPeticion";
 	}

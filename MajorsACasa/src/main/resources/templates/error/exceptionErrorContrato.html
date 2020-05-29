@@ -13,11 +13,11 @@
 <div class="container">
    <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
-       <p>¿Quieres añadir la empresa?</p>
+       <p>¿Quieres volver al menú anterior o añadir la empresa?</p>
    </div>
    <div th:align="center">
-   	   <a class="btn btn-light" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
-       <a href="/contrato/addEmpresaPorContrato" class="btn btn-primary" th:align="left">Añadir empresa <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
+   	   <a class="btn-primary" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
+       <a href="/contrato/addEmpresaPorContrato" class="btn-primary" th:align="left">Añadir empresa <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
    </div>
 </div>
 </body>

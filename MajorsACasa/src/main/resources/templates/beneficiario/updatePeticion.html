@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/baseManager}">
-<head>
+     layout:decorate="~{fragments/baseBeneficiario}">
+<head> 
    <title>Editar una petición</title>
    <meta charset="UTF-8" />
-   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" th:href="@{/css/majorsACasa.css}"/>
+   <link rel="stylesheet" type="text/css" href="/css/beneficiario.css" th:href="@{/css/beneficiario.css}"/>
    <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
             <td><input type="text" th:field="*{idPeticion}" readonly="readonly"/></td>
         </tr>
         <tr>
-            <td><label>DNI Beneficiario</label></td>
+            <td><label>DNI</label></td>
             <td><input type="text" th:field="*{idBeneficiario}" readonly="readonly"/></td>
         </tr>
         <tr>
@@ -38,29 +38,13 @@
             <td><label>Estado</label></td>
             <td><select class="form_control" type="text" th:field="*{estado}">
 				<option value="NoRevisada">No revisada</option>
-				<option value="Aceptada">Aceptada</option>
 				<option value="Denegada">Denegada</option>
 				</select>
 			</td>
         </tr>
         <tr>
-            <td><label>Fecha aprobación</label></td>
-            <td><input type="date" th:field="*{fechaAprobacion}" /></td>
-        	<td th:if="${#fields.hasErrors('fechaAprobacion')}" th:errors="*{fechaAprobacion}" class="error"></td>
-        </tr>
-        <tr>
-            <td><label>Fecha denegación</label></td>
-            <td><input type="date" th:field="*{fechaDenegacion}" /></td>
-            <td th:if="${#fields.hasErrors('fechaDenegacion')}" th:errors="*{fechaDenegacion}" class="error"></td>
-        </tr>
-        <tr>
             <td><label>Fecha creación</label></td>
             <td><input type="date" th:field="*{fechaCreacion}" readonly="readonly"/></td>
-        </tr>
-        <tr>
-            <td><label>Fecha cancelación</label></td>
-            <td><input type="date" th:field="*{fechaCancelacion}" /></td>
-            <td th:if="${#fields.hasErrors('fechaCancelacion')}" th:errors="*{fechaCancelacion}" class="error"></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Editar Petición" class="btn-primary" role="button" /></td>

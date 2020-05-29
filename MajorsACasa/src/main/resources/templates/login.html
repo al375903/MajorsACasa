@@ -2,29 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
-                                    th:href="@{/css/majorsACasa.css}"/>
+
 <title>Login</title>
 <meta charset="UTF-8"/>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/beneficiario.css"
+                                    th:href="@{/css/beneficiario.css}"/>
 
 </head>
-<body>
-
+<body align="center">
     <h2>Acceso</h2>
     <form action="#" th:action="@{/login}" 
           th:object="${user}" method="post">
-        <p>
-               <label>Usuario:</label>
-            <input class="form_control" type="text" th:field="*{username}"/>
-            <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
-        </p>
-        <p>
-               <label>Contraseña:</label>
-            <input class="form_control" type="password" th:field="*{password}"/>
-            <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-        </p>        
-        <input type="submit" value="Acceder" />
+        <table align="center">
+        <tr>
+            <td><label>Usuario:</label></td>
+            <td><input class="form_control" type="text" th:field="*{username}"/></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Contraseña:</label></td>
+            <td><input class="form_control" type="password" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></td>
+        </tr>
+        <tr>
+        	<td><p></p></td>
+        </tr>
+        <tr>
+        	<td colspan="2"><input type="submit" value="Acceder" class="btn-primary" role="button" /></td>
+        </tr>
+        </table>
     </form>
 </body>
 </html>

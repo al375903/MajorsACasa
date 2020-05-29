@@ -92,7 +92,7 @@ public class VoluntarioController {
 	@RequestMapping(value="addHorario")
 	public String addHorarioVoluntario(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
-	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
           model.addAttribute("user", new UserDetails());
           session.setAttribute("nextUrl", "voluntario/addHorario");
           return "login";

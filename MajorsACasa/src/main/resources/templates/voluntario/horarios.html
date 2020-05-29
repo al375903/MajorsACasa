@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/baseVolunteer}">
+     layout:decorate="~{fragments/baseVoluntario}">
 <head>
    <title>Gestionar Horarios de Voluntarios</title>
    <meta charset="UTF-8" />
@@ -13,7 +13,10 @@
 <div layout:fragment="content">
 <div class="container">
    <h1>Esta es tu lista de horarios</h1>
-   <table class="table table-striped">
+   <div th:if="${#lists.isEmpty(horarios)}">
+       Todavia no has registrado ningún horario.
+    </div>
+   <table th:unless="${#lists.isEmpty(horarios)}" class="table table-striped">
      <thead>
        <tr>
          <th>Número Horario</th>

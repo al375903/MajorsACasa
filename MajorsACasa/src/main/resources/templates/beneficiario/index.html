@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+     layout:decorate="~{fragments/baseBeneficiario}">
 <head>
 	<title layout:title-pattern="$CONTENT_TITLE">Majors a casa</title>
 	<meta charset="UTF-8"/>
 	<meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css" 
-                                    th:href="@{/css/majorsACasa.css}"/>
+	<link rel="stylesheet" type="text/css" href="/css/beneficiario.css" 
+                                    th:href="@{/css/beneficiario.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div layout:fragment="content">
 <div class="container">
 	<h1>Indice beneficiario</h1>
 	<h2>Listar peticiones</h2>
-	<a href="peticiones" class="btn btn-success" role="button"> Listar <!-- <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i>   --></a> 
-	
+	<a href="peticiones" class="btn-primary" role="button"> Listar  <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a> 
+	<p></p>
 	<h2>Realizar nueva petición</h2>
-	<a href="addPeticion" class="btn btn-success" role="button"> Realizar <!-- <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i>   --></a>
-	
-	
+	<a href="addPeticion" class="btn-primary" role="button"> Realizar  <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>

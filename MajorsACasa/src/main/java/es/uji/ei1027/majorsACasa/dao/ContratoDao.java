@@ -57,6 +57,15 @@ public class ContratoDao {
 		}
 	}
 	
+	public Contrato getContratoYTipo(String idContrato) {
+		try {
+			return jdbcTemplate.queryForObject("SELECT Contrato.*, Empresa.* FROM Contrato JOIN Empresa USING (nombreEmpresa) WHERE idContrato=?",
+					new ContratoRowMapper(), idContrato);
+		} catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
+	
 	public List<Contrato> getContratos(){
 		try {
 			return jdbcTemplate.query("SELECT Contrato.*, Empresa.* FROM Contrato JOIN Empresa USING (nombreEmpresa)", new ContratoRowMapper());

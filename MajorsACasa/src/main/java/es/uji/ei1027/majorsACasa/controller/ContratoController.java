@@ -123,7 +123,7 @@ public class ContratoController {
           session.setAttribute("nextUrl", "contrato/update");
           return "login";
         }
-		model.addAttribute("contrato", contratoDao.getContrato(id));
+		model.addAttribute("contrato", contratoDao.getContratoYTipo(id));
 		return "contrato/update";
 	}
 	

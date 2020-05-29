@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/baseManager}">
+     layout:decorate="~{fragments/baseBeneficiario}">
 <head>
    <title>Gestionar Empresas</title>
    <meta charset="UTF-8" />
-   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
-                                    th:href="@{/css/majorsACasa.css}"/>
+   <link rel="stylesheet" type="text/css" href="/css/beneficiario.css"
+                                    th:href="@{/css/beneficiario.css}"/>
    <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="grande">
 <div layout:fragment="content">
 <div class="container">
-    <h1>Estas son todas sus peticiones</h1>
-	<table class="table table-striped">
+    <h1>Estas son sus peticiones</h1>
+    <div th:if="${#lists.isEmpty(peticiones)}">
+       Todavía no ha realizado ninguna petición.
+    </div>
+	<table th:unless="${#lists.isEmpty(peticiones)}" class="table table-striped">
     <thead>
        <tr>
          <th>Número Petición</th>

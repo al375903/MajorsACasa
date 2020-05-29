@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"    
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<!-- Required meta tags -->
+<meta charset="UTF-8"/>
+<meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+<!-- Bootstrap CSS  -->
+<link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+
+<!-- app css  -->
+<link type="text/css" th:href="@{/css/beneficiario.css}" href="/css/beneficiario.css"
+    rel="stylesheet"/>
+
+<title layout:title-pattern="$CONTENT_TITLE">Majors a casa</title>
+</head>
+<body class="container">
+    <div th:replace="fragments/navBeneficiario"></div>
+    <div th:replace="fragments/logininfo"></div>
+    <div layout:fragment="content"></div>
+    <footer>
+        <hr>
+        <p class="text-muted">EI1027 - Disseny i Implementació de
+            Sistemes d'Informació</p>
+    </footer>
+</body>
+</html>

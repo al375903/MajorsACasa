@@ -5,19 +5,20 @@
    <meta charset="UTF-8">
    <title>Mensaje de excepcion</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
-                                    th:href="@{/css/majorsACasa.css}"/>
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
+   <link rel="stylesheet" type="text/css" href="/css/beneficiario.css"
+                                    th:href="@{/css/beneficiario.css}"/>
    <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
    <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
-       <p>Pulse el botón de inicio o el botón para volver atrás.</p>
+       <p>Pulse el botón para volver atrás o el botón para salir de la cuenta.</p>
    </div>
    <div th:align="center">
-   	   <a class="btn btn-light" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
-       <a href="/" class="btn btn-primary" th:align="left">Inicio</a>
+   	   <a class="btn btn-primary" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
+       <a href="/" class="btn btn-light" th:align="left">Salir</a>
    </div>
 </div>
 </body>

@@ -73,20 +73,25 @@ public class FakeUserProvider implements UserDao {
       //Si no es ninguno de estos buscar por tablas
       if (user == null) {
     	  //buscar por el resto de tablas con jdbtemplate
+    	  Beneficiario b;
+    	  Voluntario v;
+    	  Empresa e;
     	  try {
-    		  Beneficiario b = beneficiarioDao.getBeneficiario(username.trim());
-    		  Voluntario v = voluntarioDao.getVoluntario(username.trim());
-    		  Empresa e = empresaDao.getEmpresa(username.trim());
-    		  if(b != null)
-    			  user = new UserDetails(b.getIdBeneficiario(),passwordEncryptor.encryptPassword(b.getContrasenya()),"beneficiario");
-    		  else if(v != null)
-    			  user = new UserDetails(v.getIdVoluntario(),passwordEncryptor.encryptPassword(v.getContrasenya()),"voluntario");
-    		  else
-    			  user = new UserDetails(e.getIdEmpresa(),passwordEncryptor.encryptPassword(e.getIdEmpresa()),"empresa");
-	       } catch (EmptyResultDataAccessException e) {
+    		  b = beneficiarioDao.getBeneficiario(username.trim());
+    		  v = voluntarioDao.getVoluntario(username.trim());
+    		  e = empresaDao.getEmpresaByNombre(username.trim());
+    	  } catch (EmptyResultDataAccessException ex) {
 	           return null;
-	       }
-      }//return null; // Usuari no trobat
+	      }
+		  if(b != null)
+			  user = new UserDetails(b.getIdBeneficiario(),passwordEncryptor.encryptPassword(b.getContrasenya()),"beneficiario");
+		  else if(v != null)
+			  user = new UserDetails(v.getIdVoluntario(),passwordEncryptor.encryptPassword(v.getContrasenya()),"voluntario");
+		  else if(e != null)
+			  user = new UserDetails(e.getNombreEmpresa(),passwordEncryptor.encryptPassword(e.getNombreEmpresa()),"empresa");
+		  else
+			  return null; // Usuari no trobat
+      }
       if (passwordEncryptor.checkPassword(password, user.getPassword())) {
     	  // Es deuria esborrar de manera segura el camp password abans de tornar-lo
     	  return user;

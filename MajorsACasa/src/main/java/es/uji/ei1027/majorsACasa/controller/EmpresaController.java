@@ -167,7 +167,7 @@ public class EmpresaController {
         session.setAttribute("nextUrl", "empresa/contratos");
         return "login";
       }
-		model.addAttribute("contratos", contratoService.getContratosDeUnaEmpresa(user.getUsername())); //Sale mal, comprobar
+		model.addAttribute("contratos", contratoService.getContratosDeUnaEmpresa(user.getUsername()));
 		return "empresa/contratos";
 	}
 	

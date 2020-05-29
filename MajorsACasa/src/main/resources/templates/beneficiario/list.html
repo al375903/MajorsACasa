@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+     layout:decorate="~{fragments/baseBeneficiario}">
 <head>
    <title>Gestionar Beneficiarios</title>
    <meta charset="UTF-8" />
@@ -13,7 +13,10 @@
 <div layout:fragment="content">
 <div class="container">
    <h1>Lista de Beneficiarios  <i class="fas fa-blind fa-lg"></i></h1>
-   <table class="table table-striped">
+   <div th:if="${#lists.isEmpty(beneficiarios)}">
+       No hay usuarios
+    </div>
+   <table th:unless="${#lists.isEmpty(beneficiarios)}" class="table table-striped">
      <thead>
        <tr>
          <th>DNI</th>
@@ -49,7 +52,7 @@
        </tr>
      </tbody>
    </table>
-   <a href="add" class="btn btn-success" role="button">Añadir Beneficiario <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
+   <a href="add" class="btn-primary" role="button">Añadir Beneficiario <i class="fas fa-angle-right fa"></i><i class="fas fa-angle-right fa"></i></a>
 </div>
 </div>
 </body>

@@ -1,0 +1,128 @@
+<link rel="stylesheet"      
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+/* Estil aplicat al cos de la pàgina */
+body {
+   font-family: Helvetica, Arial, Roboto, sans-serif; 
+   background-color: white;
+   max-width: 800px;
+   padding: 32px 19px 16px 32px;
+}
+
+/* Capçalera de nivell 1 */
+h1 {
+   font-size: 400%; 
+   font-weight: bold;
+   color: #000080;
+   magin-bottom: 16px;
+   padding-bottom: 12px;
+}
+
+/* Capçalera de nivell 2 */
+h2 {
+   font-size: 288%;
+   font-weight: bold;
+   color: #2266AD;
+   border-bottom: 3px solid #ddd;
+   margin-bottom: 24px;
+   padding-bottom: 5px;
+   padding-top: 20px;
+}
+
+label {
+	font-size: 130%;
+	font-weight: bold;
+	display: block;
+	margin: 0px 16px 24px 0px;
+}
+
+input, select {
+	font-size: 150%;
+}
+
+.error {
+	font-size: 140%;
+	 width: 700px;
+     color: #8B0000;
+     font-size:120%;
+     text-align: left;
+     vertical-align: middle;
+     padding-left: 16px;
+     /*margin: 0px 0px 0px 30px;*/
+}
+
+.grande {
+	font-size: 130%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+	font-size: 140%;
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.btn-success2 {
+	font-size: 140%;
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.btn-warning2 {
+	font-size: 140%;
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.btn-danger2 {
+	font-size: 140%;
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #4682B4;
+	color: #fff;
+	box-shadow: 1px 1px 4px #4682B4;
+	-moz-box-shadow: 1px 1px 4px #4682B4;
+	-webkit-box-shadow: 1px 1px 4px #4682B4;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.needcorrection {
+     color: red;
+     background-color:yellow;
+}
+
+.loggeduser { 
+	font-size: 130%;
+    color: gray;                
+    text-align: right;
+	margin-right: 10pt;
+}
