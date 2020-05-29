@@ -14,7 +14,7 @@
 <div class="container">
    <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
        <h3 th:text="${message}"></h3>
-       <p>Pulse el botón para volver atrás o el botón para salir de la cuenta.</p>
+       <h4>Pulse el botón para volver atrás o el botón para salir de la cuenta.</h4>
    </div>
    <div th:align="center">
    	   <a class="btn btn-primary" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>

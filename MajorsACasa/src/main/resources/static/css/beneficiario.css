@@ -1,5 +1,7 @@
-<link rel="stylesheet"      
+/*<link rel="stylesheet"      
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+*/
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
 /* Estil aplicat al cos de la pàgina */
 body {
    font-family: Helvetica, Arial, Roboto, sans-serif; 
@@ -24,6 +26,27 @@ h2 {
    font-size: 288%;
    font-weight: bold;
    color: #2266AD;
+   border-bottom: 3px solid #ddd;
+   margin-bottom: 24px;
+   padding-bottom: 5px;
+   padding-top: 20px;
+}
+
+h3 {
+   font-family: Helvetica;
+   font-size: 250%;
+   font-weight: bold;
+   color: #2266AD;
+   border-bottom: 3px solid #ddd;
+   margin-bottom: 24px;
+   padding-bottom: 5px;
+   padding-top: 20px;
+}
+
+h4 {
+   font-family: Helvetica;
+   font-size: 130%;
+   font-weight: bold;
    border-bottom: 3px solid #ddd;
    margin-bottom: 24px;
    padding-bottom: 5px;
