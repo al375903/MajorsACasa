@@ -15,7 +15,7 @@ public final class VoluntarioRowMapper implements RowMapper<Voluntario>{
 		voluntario.setEmail(rs.getString("email"));
 		voluntario.setHobbies(rs.getString("hobbies"));
 		voluntario.setFechaPeticionVoluntariado(rs.getObject("fechaPeticionVoluntariado", LocalDate.class));
-		voluntario.setFechaPeticionVoluntariado(rs.getObject("fechaAceptacionVoluntariado", LocalDate.class));
+		voluntario.setFechaAceptacionVoluntariado(rs.getObject("fechaAceptacionVoluntariado", LocalDate.class));
 		voluntario.setFechaFin(rs.getObject("fechaFin", LocalDate.class));
 		voluntario.setAceptado(rs.getBoolean("aceptado"));
 		voluntario.setGenero(rs.getString("genero"));
