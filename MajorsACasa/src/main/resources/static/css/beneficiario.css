@@ -10,6 +10,7 @@ body {
 
 /* Capçalera de nivell 1 */
 h1 {
+   font-family: Helvetica;
    font-size: 400%; 
    font-weight: bold;
    color: #000080;
@@ -19,6 +20,7 @@ h1 {
 
 /* Capçalera de nivell 2 */
 h2 {
+   font-family: Helvetica;
    font-size: 288%;
    font-weight: bold;
    color: #2266AD;
@@ -29,6 +31,7 @@ h2 {
 }
 
 label {
+   font-family: Helvetica;
 	font-size: 130%;
 	font-weight: bold;
 	display: block;
@@ -36,6 +39,7 @@ label {
 }
 
 input, select {
+    font-family: Helvetica;
 	font-size: 150%;
 }
 
