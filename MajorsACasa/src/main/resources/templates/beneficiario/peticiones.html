@@ -19,30 +19,20 @@
 	<table th:unless="${#lists.isEmpty(peticiones)}" class="table table-striped">
     <thead>
        <tr>
-         <th>Número Petición</th>
-         <th>Número Contrato</th>
-         <th>Comentarios</th>
-         <th>Tipo servicio</th>
+         <th>Tipo de servicio</th>
          <th>Estado</th>
-         <th>Fecha aprobación</th>
-         <th>Fecha denegación</th>
-         <th>Fecha creación</th>
-         <th>Fecha cancelación</th>
+         <th>Fecha de petición</th>
+         <th>Comentarios</th>
          <th><font size="+1">Editar</font></th>
          <th><font size="+1">Eliminar</font></th>
        </tr>
      </thead>	
 	 <tbody>
        <tr th:each="peticion: ${peticiones}">
-         <td th:text="${peticion.idPeticion}"></td>
-         <td th:text="${peticion.idContrato}"></td>
-         <td th:text="${peticion.comentarios}"></td>
          <td th:text="${peticion.tipoServicio}"></td>
          <td th:text="${peticion.estado}"></td>
-         <td th:text="${peticion.fechaAprobacion}"></td>
-         <td th:text="${peticion.fechaDenegacion}"></td>
          <td th:text="${peticion.fechaCreacion}"></td>
-         <td th:text="${peticion.fechaCancelacion}"></td>
+         <td th:text="${peticion.comentarios}"></td>
          <td><center><a th:href="@{/beneficiario/updatePeticion/{id}(id=${peticion.idPeticion})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
          <td><center><a th:href="@{/beneficiario/deletePeticion/{id}(id=${peticion.idPeticion})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>

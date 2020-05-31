@@ -104,7 +104,7 @@ public class BeneficiarioController {
 	@RequestMapping(value="/addPeticion", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("peticion") Peticion peticion,
 									BindingResult bindingResult) {
-		PeticionValidator peticionValidator = new PeticionValidator();
+		PeticionBeneficiarioValidator peticionValidator = new PeticionBeneficiarioValidator();
 		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "beneficiario/addPeticion";
@@ -116,6 +116,20 @@ public class BeneficiarioController {
 								"No puede realizar una nueva petición teniendo una petición aceptada o por revisar", "ErrorCrearPetición");
 					}
 				}
+			}
+			Peticion auxPeticion = peticionDao.getPeticion(peticion.getIdBeneficiario());
+			if(auxPeticion == null) {
+				peticion.setIdPeticion(peticion.getIdBeneficiario());
+			}else {
+				String idPeticion=auxPeticion.getIdPeticion();
+				int i = 0;
+				String aux = "";
+				while(auxPeticion != null) {
+					aux = idPeticion + i;
+					auxPeticion = peticionDao.getPeticion(aux);
+					i = i + 1;
+				}
+				peticion.setIdPeticion(aux);
 			}
 			peticionDao.addPeticion(peticion);
 		} catch (DuplicateKeyException e) {
@@ -211,7 +225,7 @@ public class BeneficiarioController {
 	@RequestMapping(value="/updatePeticion", method=RequestMethod.POST)
 	public String processUpdateSubmit(@ModelAttribute("peticion") Peticion peticion,
 										BindingResult bindingResult) {
-		PeticionValidator peticionValidator = new PeticionValidator();
+		PeticionBeneficiarioValidator peticionValidator = new PeticionBeneficiarioValidator();
 		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "beneficiario/updatePeticion";
