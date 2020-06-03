@@ -67,7 +67,7 @@ public class HorarioVoluntarioController {
 					"Ya existe un horario con id " + horarioVoluntario.getIdHorario(), "CPduplicada");
 		} catch (DataAccessException e) {
 			throw new MajorsACasaException(
-					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
+					"Error en el acceso a la base de datos", "ErrorAccediendoDatosHorario");
 		}
 		return "redirect:list";
 	}

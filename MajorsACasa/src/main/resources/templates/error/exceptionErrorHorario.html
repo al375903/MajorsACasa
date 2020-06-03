@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+   <meta charset="UTF-8">
+   <title>Mensaje de excepcion</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/beneficiario.css"
+                                    th:href="@{/css/beneficiario.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+   <div th:align="center" class="alert" th:classappend="${#strings.equals(errorName, 'CPduplicada')} ? 'alert-danger' : 'alert-info'"> 
+       <h3 th:text="${message}"></h3>
+       <p>El beneficiario no existe</p>
+   </div>
+   <div th:align="center">
+   	   <a class="btn-primary" th:align="left" onclick="history.back()"><i class="fas fa-angle-left fa"></i><i class="fas fa-angle-left fa"></i> Atrás</a>
+   </div>
+</div>
+</body>
+</html>

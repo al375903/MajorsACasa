@@ -13,6 +13,9 @@ public class MajorsACasaControllerAdvice {
 		if(ex.getErrorName().equals("ErrorAccediendoDatosEmpresa")){
 			mav = new ModelAndView("error/exceptionErrorContrato");
 		}
+		if(ex.getErrorName().equals("ErrorAccediendoDatosHorario")){
+			mav = new ModelAndView("error/exceptionErrorHorario");
+		}
 		mav.addObject("message", ex.getMessage());
 	    mav.addObject("errorName", ex.getErrorName());
 	    return mav;
