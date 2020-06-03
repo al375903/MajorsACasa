@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/baseEmpresa}"> 
+<head>
+   <title>Editar contrato</title>
+   <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Editar Contrato</h2>
+    <form action="#" th:action="@{/empresa/updateContrato}"
+                     th:object="${contrato}" method="post">
+      <table>
+        <tr>
+            <td><label>Número Contrato</label></td>
+            <td><input type="text" th:field="*{idContrato}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Nombre Empresa</label></td>
+            <td><input type="text" th:field="*{nombreEmpresa}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Precio</label></td>
+            <td><input type="number" th:field="*{precio}"/></td>
+            <td th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Fecha Inicio</label></td>
+            <td><input type="date" th:field="*{fechaInicio}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Fecha fin</label></td>
+            <td><input type="date" th:field="*{fechaFin}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Editar Contrato" class="btn-primary" role="button" /></td>
+        </tr>
+      </table>
+    </form>
+</div>
+</body>
+</html>
+   

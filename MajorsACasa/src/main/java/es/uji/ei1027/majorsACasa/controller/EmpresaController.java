@@ -106,17 +106,17 @@ public class EmpresaController {
          return "login";
        }
 	    model.addAttribute("empresa", empresaDao.getEmpresa(id));
-		return "empresa/update"; 
+		return "empresa/update";
 	}
   
   @RequestMapping(value="/update", method = RequestMethod.POST) 
 	public String processUpdateSubmit(
                           @ModelAttribute("empresa") Empresa empresa, 
                           BindingResult bindingResult) {
-	  EmpresaValidator empresaValidator = new EmpresaValidator();
-	  empresaValidator.validate(empresa, bindingResult);
-	  if (bindingResult.hasErrors()) 
-			 return "empresa/update";
+		  EmpresaValidator empresaValidator = new EmpresaValidator();
+		  empresaValidator.validate(empresa, bindingResult);
+		  if (bindingResult.hasErrors()) 
+				 return "empresa/update";
 		 empresaDao.updateEmpresa(empresa);
 		 return "redirect:list"; 
 	}
@@ -179,7 +179,7 @@ public class EmpresaController {
           session.setAttribute("nextUrl", "empresa/updateContrato");
           return "login";
         }
-		model.addAttribute("contrato", contratoDao.getContrato(id));
+		model.addAttribute("contrato", contratoDao.getContratoYTipo(id));
 		return "empresa/updateContrato";
 	}
 	
