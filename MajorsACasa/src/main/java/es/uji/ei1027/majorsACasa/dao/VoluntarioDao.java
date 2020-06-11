@@ -24,7 +24,7 @@ public class VoluntarioDao {
 		jdbcTemplate.update("INSERT INTO Voluntario VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
 				voluntario.getIdVoluntario(), voluntario.getNombre(), voluntario.getEmail(),
 				voluntario.getDireccion(), voluntario.getHobbies(), voluntario.getFechaPeticionVoluntariado(),
-				voluntario.getFechaAceptacionVoluntariado(), voluntario.getFechaFin(), voluntario.isAceptado(), 
+				voluntario.getFechaAceptacionVoluntariado(), voluntario.getFechaFin(), voluntario.getAceptado(), 
 				voluntario.getGenero(), voluntario.getEdad(), voluntario.getContrasenya());
 	}
 	
@@ -33,14 +33,15 @@ public class VoluntarioDao {
 	}
 	
 	public void updateVoluntario(Voluntario voluntario) {
-		jdbcTemplate.update("UPDATE Voluntario SET nombre=?, email=?, direccion=?,"
+		jdbcTemplate.update("UPDATE Voluntario SET nombre=?, direccion=?,"
 				+ "hobbies=?, fechaPeticionVoluntariado=?, fechaAceptacionVoluntariado=?,"
-				+ "fechaFin=?, aceptado=?, genero=?, edad=?, contrasenya=?",
-				voluntario.getNombre(), voluntario.getEmail(), voluntario.getDireccion(),
+				+ "fechaFin=?, aceptado=?, genero=?, edad=?, contrasenya=?" 
+				+ "WHERE idVoluntario=?",
+				voluntario.getNombre(), voluntario.getDireccion(),
 				voluntario.getHobbies(), voluntario.getFechaPeticionVoluntariado(), 
 				voluntario.getFechaPeticionVoluntariado(), voluntario.getFechaFin(),
-				voluntario.isAceptado(), voluntario.getGenero(), voluntario.getEdad(), 
-				voluntario.getContrasenya());
+				voluntario.getAceptado(), voluntario.getGenero(), voluntario.getEdad(), 
+				voluntario.getContrasenya(), voluntario.getIdVoluntario());
 	}
 	
 	public Voluntario getVoluntario(String idVoluntario) {

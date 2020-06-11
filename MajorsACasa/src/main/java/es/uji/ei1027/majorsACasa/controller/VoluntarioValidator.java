@@ -32,9 +32,6 @@ public class VoluntarioValidator implements Validator {
 		 
 		 if (voluntario.getDireccion().trim().equals(""))
 			 errors.rejectValue("direccion", "obligatorio", "Introduzca una direccion.");
-		 
-		 if (voluntario.getFechaPeticionVoluntariado() == null);
-			errors.rejectValue("fechaPeticionVoluntariado", "obligatorio", "Introduzca la fecha de petición de voluntariado");
 				 
 		 List<String> valores = Arrays.asList("Femenino", "Masculino");
 		 if(!valores.contains(voluntario.getGenero()))

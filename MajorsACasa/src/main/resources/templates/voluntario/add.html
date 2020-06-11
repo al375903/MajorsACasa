@@ -41,8 +41,7 @@
         </tr>
         <tr>
             <td><label>Fecha petición voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaPeticionVoluntariado}" /></td>
-            <td th:if="${#fields.hasErrors('fechaPeticionVoluntariado')}" th:errors="*{fechaPeticionVoluntariado}" class="error"></td>
+            <td><input type="date" th:field="*{fechaPeticionVoluntariado}" required/></td>
         </tr>
         <tr>
             <td><label>Fecha aceptación voluntariado</label></td>
@@ -50,7 +49,7 @@
         </tr>
         <tr>
             <td><label>Fecha fin de voluntariado</label></td>
-            <td><input type="date" th:field="*{fechaFin}"/></td>
+            <td><input type="date" th:field="*{fechaFin}" required/></td>
         </tr>
         <!-- <tr>
         	<td><label>Aceptada</label></td>

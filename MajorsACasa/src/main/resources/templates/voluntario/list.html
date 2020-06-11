@@ -18,6 +18,7 @@
          <th>DNI</th>
          <th>Nombre</th>
          <th>E-mail</th>
+         <th>Direccion</th>
          <th>Hobbies</th>
          <th>Fecha Petición Voluntariado</th>
          <th>Fecha Aceptación Voluntariado</th>
@@ -25,7 +26,6 @@
          <th>Aceptado</th>
          <th>Género</th>
          <th>Edad</th>
-         <th>Contraseña</th>
          <th><font size="+1">Editar</font></th>
          <th><font size="+1">Eliminar</font></th>
        </tr>
@@ -35,6 +35,7 @@
          <td th:text="${voluntario.idVoluntario}"></td>
          <td th:text="${voluntario.nombre}"></td>
          <td th:text="${voluntario.email}"></td>
+         <td th:text="${voluntario.direccion}"></td>
          <td th:text="${voluntario.hobbies}"></td>
          <td th:text="${voluntario.fechaPeticionVoluntariado}"></td>
          <td th:text="${voluntario.fechaAceptacionVoluntariado}"></td>
@@ -42,7 +43,6 @@
          <td th:text="${voluntario.aceptado}"></td>
          <td th:text="${voluntario.genero}"></td>
          <td th:text="${voluntario.edad}"></td>
-         <td th:text="${voluntario.contrasenya}"></td>
          <td><center><a th:href="@{/voluntario/update/{id}(id=${voluntario.idVoluntario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
          <td><center><a th:href="@{/voluntario/delete/{id}(id=${voluntario.idVoluntario})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>

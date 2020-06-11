@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +80,7 @@ public class VoluntarioController {
 		if(bindingResult.hasErrors())
 			return "voluntario/add";
 		try {
+			voluntario.setAceptado("denegado");
 			voluntarioDao.addVoluntario(voluntario);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
@@ -139,6 +142,10 @@ public class VoluntarioController {
 		voluntarioValidator.validate(voluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/update";
+		if((voluntario.getFechaAceptacionVoluntariado()!=null && voluntario.getFechaAceptacionVoluntariado().isBefore(LocalDate.now()))||(voluntario.getFechaFin()!=null && voluntario.getFechaFin().isAfter(LocalDate.now())))
+			voluntario.setAceptado("aceptado");
+		else
+			voluntario.setAceptado("denegado");
 		voluntarioDao.updateVoluntario(voluntario);
 		return "redirect:list";
 	}

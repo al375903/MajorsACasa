@@ -16,7 +16,7 @@ public class Voluntario {
 	private LocalDate fechaAceptacionVoluntariado;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate fechaFin; 
-	private boolean aceptado;
+	private String aceptado;
 	private String genero;
 	private int edad;
 	private String contrasenya;
@@ -88,11 +88,11 @@ public class Voluntario {
 		this.fechaFin = fechaFin;
 	}
 
-	public Boolean isAceptado() {
+	public String getAceptado() {
 		return aceptado;
 	}
 	
-	public void setAceptado(Boolean aceptado) {
+	public void setAceptado(String aceptado) {
 		this.aceptado = aceptado;
 	}
 	
