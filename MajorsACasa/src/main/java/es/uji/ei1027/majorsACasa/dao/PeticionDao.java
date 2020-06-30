@@ -47,7 +47,7 @@ public class PeticionDao {
 	
 	public Peticion getPeticion(String idPeticion) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion JOIN Contrato USING(idContrato) WHERE idPeticion=?",
+	           return jdbcTemplate.queryForObject("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion LEFT JOIN Contrato USING(idContrato) WHERE idPeticion=?",
 	                   new PeticionRowMapper(), idPeticion);
 	       }
 	       catch(EmptyResultDataAccessException e) {
@@ -57,7 +57,7 @@ public class PeticionDao {
 	
 	public List<Peticion> getPeticiones() {
 	       try {
-	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion JOIN Contrato USING(idContrato)",
+	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion LEFT JOIN Contrato USING(idContrato)",
 	                   new PeticionRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Peticion>();
@@ -66,7 +66,7 @@ public class PeticionDao {
 	
 	public List<Peticion> getPeticionBeneficiario(String idBeneficiario){ //No muestra los que idContrato=NULL
 		try {
-	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion JOIN Contrato USING(idContrato) WHERE idBeneficiario=?",
+	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion LEFT JOIN Contrato USING(idContrato) WHERE idBeneficiario=?",
 	                   new Object[] {idBeneficiario}, new PeticionRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<>();

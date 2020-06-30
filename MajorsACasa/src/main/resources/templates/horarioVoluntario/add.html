@@ -15,11 +15,6 @@
     <form action="#" th:action="@{/horarioVoluntario/add}"
                      th:object="${horarioVoluntario}" method="post">
       <table>
-      	<tr>
-            <td><label>Número Horario</label></td>
-            <td><input type="text" th:field="*{idHorario}" /></td>
-            <td th:if="${#fields.hasErrors('idHorario')}" th:errors="*{idHorario}" class="error"></td>
-        </tr>
         <tr>
             <td><label>DNI Voluntario</label></td>
             <td><input type="text" th:field="*{idVoluntario}" /></td>

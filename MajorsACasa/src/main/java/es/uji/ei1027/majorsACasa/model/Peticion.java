@@ -23,6 +23,7 @@ public class Peticion {
 	
 	public Peticion() {
 		this.estado="NoRevisada";
+		this.fechaCreacion=LocalDate.now();
 	}
 
 	public String getIdPeticion() {
