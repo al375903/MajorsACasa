@@ -35,7 +35,7 @@ public class PeticionValidator implements Validator {
 		if(!valores.contains(peticion.getTipoServicio()))
 			 errors.rejectValue("tipoServicio", "obligatorio", "Seleccione un tipo de servicio.");
 		
-		if(peticion.getEstado().equals("Aceptada")) {
+		/*if(peticion.getEstado().equals("Aceptada")) {
 			if(peticion.getFechaAprobacion() == null) {
 				errors.rejectValue("fechaAprobacion", "obligatorio", "Seleccione una fecha de aprobación.");
 			}
@@ -66,7 +66,7 @@ public class PeticionValidator implements Validator {
 			if(peticion.getFechaAprobacion() != null) {
 				errors.rejectValue("fechaAprobacion", "noAprobación", "No puede seleccionar una fecha de aprobación.");
 			}
-		}
+		}*/
 		/*List<String> estados = Arrays.asList("Aceptada", "Denegada", "No revisada");
 		if(!estados.contains(peticion.getTipoServicio()))
 			 errors.rejectValue("estado", "obligatorio", "Seleccione un estado.");*/

@@ -32,10 +32,10 @@
          <td th:text="${horarioVoluntario.idHorario}"></td>
          <td th:text="${horarioVoluntario.idVoluntario}"></td>
          <td th:text="${horarioVoluntario.idBeneficiario}"></td>
-         <td th:text="${horarioVoluntario.fecha}"></td>
+         <td th:text="${#temporals.format(horarioVoluntario.fecha,'dd/MM/yyyy')}"></td>
          <td th:text="${horarioVoluntario.horaInicio}"></td>
          <td th:text="${horarioVoluntario.horaFin}"></td>
-         <td th:text="${horarioVoluntario.libre}"></td>
+         <td th:text="${horarioVoluntario.libre} ? 'Libre' : 'Ocupado'"></td>
          <td><center><a th:href="@{/horarioVoluntario/update/{id}(id=${horarioVoluntario.idHorario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>
          <td><center><a th:href="@{/horarioVoluntario/delete/{id}(id=${horarioVoluntario.idHorario})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a></center>

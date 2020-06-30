@@ -20,8 +20,8 @@
     <thead>
        <tr>
          <th>Tipo de servicio</th>
+         <th>Fecha petición</th>
          <th>Estado</th>
-         <th>Fecha de petición</th>
          <th>Comentarios</th>
          <th><font size="+1">Editar</font></th>
          <th><font size="+1">Eliminar</font></th>
@@ -30,8 +30,8 @@
 	 <tbody>
        <tr th:each="peticion: ${peticiones}">
          <td th:text="${peticion.tipoServicio}"></td>
+         <td th:text="${#temporals.format(peticion.fechaCreacion,'dd/MM/yyyy')}"></td>
          <td th:text="${peticion.estado}"></td>
-         <td th:text="${peticion.fechaCreacion}"></td>
          <td th:text="${peticion.comentarios}"></td>
          <td><center><a th:href="@{/beneficiario/updatePeticion/{id}(id=${peticion.idPeticion})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
          </td>

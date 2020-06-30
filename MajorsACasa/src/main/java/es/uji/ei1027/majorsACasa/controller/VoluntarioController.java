@@ -100,7 +100,9 @@ public class VoluntarioController {
           session.setAttribute("nextUrl", "voluntario/addHorario");
           return "login";
         }
-		model.addAttribute("horarioVoluntario", new HorarioVoluntario());
+	    HorarioVoluntario hv = new HorarioVoluntario();
+	    hv.setIdVoluntario(user.getUsername());
+		model.addAttribute("horarioVoluntario", hv);
 		return "voluntario/addHorario";
 	}
 	

@@ -31,9 +31,9 @@
        <tr th:each="factura: ${facturas}">
        <td th:text="${factura.idFactura}"></td>
          <td th:text="${factura.idBeneficiario}"></td>
-         <td th:text="${factura.fechaCreacion}"></td>
-         <td th:text="${factura.fechaInicio}"></td>
-         <td th:text="${factura.fechaFin}"></td>
+         <td th:text="${#temporals.format(factura.fechaCreacion,'dd/MM/yyyy')}"></td>
+         <td th:text="${#temporals.format(factura.fechaInicio,'dd/MM/yyyy')}"></td>
+         <td th:text="${#temporals.format(factura.fechaFin,'dd/MM/yyyy')}"></td>
          <td th:text="${factura.concepto}"></td>
          <td th:text="${factura.cantidad}"></td>
          <td><center><a th:href="@{/factura/update/{id}(id=${factura.idFactura})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>

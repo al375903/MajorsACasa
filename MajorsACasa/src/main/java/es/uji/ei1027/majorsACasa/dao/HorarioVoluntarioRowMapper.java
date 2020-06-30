@@ -18,7 +18,7 @@ public final class HorarioVoluntarioRowMapper implements RowMapper<HorarioVolunt
 	    horarioVoluntario.setFecha(rs.getObject("fecha", LocalDate.class));
 	    horarioVoluntario.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 	    horarioVoluntario.setHoraFin(rs.getObject("horaFin", LocalTime.class));
-		horarioVoluntario.setLibre(rs.getBoolean("libre"));
+	    horarioVoluntario.setLibre(rs.getBoolean("libre"));
 		return horarioVoluntario;
 	}
 }

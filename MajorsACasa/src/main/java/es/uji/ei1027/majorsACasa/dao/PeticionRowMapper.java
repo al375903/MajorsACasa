@@ -13,12 +13,13 @@ public final class PeticionRowMapper implements RowMapper<Peticion>{
 			peticion.setIdPeticion(rs.getString("idPeticion"));
 			peticion.setIdBeneficiario(rs.getString("idBeneficiario"));
 			peticion.setIdContrato(rs.getString("idContrato"));
+			peticion.setNombreEmpresa(rs.getString("nombreEmpresa"));
 			peticion.setComentarios(rs.getString("comentarios"));
 			peticion.setTipoServicio(rs.getString("tipoServicio"));
 			peticion.setEstado(rs.getString("estado"));
 			peticion.setFechaAprobacion(rs.getObject("fechaAprobacion", LocalDate.class));
 			peticion.setFechaDenegacion(rs.getObject("fechaDenegacion", LocalDate.class));
-			peticion.setFechaCreacion(LocalDate.now());
+			peticion.setFechaCreacion(rs.getObject("fechaCreacion", LocalDate.class));
 			peticion.setFechaCancelacion(rs.getObject("fechaCancelacion", LocalDate.class));
 			return peticion;
 	}

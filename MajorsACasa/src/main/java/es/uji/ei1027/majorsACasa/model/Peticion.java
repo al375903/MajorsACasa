@@ -8,6 +8,7 @@ public class Peticion {
 	private String idPeticion;
 	private String idBeneficiario;
 	private String idContrato;
+	private String nombreEmpresa;
 	private String comentarios;
 	private String tipoServicio;
 	private String estado;
@@ -21,6 +22,7 @@ public class Peticion {
 	private LocalDate fechaCancelacion;
 	
 	public Peticion() {
+		this.estado="NoRevisada";
 	}
 
 	public String getIdPeticion() {
@@ -45,6 +47,14 @@ public class Peticion {
 
 	public void setIdContrato(String idContrato) {
 		this.idContrato = idContrato;
+	}
+	
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
 	}
 
 	public String getComentarios() {

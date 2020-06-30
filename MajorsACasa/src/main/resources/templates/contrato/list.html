@@ -31,8 +31,8 @@
          <td th:text="${contrato.nombreEmpresa}"></td>
          <td th:text="${contrato.tipoServicio}"></td>
          <td th:text="${contrato.precio}"></td>
-         <td th:text="${contrato.fechaInicio}"></td>
-         <td th:text="${contrato.fechaFin}"></td>
+         <td th:text="${#temporals.format(contrato.fechaInicio,'dd/MM/yyyy')}"></td>
+         <td th:text="${#temporals.format(contrato.fechaFin,'dd/MM/yyyy')}"></td>
          <td><a th:href="@{/contrato/update/{id}(id=${contrato.idContrato})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a>
          </td>
          <td><a th:href="@{/contrato/delete/{id}(id=${contrato.idContrato})}" class="btn btn-danger" role="button"><i class="fas fa-trash fa-lg"></i></a>

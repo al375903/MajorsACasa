@@ -65,7 +65,7 @@ public class ContratoController {
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("contrato") Contrato contrato,
-									BindingResult bindingResult) {
+									BindingResult bindingResult, HttpSession session) {
 		ContratoValidator contratoValidator = new ContratoValidator();
 		contratoValidator.validate(contrato, bindingResult);
 		if (bindingResult.hasErrors())
@@ -77,6 +77,7 @@ public class ContratoController {
 			throw new MajorsACasaException(
 			"Ya existe un contrato " + contrato.getIdContrato(), "CPduplicada");
 		} catch (DataAccessException e) {
+			session.setAttribute("contrato", contrato);
 			throw new MajorsACasaException(
 					"La empresa introducida no existe.", "ErrorAccediendoDatosEmpresa");
 		}
@@ -105,6 +106,8 @@ public class ContratoController {
    		return "contrato/addEmpresaPorContrato";
 	   try {
 		   contratoDao.addEmpresa(empresa);
+		   Contrato contrato = (Contrato)session.getAttribute("contrato");
+		   contratoDao.addContrato(contrato);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 					"Ya existe una empresa con id " + empresa.getIdEmpresa(), "CPduplicada");
@@ -112,7 +115,7 @@ public class ContratoController {
 			throw new MajorsACasaException(
 					"Error en el acceso a la base de datos", "ErrorAccediendoDatos");
 		}
-   	 return "redirect:add";
+   	 return "redirect:list";
 	}
 	
 	@RequestMapping(value="/update/{id}", method = RequestMethod.GET)

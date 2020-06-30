@@ -36,15 +36,6 @@
             <td><input class="text" type="text" th:field="*{tipoServicio}" readonly="readonly"></td>
         </tr>
         <tr>
-            <td><label>Estado</label></td>
-            <td><select class="form_control" type="text" th:field="*{estado}">
-				<option value="NoRevisada">No revisada</option>
-				<option value="Aceptada">Aceptada</option>
-				<option value="Denegada">Denegada</option>
-				</select>
-			</td>
-        </tr>
-        <tr>
             <td><label>Fecha aprobación</label></td>
             <td><input type="date" th:field="*{fechaAprobacion}" /></td>
         	<td th:if="${#fields.hasErrors('fechaAprobacion')}" th:errors="*{fechaAprobacion}" class="error"></td>

@@ -37,9 +37,9 @@
          <td th:text="${voluntario.email}"></td>
          <td th:text="${voluntario.direccion}"></td>
          <td th:text="${voluntario.hobbies}"></td>
-         <td th:text="${voluntario.fechaPeticionVoluntariado}"></td>
-         <td th:text="${voluntario.fechaAceptacionVoluntariado}"></td>
-         <td th:text="${voluntario.fechaFin}"></td>
+         <td th:text="${#temporals.format(voluntario.fechaPeticionVoluntariado,'dd/MM/yyyy')}"></td>
+         <td th:text="${#temporals.format(voluntario.fechaAceptacionVoluntariado,'dd/MM/yyyy')}"></td>
+         <td th:text="${#temporals.format(voluntario.fechaFin,'dd/MM/yyyy')}"></td>
          <td th:text="${voluntario.aceptado}"></td>
          <td th:text="${voluntario.genero}"></td>
          <td th:text="${voluntario.edad}"></td>

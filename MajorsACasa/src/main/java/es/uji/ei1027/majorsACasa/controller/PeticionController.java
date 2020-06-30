@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,17 @@ public class PeticionController {
 					}
 				}
 			}
+			if(peticion.getFechaAprobacion() != null && peticion.getFechaAprobacion().isBefore(LocalDate.now().plusDays(1))) {
+				peticion.setEstado("Aceptada");
+			} else {
+				peticion.setEstado("NoRevisada");
+			}
+			if(peticion.getFechaCancelacion() != null && peticion.getFechaCancelacion().isBefore(LocalDate.now().plusDays(1))) {
+				peticion.setEstado("Denegada");
+			} else if(peticion.getFechaDenegacion() != null && peticion.getFechaDenegacion().isBefore(LocalDate.now().plusDays(1))) {
+				peticion.setEstado("Denegada");
+			}
+			peticion.setFechaCreacion(LocalDate.now());
 			peticionDao.addPeticion(peticion);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
@@ -99,6 +112,16 @@ public class PeticionController {
 		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "peticion/update";
+		if(peticion.getFechaAprobacion() != null && peticion.getFechaAprobacion().isBefore(LocalDate.now().plusDays(1))) {
+			peticion.setEstado("Aceptada");
+		} else {
+			peticion.setEstado("NoRevisada");
+		}
+		if(peticion.getFechaCancelacion() != null && peticion.getFechaCancelacion().isBefore(LocalDate.now().plusDays(1))) {
+			peticion.setEstado("Denegada");
+		} else if(peticion.getFechaDenegacion() != null && peticion.getFechaDenegacion().isBefore(LocalDate.now().plusDays(1))) {
+			peticion.setEstado("Denegada");
+		}
 		peticionDao.updatePeticion(peticion);
 		return "redirect:list";
 	}

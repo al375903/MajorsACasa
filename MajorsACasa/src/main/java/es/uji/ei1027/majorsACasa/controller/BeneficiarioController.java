@@ -1,5 +1,7 @@
 package es.uji.ei1027.majorsACasa.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +99,10 @@ public class BeneficiarioController {
           session.setAttribute("nextUrl", "beneficiario/addPeticion");
           return "login";
         }
-		model.addAttribute("peticion", new Peticion());
+	    Peticion peticion = new Peticion();
+	    peticion.setIdBeneficiario(user.getUsername());
+	    peticion.setFechaCreacion(LocalDate.now());
+		model.addAttribute("peticion", peticion);
 		return "beneficiario/addPeticion";
 	}
 	

@@ -32,7 +32,7 @@
        <tr th:each="horario: ${horarios}">
          <td th:text="${horario.idHorario}"></td>
          <td th:text="${horario.idBeneficiario}"></td>
-         <td th:text="${horario.fecha}"></td>
+         <td th:text="${#temporals.format(horario.fecha,'dd/MM/yyyy')}"></td>
          <td th:text="${horario.horaInicio}"></td>
          <td th:text="${horario.horaFin}"></td>
          <td><center><a th:href="@{/voluntario/updateHorario/{id}(id=${horario.idHorario})}" class="btn btn-warning" role="button"><i class="far fa-edit fa-lg"></i></a></center>
