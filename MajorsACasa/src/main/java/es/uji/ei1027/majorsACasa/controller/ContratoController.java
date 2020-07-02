@@ -51,6 +51,18 @@ public class ContratoController {
 		return "contrato/list";
 	}
 	
+	@RequestMapping("/listManager")
+	public String listManagerContratos(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casManager"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "contrato/listManager");
+          return "login";
+        }
+		model.addAttribute("contratos", contratoDao.getContratos());
+		return "contrato/listManager";
+	}
+	
 	@RequestMapping(value="add")
 	public String addContrato(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");

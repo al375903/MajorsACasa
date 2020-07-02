@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.HorarioVoluntario;
 
 import javax.sql.DataSource;
@@ -22,14 +23,14 @@ public class HorarioVoluntarioDao {
 	}
 	
 	public void addHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
-		jdbcTemplate.update("INSERT INTO HorarioVoluntario VALUES(?,?,?,?,?,?,?)",
-			horarioVoluntario.getIdHorario(), horarioVoluntario.getIdVoluntario(),
+		jdbcTemplate.update("INSERT INTO HorarioVoluntario VALUES(DEFAULT,?,?,?,?,?,?)",
+			horarioVoluntario.getIdVoluntario(),
 			horarioVoluntario.getIdBeneficiario(), horarioVoluntario.getFecha(), 
 			horarioVoluntario.getHoraInicio(), horarioVoluntario.getHoraFin(), 
 			horarioVoluntario.isLibre());
 	}
 	
-	public void deleteHorarioVoluntario(String idHorario) {
+	public void deleteHorarioVoluntario(int idHorario) {
 		jdbcTemplate.update("DELETE FROM HorarioVoluntario WHERE idHorario=?", idHorario);
 	}
 	
@@ -41,7 +42,7 @@ public class HorarioVoluntarioDao {
 				horarioVoluntario.getIdHorario());
 	}
 	
-	public HorarioVoluntario getHorarioVoluntario(String idHorario) {
+	public HorarioVoluntario getHorarioVoluntario(int idHorario) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM HorarioVoluntario WHERE idHorario=?",
 					new HorarioVoluntarioRowMapper(), idHorario);
@@ -64,6 +65,17 @@ public class HorarioVoluntarioDao {
 					new Object[] {idVoluntario}, new HorarioVoluntarioRowMapper());
 		} catch(EmptyResultDataAccessException e) {
 			return new ArrayList<HorarioVoluntario>();
+		}
+	}
+	
+	public List<Beneficiario> getBeneficiariosPorHorario(int idHorario) {
+		try {
+			return this.jdbcTemplate.query(
+					"SELECT beneficiario.* FROM beneficiario JOIN HorarioVoluntario USING(idBeneficiario) WHERE HorarioVoluntario.idHorario=?",
+					new Object[] {idHorario}, new BeneficiarioRowMapper());
+		}
+		catch(EmptyResultDataAccessException e) {
+		    return new ArrayList<>();
 		}
 	}
 	

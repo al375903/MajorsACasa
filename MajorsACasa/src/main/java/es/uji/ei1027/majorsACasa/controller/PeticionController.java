@@ -112,6 +112,7 @@ public class PeticionController {
 		peticionValidator.validate(peticion, bindingResult);
 		if(bindingResult.hasErrors())
 			return "peticion/update";
+		
 		if(peticion.getFechaAprobacion() != null && peticion.getFechaAprobacion().isBefore(LocalDate.now().plusDays(1))) {
 			peticion.setEstado("Aceptada");
 		} else {
@@ -122,6 +123,7 @@ public class PeticionController {
 		} else if(peticion.getFechaDenegacion() != null && peticion.getFechaDenegacion().isBefore(LocalDate.now().plusDays(1))) {
 			peticion.setEstado("Denegada");
 		}
+		
 		peticionDao.updatePeticion(peticion);
 		return "redirect:list";
 	}

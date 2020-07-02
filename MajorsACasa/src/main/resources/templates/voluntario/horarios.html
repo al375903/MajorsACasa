@@ -19,8 +19,7 @@
    <table th:unless="${#lists.isEmpty(horarios)}" class="table table-striped">
      <thead>
        <tr>
-         <th>Número Horario</th>
-         <th>DNI Beneficiario Asignado</th>
+         <th>Detalles Beneficiario</th>
          <th>Fecha</th>
          <th>Hora Inicio</th>
          <th>Hora Fin</th>
@@ -30,8 +29,7 @@
      </thead>
      <tbody>
        <tr th:each="horario: ${horarios}">
-         <td th:text="${horario.idHorario}"></td>
-         <td th:text="${horario.idBeneficiario}"></td>
+         <td><a th:href="@{/voluntario/listBeneficiario/{id}(id=${horario.idHorario})}" class="btn btn-info" role="button"><i class="fas fa-bars"></i></a>
          <td th:text="${#temporals.format(horario.fecha,'dd/MM/yyyy')}"></td>
          <td th:text="${horario.horaInicio}"></td>
          <td th:text="${horario.horaFin}"></td>

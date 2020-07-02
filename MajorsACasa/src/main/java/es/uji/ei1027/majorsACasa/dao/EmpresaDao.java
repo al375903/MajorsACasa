@@ -10,6 +10,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.Empresa;
 
 @Repository
@@ -88,6 +89,15 @@ public class EmpresaDao {
 			}
 		}
 	   
-	  
+	   public List<Beneficiario> getBeneficiariosPorContrato(String idContrato) {
+			try {
+				return this.jdbcTemplate.query(
+						"SELECT beneficiario.* FROM beneficiario JOIN peticion USING(idBeneficiario) WHERE peticion.idContrato=?",
+						new Object[] {idContrato}, new BeneficiarioRowMapper());
+			}
+			catch(EmptyResultDataAccessException e) {
+			    return new ArrayList<>();
+			}
+		}
 	   
 }

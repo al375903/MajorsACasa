@@ -36,10 +36,10 @@ public class PeticionDao {
 	}
 	
 	public void updatePeticion(Peticion peticion) {
-		jdbcTemplate.update("UPDATE Peticion SET comentarios=?, tipoServicio=?, estado=?, "
+		jdbcTemplate.update("UPDATE Peticion SET comentarios=?, idContrato=?, tipoServicio=?, estado=?, "
 				+ "fechaAprobacion=?, fechaDenegacion=?, fechaCreacion=?, fechaCancelacion=? "
 				+ "WHERE idPeticion=?",
-				peticion.getComentarios(), peticion.getTipoServicio(), peticion.getEstado(), 
+				peticion.getComentarios(), peticion.getIdContrato(), peticion.getTipoServicio(), peticion.getEstado(), 
 				peticion.getFechaAprobacion(), peticion.getFechaDenegacion(),
 				peticion.getFechaCreacion(), peticion.getFechaCancelacion(), 
 				peticion.getIdPeticion());
@@ -57,7 +57,7 @@ public class PeticionDao {
 	
 	public List<Peticion> getPeticiones() {
 	       try {
-	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion LEFT JOIN Contrato USING(idContrato)",
+	           return jdbcTemplate.query("SELECT Peticion.*, Contrato.nombreEmpresa FROM Peticion LEFT JOIN Contrato USING(idContrato) ORDER BY Peticion.idPeticion",
 	                   new PeticionRowMapper());
 	       } catch (EmptyResultDataAccessException e) {
 	           return new ArrayList<Peticion>();

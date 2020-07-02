@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class HorarioVoluntario {
-	private String idHorario;
+	private int idHorario;
 	private String idVoluntario;
 	private String idBeneficiario;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
@@ -20,11 +20,11 @@ public class HorarioVoluntario {
 	public HorarioVoluntario() {
 	}
 
-	public String getIdHorario() {
+	public int getIdHorario() {
 		return idHorario;
 	}
 
-	public void setIdHorario(String idHorario) {
+	public void setIdHorario(int idHorario) {
 		this.idHorario = idHorario;
 	}
 

@@ -12,7 +12,7 @@ import java.time.LocalTime;
 public final class HorarioVoluntarioRowMapper implements RowMapper<HorarioVoluntario>{
 	public HorarioVoluntario mapRow(ResultSet rs, int rowNum) throws SQLException{
 		HorarioVoluntario horarioVoluntario = new HorarioVoluntario();
-		horarioVoluntario.setIdHorario(rs.getString("idHorario"));
+		horarioVoluntario.setIdHorario(rs.getInt("idHorario"));
 		horarioVoluntario.setIdVoluntario(rs.getString("idVoluntario"));
 		horarioVoluntario.setIdBeneficiario(rs.getString("idBeneficiario"));
 	    horarioVoluntario.setFecha(rs.getObject("fecha", LocalDate.class));

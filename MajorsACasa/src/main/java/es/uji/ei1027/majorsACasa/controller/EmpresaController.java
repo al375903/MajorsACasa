@@ -58,6 +58,18 @@ public class EmpresaController {
 		return "empresa/list";
 	}
 	
+	@RequestMapping("/listBeneficiarios/{id}")
+	public String listBeneficiarios(HttpSession session, Model model, @PathVariable String id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("empresa"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "empresa/listBeneficiarios/"+id);
+          return "login";
+        }
+		model.addAttribute("beneficiarios", empresaDao.getBeneficiariosPorContrato(id));
+		return "empresa/listBeneficiarios";
+	}
+	
 	@RequestMapping(value="add")
 	public String addEmpresa(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");

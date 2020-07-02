@@ -73,7 +73,7 @@ public class HorarioVoluntarioController {
 	}
 	
 	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
-	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable String id) {
+	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable int id) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
           model.addAttribute("user", new UserDetails());
@@ -96,7 +96,7 @@ public class HorarioVoluntarioController {
 	}
 	
 	@RequestMapping(value="/delete/{id}")
-	public String processDelete(HttpSession session, Model model, @PathVariable String id) {
+	public String processDelete(HttpSession session, Model model, @PathVariable int id) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("casVolunteer"))) { 
           model.addAttribute("user", new UserDetails());

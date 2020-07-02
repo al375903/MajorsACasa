@@ -60,6 +60,19 @@ public class VoluntarioController {
 		return "voluntario/list";
 	}
 	
+
+	@RequestMapping("/listBeneficiario/{id}")
+	public String listBeneficiario(HttpSession session, Model model, @PathVariable int id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "voluntario/listBeneficiario/"+id);
+          return "login";
+        }
+		model.addAttribute("beneficiarios", horarioVoluntarioDao.getBeneficiariosPorHorario(id));
+		return "voluntario/listBeneficiario";
+	}
+	
 	@RequestMapping(value="add")
 	public String addVoluntario(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
@@ -109,8 +122,6 @@ public class VoluntarioController {
 	@RequestMapping(value="/addHorario", method=RequestMethod.POST)
 	public String processAddSubmit(@ModelAttribute("horarioVoluntario") HorarioVoluntario horarioVoluntario,
 									BindingResult bindingResult) {
-		HorarioVoluntarioValidator horarioVoluntarioValidator = new HorarioVoluntarioValidator();
-		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/addHorario";
 		try {
@@ -199,7 +210,7 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="/updateHorario/{id}", method=RequestMethod.GET)
-	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable String id) {
+	public String editHorarioVoluntario(HttpSession session, Model model, @PathVariable int id) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
           model.addAttribute("user", new UserDetails());
@@ -222,7 +233,7 @@ public class VoluntarioController {
 	}
 	
 	@RequestMapping(value="/deleteHorario/{id}")
-	public String processDeleteHorario(HttpSession session, Model model, @PathVariable String id) {
+	public String processDeleteHorario(HttpSession session, Model model, @PathVariable int id) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("voluntario"))) { 
           model.addAttribute("user", new UserDetails());

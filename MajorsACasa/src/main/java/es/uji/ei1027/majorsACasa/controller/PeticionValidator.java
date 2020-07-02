@@ -28,8 +28,8 @@ public class PeticionValidator implements Validator {
 		if (peticion.getIdBeneficiario().trim().equals(""))
 			 errors.rejectValue("idBeneficiario", "obligatorio", "Introduzca un Id.");
 		
-		if (peticion.getIdContrato().trim().equals(""))
-			 errors.rejectValue("idContrato", "obligatorio", "Introduzca un Id.");
+		/*if (peticion.getIdContrato().trim().equals(""))
+			 errors.rejectValue("idContrato", "obligatorio", "Introduzca un Id.");*/
 		
 		List<String> valores = Arrays.asList("Comida a domicilio", "Servicio de limpieza", "Servicio sanitario");
 		if(!valores.contains(peticion.getTipoServicio()))
