@@ -28,7 +28,6 @@
      </thead>
      <tbody>
        <tr th:each="horarioVoluntario: ${horariosVoluntarios}">
-         <td th:text="${horarioVoluntario.idHorario}"></td>
          <td th:text="${horarioVoluntario.idVoluntario}"></td>
          <td th:text="${horarioVoluntario.idBeneficiario}"></td>
          <td th:text="${#temporals.format(horarioVoluntario.fecha,'dd/MM/yyyy')}"></td>

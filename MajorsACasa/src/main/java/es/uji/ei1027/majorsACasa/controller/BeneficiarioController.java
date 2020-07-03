@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.majorsACasa.dao.BeneficiarioDao;
+import es.uji.ei1027.majorsACasa.dao.HorarioVoluntarioDao;
 import es.uji.ei1027.majorsACasa.dao.PeticionDao;
 import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Beneficiario;
@@ -35,10 +36,16 @@ public class BeneficiarioController {
 	}
 	
 	private PeticionDao peticionDao;
+	private HorarioVoluntarioDao horarioVoluntarioDao;
 	
 	@Autowired
 	public void setPeticionDao(PeticionDao peticionDao) {
 		this.peticionDao = peticionDao;
+	}
+	
+	@Autowired
+	public void setHorarioVoluntarioDao(HorarioVoluntarioDao horarioVoluntarioDao) {
+		this.horarioVoluntarioDao = horarioVoluntarioDao;
 	}
 	
 	private PeticionService peticionService;
@@ -201,6 +208,18 @@ public class BeneficiarioController {
           return "login";
         }
 		return "beneficiario/index";
+	}
+
+	@RequestMapping("/horarios")
+	public String listarHorarios(HttpSession session, Model model) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "beneficiario/horarios");
+          return "login";
+        }
+		model.addAttribute("horariosVoluntarios", horarioVoluntarioDao.getHorariosVoluntariosLibres());
+		return "beneficiario/horarios";
 	}
 	
 	@RequestMapping("/peticiones")

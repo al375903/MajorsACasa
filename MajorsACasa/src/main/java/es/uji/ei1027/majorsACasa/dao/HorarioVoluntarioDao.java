@@ -79,6 +79,14 @@ public class HorarioVoluntarioDao {
 		}
 	}
 	
+	public List<HorarioVoluntario> getHorariosVoluntariosLibres(){
+		try {
+			return jdbcTemplate.query("SELECT * FROM HorarioVoluntario WHERE libre='t'", new HorarioVoluntarioRowMapper());
+		} catch(EmptyResultDataAccessException e) {
+			return new ArrayList<HorarioVoluntario>();
+		}
+	}
+	
 }
 
 

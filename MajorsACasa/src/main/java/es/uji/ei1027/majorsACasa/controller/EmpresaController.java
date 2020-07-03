@@ -175,10 +175,10 @@ public class EmpresaController {
 	public String listPeticionesBeneficiario(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
 	    if (user == null || !(user.getTipo().equals("jefe")  || user.getTipo().equals("empresa"))) { 
-        model.addAttribute("user", new UserDetails());
-        session.setAttribute("nextUrl", "empresa/contratos");
-        return "login";
-      }
+	        model.addAttribute("user", new UserDetails());
+	        session.setAttribute("nextUrl", "empresa/contratos");
+	        return "login";
+	    }
 		model.addAttribute("contratos", contratoService.getContratosDeUnaEmpresa(user.getUsername()));
 		return "empresa/contratos";
 	}

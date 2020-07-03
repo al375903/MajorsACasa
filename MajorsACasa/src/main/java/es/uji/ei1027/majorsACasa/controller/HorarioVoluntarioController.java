@@ -116,11 +116,21 @@ public class HorarioVoluntarioController {
 	    }
 		return "redirect:../list";
 	}
+	
+	@RequestMapping(value="/reservar/{id}")
+	public String reservarHorarioVoluntario(HttpSession session, Model model, @PathVariable int id) {
+		UserDetails user = (UserDetails)session.getAttribute("user");
+	    if (user == null || !(user.getTipo().equals("jefe") || user.getTipo().equals("beneficiario"))) { 
+          model.addAttribute("user", new UserDetails());
+          session.setAttribute("nextUrl", "beneficiario/index");
+          return "login";
+        }
+	    HorarioVoluntario hv = horarioVoluntarioDao.getHorarioVoluntario(id);
+	    hv.setLibre(false);
+	    hv.setIdBeneficiario(user.getUsername());
+	    horarioVoluntarioDao.updateHorarioVoluntario(hv);
+	    System.out.println("El beneficiario "+user.getUsername()+" ha reservado un horario.");
+	    System.out.println("El horario del voluntario "+hv.getIdBeneficiario()+" ha sido reservado.");
+		return "redirect:/beneficiario/index";
+	}
 }
-
-
-
-
-
-
-

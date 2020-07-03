@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/baseBeneficiario}">
+<head>
+   <title>Horarios de Voluntarios</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet" type="text/css" href="/css/majorsACasa.css"
+                                    th:href="@{/css/majorsACasa.css}"/>
+   <script src="https://kit.fontawesome.com/5411309076.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+   <h1>Lista de Horarios de Voluntarios</h1>
+   <div th:if="${#lists.isEmpty(horariosVoluntarios)}">
+       No hay horarios disponibles.
+    </div>
+   <table th:unless="${#lists.isEmpty(horariosVoluntarios)}" class="table table-striped"> 
+     <thead>
+       <tr>
+         <th>Fecha</th>
+         <th>Hora Inicio</th>
+         <th>Hora Fin</th>
+         <th><font size="+1">Reservar</font></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="horarioVoluntario: ${horariosVoluntarios}">
+         <td th:text="${#temporals.format(horarioVoluntario.fecha,'dd/MM/yyyy')}"></td>
+         <td th:text="${horarioVoluntario.horaInicio}"></td>
+         <td th:text="${horarioVoluntario.horaFin}"></td>
+         <td><center><a th:href="@{/horarioVoluntario/reservar/{id}(id=${horarioVoluntario.idHorario})}" class="btn-primary" role="button"> Reservar  <i class="fas fa-angle-right fa"></i></a></center>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+</div>
+</div>
+</body>
+</html>
