@@ -35,9 +35,9 @@ public class HorarioVoluntarioDao {
 	}
 	
 	public void updateHorarioVoluntario(HorarioVoluntario horarioVoluntario) {
-		jdbcTemplate.update("UPDATE HorarioVoluntario SET fecha=?, horaInicio=?, "
+		jdbcTemplate.update("UPDATE HorarioVoluntario SET idBeneficiario=?, fecha=?, horaInicio=?, "
 				+ "horaFin=?, libre=? WHERE idHorario=?",
-				horarioVoluntario.getFecha(), horarioVoluntario.getHoraInicio(), 
+				horarioVoluntario.getIdBeneficiario(), horarioVoluntario.getFecha(), horarioVoluntario.getHoraInicio(), 
 				horarioVoluntario.getHoraFin(), horarioVoluntario.isLibre(), 
 				horarioVoluntario.getIdHorario());
 	}

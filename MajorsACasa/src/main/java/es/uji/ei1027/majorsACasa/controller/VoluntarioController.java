@@ -125,7 +125,13 @@ public class VoluntarioController {
 		if(bindingResult.hasErrors())
 			return "voluntario/addHorario";
 		try {
+			Voluntario v = voluntarioDao.getVoluntario(horarioVoluntario.getIdVoluntario());
+			if(horarioVoluntario.getIdBeneficiario() != null && horarioVoluntario.getIdBeneficiario().equals("")) {
+				horarioVoluntario.setIdBeneficiario(null);
+			}
+			horarioVoluntario.setLibre(true);
 			horarioVoluntarioDao.addHorarioVoluntario(horarioVoluntario);
+			System.out.println("\nSe ha enviado un correo a " + v.getIdVoluntario() + "(" + v.getEmail() + ") con el siguiente mensaje: \n\tSe ha registrado un horario disponible a fecha "+ horarioVoluntario.getFecha() + " de " + horarioVoluntario.getHoraInicio() + " a " + horarioVoluntario.getHoraFin());			
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 					"Ya existe un horario con id " + horarioVoluntario.getIdHorario(), "CPduplicada");
@@ -228,7 +234,13 @@ public class VoluntarioController {
 		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "voluntario/updateHorario";
+		Voluntario v = voluntarioDao.getVoluntario(horarioVoluntario.getIdVoluntario());
+		if(horarioVoluntario.getIdBeneficiario() != null && horarioVoluntario.getIdBeneficiario().equals("")) {
+			horarioVoluntario.setIdBeneficiario(null);
+			horarioVoluntario.setLibre(true);
+		}
 		horarioVoluntarioDao.updateHorarioVoluntario(horarioVoluntario);
+		System.out.println("\nSe ha enviado un correo a " + v.getIdVoluntario() + "(" + v.getEmail() + ") con el siguiente mensaje: \n\tSe ha modificado un horario a fecha "+ horarioVoluntario.getFecha() + " de " + horarioVoluntario.getHoraInicio() + " a " + horarioVoluntario.getHoraFin());
 		return "redirect:horarios";
 	}
 	
@@ -249,6 +261,8 @@ public class VoluntarioController {
 	    	session.removeAttribute("accion");
 	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
 	    		horarioVoluntarioDao.deleteHorarioVoluntario(id);
+	    		Voluntario v = voluntarioDao.getVoluntario(user.getUsername());
+	    	    System.out.println("\nSe ha enviado un correo a " + v.getIdVoluntario() + "(" + v.getEmail() + ") con el siguiente mensaje: \n\tUsted ha eliminado un horario correctamente.");
 	    	}
 	    }
 		return "redirect:../horarios";

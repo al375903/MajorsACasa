@@ -13,20 +13,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.majorsACasa.dao.BeneficiarioDao;
 import es.uji.ei1027.majorsACasa.dao.HorarioVoluntarioDao;
+import es.uji.ei1027.majorsACasa.dao.VoluntarioDao;
 import es.uji.ei1027.majorsACasa.model.Accion;
+import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.HorarioVoluntario;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
+import es.uji.ei1027.majorsACasa.model.Voluntario;
 
 @Controller
 @RequestMapping("/horarioVoluntario")
 public class HorarioVoluntarioController {
 
 	private HorarioVoluntarioDao horarioVoluntarioDao;
+	private BeneficiarioDao beneficiarioDao;
+	private VoluntarioDao voluntarioDao;
 	
 	@Autowired
 	public void setHorarioVoluntarioDao(HorarioVoluntarioDao horarioVoluntarioDao) {
 		this.horarioVoluntarioDao = horarioVoluntarioDao;
+	}
+	
+	@Autowired
+	public void setVoluntarioDao(VoluntarioDao voluntarioDao) {
+		this.voluntarioDao = voluntarioDao;
+	}
+	
+	@Autowired
+	public void setBeneficiarioDao(BeneficiarioDao beneficiarioDao) {
+		this.beneficiarioDao = beneficiarioDao;
 	}
 	
 	@RequestMapping("/list")
@@ -61,6 +77,10 @@ public class HorarioVoluntarioController {
 		if(bindingResult.hasErrors())
 			return "horarioVoluntario/add";
 		try {
+			if(horarioVoluntario.getIdBeneficiario().equals("")) {
+				horarioVoluntario.setIdBeneficiario(null);
+				horarioVoluntario.setLibre(true);
+			}
 			horarioVoluntarioDao.addHorarioVoluntario(horarioVoluntario);
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
@@ -91,6 +111,10 @@ public class HorarioVoluntarioController {
 		horarioVoluntarioValidator.validate(horarioVoluntario, bindingResult);
 		if(bindingResult.hasErrors())
 			return "horarioVoluntario/update";
+		if(horarioVoluntario.getIdBeneficiario().equals("")) {
+			horarioVoluntario.setIdBeneficiario(null);
+			horarioVoluntario.setLibre(true);
+		}
 		horarioVoluntarioDao.updateHorarioVoluntario(horarioVoluntario);
 		return "redirect:list";
 	}
@@ -111,7 +135,10 @@ public class HorarioVoluntarioController {
 		    Accion accion=(Accion) session.getAttribute("accion");
 	    	session.removeAttribute("accion");
 	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		HorarioVoluntario hv = horarioVoluntarioDao.getHorarioVoluntario(id);
+	    		Voluntario v = voluntarioDao.getVoluntario(hv.getIdVoluntario());
 	    		horarioVoluntarioDao.deleteHorarioVoluntario(id);
+	    	    System.out.println("\nSe ha enviado un correo a " + v.getIdVoluntario() + "(" + v.getEmail() + ") con el siguiente mensaje: \n\tSe ha eliminado el horario con fecha " + hv.getFecha() + " de " + hv.getHoraInicio() + " a " + hv.getHoraFin());
 	    	}
 	    }
 		return "redirect:../list";
@@ -129,8 +156,10 @@ public class HorarioVoluntarioController {
 	    hv.setLibre(false);
 	    hv.setIdBeneficiario(user.getUsername());
 	    horarioVoluntarioDao.updateHorarioVoluntario(hv);
-	    System.out.println("El beneficiario "+user.getUsername()+" ha reservado un horario.");
-	    System.out.println("El horario del voluntario "+hv.getIdBeneficiario()+" ha sido reservado.");
+	    Beneficiario b = beneficiarioDao.getBeneficiario(hv.getIdBeneficiario());
+	    Voluntario v = voluntarioDao.getVoluntario(hv.getIdVoluntario());
+	    System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tSe ha reservado el horario para fecha " + hv.getFecha() + " de " + hv.getHoraInicio() + " a " + hv.getHoraFin());
+	    System.out.println("\nSe ha enviado un correo a " + v.getIdVoluntario() + "(" + v.getEmail() + ") con el siguiente mensaje: \n\tSe ha reservado su horario con fecha " + hv.getFecha() + " de " + hv.getHoraInicio() + " a " + hv.getHoraFin());
 		return "redirect:/beneficiario/index";
 	}
 }

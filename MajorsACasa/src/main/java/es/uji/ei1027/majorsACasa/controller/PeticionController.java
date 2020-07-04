@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.majorsACasa.dao.BeneficiarioDao;
 import es.uji.ei1027.majorsACasa.dao.PeticionDao;
 import es.uji.ei1027.majorsACasa.model.Accion;
+import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.Peticion;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
 
@@ -25,10 +27,16 @@ import es.uji.ei1027.majorsACasa.model.UserDetails;
 public class PeticionController {
 	
 	private PeticionDao peticionDao;
+	private BeneficiarioDao beneficiarioDao;
 	
 	@Autowired
 	public void setPeticionDao(PeticionDao peticionDao) {
 		this.peticionDao = peticionDao;
+	}
+	
+	@Autowired
+	public void setBeneficiarioDao(BeneficiarioDao beneficiarioDao) {
+		this.beneficiarioDao = beneficiarioDao;
 	}
 	
 	@RequestMapping("/list")
@@ -83,6 +91,8 @@ public class PeticionController {
 			}
 			peticion.setFechaCreacion(LocalDate.now());
 			peticionDao.addPeticion(peticion);
+			Beneficiario b = beneficiarioDao.getBeneficiario(peticion.getIdBeneficiario());
+			System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tSe ha registrado una peticion de "+ peticion.getTipoServicio());
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 					"Ya existe una petición con id " + peticion.getIdPeticion(), "CPduplicada");
@@ -125,6 +135,10 @@ public class PeticionController {
 		}
 		
 		peticionDao.updatePeticion(peticion);
+		if(peticion.getEstado() != "NoRevisada") {
+			Beneficiario b = beneficiarioDao.getBeneficiario(peticion.getIdBeneficiario());
+			System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tSu peticion de "+ peticion.getTipoServicio() + " ha sido " + peticion.getEstado());
+		}
 		return "redirect:list";
 	}
 	
@@ -144,7 +158,10 @@ public class PeticionController {
 		    Accion accion=(Accion) session.getAttribute("accion");
 	    	session.removeAttribute("accion");
 	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		Peticion peticion = peticionDao.getPeticion(id);
 	    		peticionDao.deletePeticion(id);
+				Beneficiario b = beneficiarioDao.getBeneficiario(peticion.getIdBeneficiario());
+				System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tSu peticion de "+ peticion.getTipoServicio() + " ha sido eliminada.");
 	    	}
 	    }
 		return "redirect:../list";

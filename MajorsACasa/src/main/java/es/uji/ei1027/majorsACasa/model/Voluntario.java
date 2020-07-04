@@ -126,6 +126,4 @@ public class Voluntario {
 				+ direccion + ", hobby=" + hobbies + ", aceptado=" + aceptado + ", genero=" + genero + ", edad=" + edad
 				+ ", contrasenya=" + contrasenya + "]";
 	}
-	
-
 }

@@ -203,6 +203,8 @@ public class EmpresaController {
 		if (bindingResult.hasErrors())
 			return "empresa/updateContrato";
 		contratoDao.updateContrato(contrato);
+	    Empresa e = empresaDao.getEmpresaByNombre(contrato.getNombreEmpresa());
+	    System.out.println("\nSe ha enviado un correo a " + e.getNombreEmpresa() + "(" + e.getEmailManager() + ") con el siguiente mensaje: \n\tSe ha modificado un contrato con los siguientes datos:\n\t "+ contrato.toString());
 		return "redirect:contratos";
 	}
 	
@@ -222,7 +224,10 @@ public class EmpresaController {
 		    Accion accion=(Accion) session.getAttribute("accion");
 	    	session.removeAttribute("accion");
 	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
-		    	contratoDao.deleteContrato(id);
+		    	Contrato contrato = contratoDao.getContrato(id);
+	    		contratoDao.deleteContrato(id);
+			    Empresa e = empresaDao.getEmpresaByNombre(contrato.getNombreEmpresa());
+			    System.out.println("\nSe ha enviado un correo a " + e.getNombreEmpresa() + "(" + e.getEmailManager() + ") con el siguiente mensaje: \n\tSe ha eliminado el contrato con los siguientes datos:\n\t "+ contrato.toString());
 	    	}
 	    }
     	return "redirect:../contratos";

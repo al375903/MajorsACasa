@@ -22,7 +22,5 @@ public class HorarioVoluntarioValidator implements Validator {
 		if (horarioVoluntario.getIdVoluntario().trim().equals(""))
 			 errors.rejectValue("idVoluntario", "obligatorio", "Introduzca un Id de voluntario.");
 		
-		if (horarioVoluntario.getIdBeneficiario().trim().equals(""))
-			 errors.rejectValue("idBeneficiario", "obligatorio", "Introduzca un Id de beneficiario.");
 	}
 }

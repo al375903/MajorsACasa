@@ -30,7 +30,7 @@
          <td th:text="${#temporals.format(horarioVoluntario.fecha,'dd/MM/yyyy')}"></td>
          <td th:text="${horarioVoluntario.horaInicio}"></td>
          <td th:text="${horarioVoluntario.horaFin}"></td>
-         <td><center><a th:href="@{/horarioVoluntario/reservar/{id}(id=${horarioVoluntario.idHorario})}" class="btn-primary" role="button"> Reservar  <i class="fas fa-angle-right fa"></i></a></center>
+         <td><a th:href="@{/horarioVoluntario/reservar/{id}(id=${horarioVoluntario.idHorario})}" class="btn-primary" role="button"> Reservar  <i class="fas fa-angle-right fa"></i></a>
          </td>
        </tr>
      </tbody>

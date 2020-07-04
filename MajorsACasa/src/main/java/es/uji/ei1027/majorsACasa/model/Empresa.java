@@ -83,5 +83,4 @@ public class Empresa {
 				", nombreManager=" + nombreManager + ", direccion=" + direccion + ", telefono=" + telefono +
 				", horarioatencionCliente=" + horarioAtencionCliente + ", emailManager=" + emailManager + "]";
 	}
-	
 }

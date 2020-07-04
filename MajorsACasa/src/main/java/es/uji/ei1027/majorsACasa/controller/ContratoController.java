@@ -39,6 +39,11 @@ public class ContratoController {
 		this.contratoDao = contratoDao;
 	}
 	
+	@Autowired
+	public void setEmpresaDao(EmpresaDao empresaDao) {
+		this.empresaDao = empresaDao;
+	}
+	
 	@RequestMapping("/list")
 	public String listEmpresas(HttpSession session, Model model) {
 		UserDetails user = (UserDetails)session.getAttribute("user");
@@ -85,6 +90,8 @@ public class ContratoController {
 		
 		try {
 			contratoDao.addContrato(contrato);
+		   Empresa e = empresaDao.getEmpresaByNombre(contrato.getNombreEmpresa());
+		   System.out.println("\nSe ha enviado un correo a " + e.getNombreEmpresa() + "(" + e.getEmailManager() + ") con el siguiente mensaje: \n\tSe ha firmado un contrato con los siguientes datos:\n\t "+ contrato.toString());
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 			"Ya existe un contrato " + contrato.getIdContrato(), "CPduplicada");
@@ -120,6 +127,9 @@ public class ContratoController {
 		   contratoDao.addEmpresa(empresa);
 		   Contrato contrato = (Contrato)session.getAttribute("contrato");
 		   contratoDao.addContrato(contrato);
+		   session.removeAttribute("contrato");
+		   Empresa e = empresaDao.getEmpresaByNombre(contrato.getNombreEmpresa());
+		   System.out.println("\nSe ha enviado un correo a " + e.getNombreEmpresa() + "(" + e.getEmailManager() + ") con el siguiente mensaje: \n\tSe ha firmado un contrato con los siguientes datos:\n\t "+ contrato.toString());
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 					"Ya existe una empresa con id " + empresa.getIdEmpresa(), "CPduplicada");

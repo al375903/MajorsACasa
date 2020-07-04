@@ -22,6 +22,7 @@ import es.uji.ei1027.majorsACasa.model.Accion;
 import es.uji.ei1027.majorsACasa.model.Beneficiario;
 import es.uji.ei1027.majorsACasa.model.Peticion;
 import es.uji.ei1027.majorsACasa.model.UserDetails;
+import es.uji.ei1027.majorsACasa.model.Voluntario;
 import es.uji.ei1027.majorsACasa.services.PeticionService;
 
 @Controller
@@ -144,6 +145,8 @@ public class BeneficiarioController {
 				peticion.setIdPeticion(aux);
 			}
 			peticionDao.addPeticion(peticion);
+    		Beneficiario b = beneficiarioDao.getBeneficiario(peticion.getIdBeneficiario());
+    	    System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tUsted ha creado la petición de "+ peticion.getTipoServicio() + " correctamente.");
 		} catch (DuplicateKeyException e) {
 			throw new MajorsACasaException(
 					"Ya existe una petición con id " + peticion.getIdPeticion(), "CPduplicada");
@@ -254,6 +257,8 @@ public class BeneficiarioController {
 		if(bindingResult.hasErrors())
 			return "beneficiario/updatePeticion";
 		peticionDao.updatePeticion(peticion);
+		Beneficiario b = beneficiarioDao.getBeneficiario(peticion.getIdBeneficiario());
+	    System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tUsted ha modificado la petición de "+ peticion.getTipoServicio() + " correctamente.");
 		return "redirect:peticiones";
 	}
 	
@@ -273,7 +278,10 @@ public class BeneficiarioController {
 		    Accion accion=(Accion) session.getAttribute("accion");
 	    	session.removeAttribute("accion");
 	    	if(accion.getConfirmacion() != null && accion.getConfirmacion().equals("True")) {
+	    		Peticion p = peticionDao.getPeticion(id);
 	    		peticionDao.deletePeticion(id);
+	    		Beneficiario b = beneficiarioDao.getBeneficiario(p.getIdBeneficiario());
+	    	    System.out.println("\nSe ha enviado un correo a " + b.getIdBeneficiario() + "(" + b.getEmail() + ") con el siguiente mensaje: \n\tSe ha eliminado la petición de "+ p.getTipoServicio() + " correctamente.");
 	    	}
 	    }
 		return "redirect:../peticiones";

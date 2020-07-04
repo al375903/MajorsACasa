@@ -102,5 +102,5 @@ public class Beneficiario {
 				+ ", edad=" + edad + ", contrasenya=" + contrasenya + ", hobbies=" + hobbies 
 				+ ", alergias=" + alergias + ", enfermedades=" + enfermedades + "]";
 	}
-
+	
 }
